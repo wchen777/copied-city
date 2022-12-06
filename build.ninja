@@ -1,0 +1,563 @@
+## This file contains all the build statements describing the
+# compilation DAG.
+
+# =============================================================================
+# Write statements declared in CMakeLists.txt:
+# 
+# Which is the root file.
+# =============================================================================
+
+# =============================================================================
+# Project: projects_realtime
+# Configurations: Debug
+# =============================================================================
+
+#############################################
+# Minimal version of Ninja required by this file
+
+ninja_required_version = 1.5
+
+
+#############################################
+# Set configuration variable for custom commands.
+
+CONFIGURATION = Debug
+# =============================================================================
+# Include auxiliary files.
+
+
+#############################################
+# Include rules file.
+
+include CMakeFiles/rules.ninja
+
+# =============================================================================
+
+#############################################
+# Logical path to working directory; prefix for absolute paths.
+
+cmake_ninja_workdir = /Users/wchen/Documents/07$ Sem/graphics/projects-realtime-wchen777/
+# =============================================================================
+# Object build statements for EXECUTABLE target projects_realtime
+
+
+#############################################
+# Order-only phony target for projects_realtime
+
+build cmake_object_order_depends_target_projects_realtime: phony || .rcc/qrc_Resources.cpp cmake_object_order_depends_target_StaticGLEW projects_realtime_autogen projects_realtime_autogen/mocs_compilation.cpp projects_realtime_autogen/timestamp projects_realtime_autogen_timestamp_deps
+
+build CMakeFiles/projects_realtime.dir/projects_realtime_autogen/mocs_compilation.cpp.o: CXX_COMPILER__projects_realtime_Debug /Users/wchen/Documents/07$ Sem/graphics/projects-realtime-wchen777/projects_realtime_autogen/mocs_compilation.cpp || cmake_object_order_depends_target_projects_realtime
+  DEFINES = -DQT_CORE_LIB -DQT_GUI_LIB -DQT_OPENGLWIDGETS_LIB -DQT_OPENGL_LIB -DQT_WIDGETS_LIB -DQT_XML_LIB
+  DEP_FILE = CMakeFiles/projects_realtime.dir/projects_realtime_autogen/mocs_compilation.cpp.o.d
+  FLAGS = -Wno-deprecated-volatile -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk -std=gnu++20
+  INCLUDES = -I"/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777" -I"/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777/projects_realtime_autogen/include" -I"/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777/src" -I"/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777/projects_realtime" -I"/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777/PRIVATE" -I"/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777/glew/include" -iframework /Users/wchen/Qt/6.2.4/macos/lib -isystem /Users/wchen/Qt/6.2.4/macos/lib/QtCore.framework/Headers -isystem /Users/wchen/Qt/6.2.4/macos/mkspecs/macx-clang -isystem /Users/wchen/Qt/6.2.4/macos/include -isystem /Users/wchen/Qt/6.2.4/macos/lib/QtGui.framework/Headers -isystem /Users/wchen/Qt/6.2.4/macos/lib/QtOpenGL.framework/Headers -isystem /Users/wchen/Qt/6.2.4/macos/lib/QtOpenGLWidgets.framework/Headers -isystem /Users/wchen/Qt/6.2.4/macos/lib/QtWidgets.framework/Headers -isystem /Users/wchen/Qt/6.2.4/macos/lib/QtXml.framework/Headers
+  OBJECT_DIR = CMakeFiles/projects_realtime.dir
+  OBJECT_FILE_DIR = CMakeFiles/projects_realtime.dir/projects_realtime_autogen
+  TARGET_COMPILE_PDB = CMakeFiles/projects_realtime.dir/
+  TARGET_PDB = projects_realtime.pdb
+
+build CMakeFiles/projects_realtime.dir/src/main.cpp.o: CXX_COMPILER__projects_realtime_Debug /Users/wchen/Documents/07$ Sem/graphics/projects-realtime-wchen777/src/main.cpp || cmake_object_order_depends_target_projects_realtime
+  DEFINES = -DQT_CORE_LIB -DQT_GUI_LIB -DQT_OPENGLWIDGETS_LIB -DQT_OPENGL_LIB -DQT_WIDGETS_LIB -DQT_XML_LIB
+  DEP_FILE = CMakeFiles/projects_realtime.dir/src/main.cpp.o.d
+  FLAGS = -Wno-deprecated-volatile -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk -std=gnu++20
+  INCLUDES = -I"/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777" -I"/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777/projects_realtime_autogen/include" -I"/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777/src" -I"/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777/projects_realtime" -I"/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777/PRIVATE" -I"/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777/glew/include" -iframework /Users/wchen/Qt/6.2.4/macos/lib -isystem /Users/wchen/Qt/6.2.4/macos/lib/QtCore.framework/Headers -isystem /Users/wchen/Qt/6.2.4/macos/mkspecs/macx-clang -isystem /Users/wchen/Qt/6.2.4/macos/include -isystem /Users/wchen/Qt/6.2.4/macos/lib/QtGui.framework/Headers -isystem /Users/wchen/Qt/6.2.4/macos/lib/QtOpenGL.framework/Headers -isystem /Users/wchen/Qt/6.2.4/macos/lib/QtOpenGLWidgets.framework/Headers -isystem /Users/wchen/Qt/6.2.4/macos/lib/QtWidgets.framework/Headers -isystem /Users/wchen/Qt/6.2.4/macos/lib/QtXml.framework/Headers
+  OBJECT_DIR = CMakeFiles/projects_realtime.dir
+  OBJECT_FILE_DIR = CMakeFiles/projects_realtime.dir/src
+  TARGET_COMPILE_PDB = CMakeFiles/projects_realtime.dir/
+  TARGET_PDB = projects_realtime.pdb
+
+build CMakeFiles/projects_realtime.dir/src/realtime.cpp.o: CXX_COMPILER__projects_realtime_Debug /Users/wchen/Documents/07$ Sem/graphics/projects-realtime-wchen777/src/realtime.cpp || cmake_object_order_depends_target_projects_realtime
+  DEFINES = -DQT_CORE_LIB -DQT_GUI_LIB -DQT_OPENGLWIDGETS_LIB -DQT_OPENGL_LIB -DQT_WIDGETS_LIB -DQT_XML_LIB
+  DEP_FILE = CMakeFiles/projects_realtime.dir/src/realtime.cpp.o.d
+  FLAGS = -Wno-deprecated-volatile -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk -std=gnu++20
+  INCLUDES = -I"/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777" -I"/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777/projects_realtime_autogen/include" -I"/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777/src" -I"/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777/projects_realtime" -I"/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777/PRIVATE" -I"/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777/glew/include" -iframework /Users/wchen/Qt/6.2.4/macos/lib -isystem /Users/wchen/Qt/6.2.4/macos/lib/QtCore.framework/Headers -isystem /Users/wchen/Qt/6.2.4/macos/mkspecs/macx-clang -isystem /Users/wchen/Qt/6.2.4/macos/include -isystem /Users/wchen/Qt/6.2.4/macos/lib/QtGui.framework/Headers -isystem /Users/wchen/Qt/6.2.4/macos/lib/QtOpenGL.framework/Headers -isystem /Users/wchen/Qt/6.2.4/macos/lib/QtOpenGLWidgets.framework/Headers -isystem /Users/wchen/Qt/6.2.4/macos/lib/QtWidgets.framework/Headers -isystem /Users/wchen/Qt/6.2.4/macos/lib/QtXml.framework/Headers
+  OBJECT_DIR = CMakeFiles/projects_realtime.dir
+  OBJECT_FILE_DIR = CMakeFiles/projects_realtime.dir/src
+  TARGET_COMPILE_PDB = CMakeFiles/projects_realtime.dir/
+  TARGET_PDB = projects_realtime.pdb
+
+build CMakeFiles/projects_realtime.dir/src/mainwindow.cpp.o: CXX_COMPILER__projects_realtime_Debug /Users/wchen/Documents/07$ Sem/graphics/projects-realtime-wchen777/src/mainwindow.cpp || cmake_object_order_depends_target_projects_realtime
+  DEFINES = -DQT_CORE_LIB -DQT_GUI_LIB -DQT_OPENGLWIDGETS_LIB -DQT_OPENGL_LIB -DQT_WIDGETS_LIB -DQT_XML_LIB
+  DEP_FILE = CMakeFiles/projects_realtime.dir/src/mainwindow.cpp.o.d
+  FLAGS = -Wno-deprecated-volatile -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk -std=gnu++20
+  INCLUDES = -I"/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777" -I"/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777/projects_realtime_autogen/include" -I"/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777/src" -I"/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777/projects_realtime" -I"/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777/PRIVATE" -I"/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777/glew/include" -iframework /Users/wchen/Qt/6.2.4/macos/lib -isystem /Users/wchen/Qt/6.2.4/macos/lib/QtCore.framework/Headers -isystem /Users/wchen/Qt/6.2.4/macos/mkspecs/macx-clang -isystem /Users/wchen/Qt/6.2.4/macos/include -isystem /Users/wchen/Qt/6.2.4/macos/lib/QtGui.framework/Headers -isystem /Users/wchen/Qt/6.2.4/macos/lib/QtOpenGL.framework/Headers -isystem /Users/wchen/Qt/6.2.4/macos/lib/QtOpenGLWidgets.framework/Headers -isystem /Users/wchen/Qt/6.2.4/macos/lib/QtWidgets.framework/Headers -isystem /Users/wchen/Qt/6.2.4/macos/lib/QtXml.framework/Headers
+  OBJECT_DIR = CMakeFiles/projects_realtime.dir
+  OBJECT_FILE_DIR = CMakeFiles/projects_realtime.dir/src
+  TARGET_COMPILE_PDB = CMakeFiles/projects_realtime.dir/
+  TARGET_PDB = projects_realtime.pdb
+
+build CMakeFiles/projects_realtime.dir/src/settings.cpp.o: CXX_COMPILER__projects_realtime_Debug /Users/wchen/Documents/07$ Sem/graphics/projects-realtime-wchen777/src/settings.cpp || cmake_object_order_depends_target_projects_realtime
+  DEFINES = -DQT_CORE_LIB -DQT_GUI_LIB -DQT_OPENGLWIDGETS_LIB -DQT_OPENGL_LIB -DQT_WIDGETS_LIB -DQT_XML_LIB
+  DEP_FILE = CMakeFiles/projects_realtime.dir/src/settings.cpp.o.d
+  FLAGS = -Wno-deprecated-volatile -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk -std=gnu++20
+  INCLUDES = -I"/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777" -I"/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777/projects_realtime_autogen/include" -I"/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777/src" -I"/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777/projects_realtime" -I"/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777/PRIVATE" -I"/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777/glew/include" -iframework /Users/wchen/Qt/6.2.4/macos/lib -isystem /Users/wchen/Qt/6.2.4/macos/lib/QtCore.framework/Headers -isystem /Users/wchen/Qt/6.2.4/macos/mkspecs/macx-clang -isystem /Users/wchen/Qt/6.2.4/macos/include -isystem /Users/wchen/Qt/6.2.4/macos/lib/QtGui.framework/Headers -isystem /Users/wchen/Qt/6.2.4/macos/lib/QtOpenGL.framework/Headers -isystem /Users/wchen/Qt/6.2.4/macos/lib/QtOpenGLWidgets.framework/Headers -isystem /Users/wchen/Qt/6.2.4/macos/lib/QtWidgets.framework/Headers -isystem /Users/wchen/Qt/6.2.4/macos/lib/QtXml.framework/Headers
+  OBJECT_DIR = CMakeFiles/projects_realtime.dir
+  OBJECT_FILE_DIR = CMakeFiles/projects_realtime.dir/src
+  TARGET_COMPILE_PDB = CMakeFiles/projects_realtime.dir/
+  TARGET_PDB = projects_realtime.pdb
+
+build CMakeFiles/projects_realtime.dir/src/utils/scenefilereader.cpp.o: CXX_COMPILER__projects_realtime_Debug /Users/wchen/Documents/07$ Sem/graphics/projects-realtime-wchen777/src/utils/scenefilereader.cpp || cmake_object_order_depends_target_projects_realtime
+  DEFINES = -DQT_CORE_LIB -DQT_GUI_LIB -DQT_OPENGLWIDGETS_LIB -DQT_OPENGL_LIB -DQT_WIDGETS_LIB -DQT_XML_LIB
+  DEP_FILE = CMakeFiles/projects_realtime.dir/src/utils/scenefilereader.cpp.o.d
+  FLAGS = -Wno-deprecated-volatile -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk -std=gnu++20
+  INCLUDES = -I"/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777" -I"/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777/projects_realtime_autogen/include" -I"/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777/src" -I"/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777/projects_realtime" -I"/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777/PRIVATE" -I"/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777/glew/include" -iframework /Users/wchen/Qt/6.2.4/macos/lib -isystem /Users/wchen/Qt/6.2.4/macos/lib/QtCore.framework/Headers -isystem /Users/wchen/Qt/6.2.4/macos/mkspecs/macx-clang -isystem /Users/wchen/Qt/6.2.4/macos/include -isystem /Users/wchen/Qt/6.2.4/macos/lib/QtGui.framework/Headers -isystem /Users/wchen/Qt/6.2.4/macos/lib/QtOpenGL.framework/Headers -isystem /Users/wchen/Qt/6.2.4/macos/lib/QtOpenGLWidgets.framework/Headers -isystem /Users/wchen/Qt/6.2.4/macos/lib/QtWidgets.framework/Headers -isystem /Users/wchen/Qt/6.2.4/macos/lib/QtXml.framework/Headers
+  OBJECT_DIR = CMakeFiles/projects_realtime.dir
+  OBJECT_FILE_DIR = CMakeFiles/projects_realtime.dir/src/utils
+  TARGET_COMPILE_PDB = CMakeFiles/projects_realtime.dir/
+  TARGET_PDB = projects_realtime.pdb
+
+build CMakeFiles/projects_realtime.dir/src/utils/sceneparser.cpp.o: CXX_COMPILER__projects_realtime_Debug /Users/wchen/Documents/07$ Sem/graphics/projects-realtime-wchen777/src/utils/sceneparser.cpp || cmake_object_order_depends_target_projects_realtime
+  DEFINES = -DQT_CORE_LIB -DQT_GUI_LIB -DQT_OPENGLWIDGETS_LIB -DQT_OPENGL_LIB -DQT_WIDGETS_LIB -DQT_XML_LIB
+  DEP_FILE = CMakeFiles/projects_realtime.dir/src/utils/sceneparser.cpp.o.d
+  FLAGS = -Wno-deprecated-volatile -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk -std=gnu++20
+  INCLUDES = -I"/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777" -I"/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777/projects_realtime_autogen/include" -I"/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777/src" -I"/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777/projects_realtime" -I"/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777/PRIVATE" -I"/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777/glew/include" -iframework /Users/wchen/Qt/6.2.4/macos/lib -isystem /Users/wchen/Qt/6.2.4/macos/lib/QtCore.framework/Headers -isystem /Users/wchen/Qt/6.2.4/macos/mkspecs/macx-clang -isystem /Users/wchen/Qt/6.2.4/macos/include -isystem /Users/wchen/Qt/6.2.4/macos/lib/QtGui.framework/Headers -isystem /Users/wchen/Qt/6.2.4/macos/lib/QtOpenGL.framework/Headers -isystem /Users/wchen/Qt/6.2.4/macos/lib/QtOpenGLWidgets.framework/Headers -isystem /Users/wchen/Qt/6.2.4/macos/lib/QtWidgets.framework/Headers -isystem /Users/wchen/Qt/6.2.4/macos/lib/QtXml.framework/Headers
+  OBJECT_DIR = CMakeFiles/projects_realtime.dir
+  OBJECT_FILE_DIR = CMakeFiles/projects_realtime.dir/src/utils
+  TARGET_COMPILE_PDB = CMakeFiles/projects_realtime.dir/
+  TARGET_PDB = projects_realtime.pdb
+
+build CMakeFiles/projects_realtime.dir/src/camera/camera.cpp.o: CXX_COMPILER__projects_realtime_Debug /Users/wchen/Documents/07$ Sem/graphics/projects-realtime-wchen777/src/camera/camera.cpp || cmake_object_order_depends_target_projects_realtime
+  DEFINES = -DQT_CORE_LIB -DQT_GUI_LIB -DQT_OPENGLWIDGETS_LIB -DQT_OPENGL_LIB -DQT_WIDGETS_LIB -DQT_XML_LIB
+  DEP_FILE = CMakeFiles/projects_realtime.dir/src/camera/camera.cpp.o.d
+  FLAGS = -Wno-deprecated-volatile -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk -std=gnu++20
+  INCLUDES = -I"/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777" -I"/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777/projects_realtime_autogen/include" -I"/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777/src" -I"/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777/projects_realtime" -I"/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777/PRIVATE" -I"/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777/glew/include" -iframework /Users/wchen/Qt/6.2.4/macos/lib -isystem /Users/wchen/Qt/6.2.4/macos/lib/QtCore.framework/Headers -isystem /Users/wchen/Qt/6.2.4/macos/mkspecs/macx-clang -isystem /Users/wchen/Qt/6.2.4/macos/include -isystem /Users/wchen/Qt/6.2.4/macos/lib/QtGui.framework/Headers -isystem /Users/wchen/Qt/6.2.4/macos/lib/QtOpenGL.framework/Headers -isystem /Users/wchen/Qt/6.2.4/macos/lib/QtOpenGLWidgets.framework/Headers -isystem /Users/wchen/Qt/6.2.4/macos/lib/QtWidgets.framework/Headers -isystem /Users/wchen/Qt/6.2.4/macos/lib/QtXml.framework/Headers
+  OBJECT_DIR = CMakeFiles/projects_realtime.dir
+  OBJECT_FILE_DIR = CMakeFiles/projects_realtime.dir/src/camera
+  TARGET_COMPILE_PDB = CMakeFiles/projects_realtime.dir/
+  TARGET_PDB = projects_realtime.pdb
+
+build CMakeFiles/projects_realtime.dir/src/camera/transforms.cpp.o: CXX_COMPILER__projects_realtime_Debug /Users/wchen/Documents/07$ Sem/graphics/projects-realtime-wchen777/src/camera/transforms.cpp || cmake_object_order_depends_target_projects_realtime
+  DEFINES = -DQT_CORE_LIB -DQT_GUI_LIB -DQT_OPENGLWIDGETS_LIB -DQT_OPENGL_LIB -DQT_WIDGETS_LIB -DQT_XML_LIB
+  DEP_FILE = CMakeFiles/projects_realtime.dir/src/camera/transforms.cpp.o.d
+  FLAGS = -Wno-deprecated-volatile -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk -std=gnu++20
+  INCLUDES = -I"/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777" -I"/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777/projects_realtime_autogen/include" -I"/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777/src" -I"/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777/projects_realtime" -I"/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777/PRIVATE" -I"/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777/glew/include" -iframework /Users/wchen/Qt/6.2.4/macos/lib -isystem /Users/wchen/Qt/6.2.4/macos/lib/QtCore.framework/Headers -isystem /Users/wchen/Qt/6.2.4/macos/mkspecs/macx-clang -isystem /Users/wchen/Qt/6.2.4/macos/include -isystem /Users/wchen/Qt/6.2.4/macos/lib/QtGui.framework/Headers -isystem /Users/wchen/Qt/6.2.4/macos/lib/QtOpenGL.framework/Headers -isystem /Users/wchen/Qt/6.2.4/macos/lib/QtOpenGLWidgets.framework/Headers -isystem /Users/wchen/Qt/6.2.4/macos/lib/QtWidgets.framework/Headers -isystem /Users/wchen/Qt/6.2.4/macos/lib/QtXml.framework/Headers
+  OBJECT_DIR = CMakeFiles/projects_realtime.dir
+  OBJECT_FILE_DIR = CMakeFiles/projects_realtime.dir/src/camera
+  TARGET_COMPILE_PDB = CMakeFiles/projects_realtime.dir/
+  TARGET_PDB = projects_realtime.pdb
+
+build CMakeFiles/projects_realtime.dir/src/trimeshes/cube.cpp.o: CXX_COMPILER__projects_realtime_Debug /Users/wchen/Documents/07$ Sem/graphics/projects-realtime-wchen777/src/trimeshes/cube.cpp || cmake_object_order_depends_target_projects_realtime
+  DEFINES = -DQT_CORE_LIB -DQT_GUI_LIB -DQT_OPENGLWIDGETS_LIB -DQT_OPENGL_LIB -DQT_WIDGETS_LIB -DQT_XML_LIB
+  DEP_FILE = CMakeFiles/projects_realtime.dir/src/trimeshes/cube.cpp.o.d
+  FLAGS = -Wno-deprecated-volatile -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk -std=gnu++20
+  INCLUDES = -I"/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777" -I"/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777/projects_realtime_autogen/include" -I"/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777/src" -I"/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777/projects_realtime" -I"/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777/PRIVATE" -I"/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777/glew/include" -iframework /Users/wchen/Qt/6.2.4/macos/lib -isystem /Users/wchen/Qt/6.2.4/macos/lib/QtCore.framework/Headers -isystem /Users/wchen/Qt/6.2.4/macos/mkspecs/macx-clang -isystem /Users/wchen/Qt/6.2.4/macos/include -isystem /Users/wchen/Qt/6.2.4/macos/lib/QtGui.framework/Headers -isystem /Users/wchen/Qt/6.2.4/macos/lib/QtOpenGL.framework/Headers -isystem /Users/wchen/Qt/6.2.4/macos/lib/QtOpenGLWidgets.framework/Headers -isystem /Users/wchen/Qt/6.2.4/macos/lib/QtWidgets.framework/Headers -isystem /Users/wchen/Qt/6.2.4/macos/lib/QtXml.framework/Headers
+  OBJECT_DIR = CMakeFiles/projects_realtime.dir
+  OBJECT_FILE_DIR = CMakeFiles/projects_realtime.dir/src/trimeshes
+  TARGET_COMPILE_PDB = CMakeFiles/projects_realtime.dir/
+  TARGET_PDB = projects_realtime.pdb
+
+build CMakeFiles/projects_realtime.dir/src/trimeshes/cone.cpp.o: CXX_COMPILER__projects_realtime_Debug /Users/wchen/Documents/07$ Sem/graphics/projects-realtime-wchen777/src/trimeshes/cone.cpp || cmake_object_order_depends_target_projects_realtime
+  DEFINES = -DQT_CORE_LIB -DQT_GUI_LIB -DQT_OPENGLWIDGETS_LIB -DQT_OPENGL_LIB -DQT_WIDGETS_LIB -DQT_XML_LIB
+  DEP_FILE = CMakeFiles/projects_realtime.dir/src/trimeshes/cone.cpp.o.d
+  FLAGS = -Wno-deprecated-volatile -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk -std=gnu++20
+  INCLUDES = -I"/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777" -I"/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777/projects_realtime_autogen/include" -I"/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777/src" -I"/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777/projects_realtime" -I"/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777/PRIVATE" -I"/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777/glew/include" -iframework /Users/wchen/Qt/6.2.4/macos/lib -isystem /Users/wchen/Qt/6.2.4/macos/lib/QtCore.framework/Headers -isystem /Users/wchen/Qt/6.2.4/macos/mkspecs/macx-clang -isystem /Users/wchen/Qt/6.2.4/macos/include -isystem /Users/wchen/Qt/6.2.4/macos/lib/QtGui.framework/Headers -isystem /Users/wchen/Qt/6.2.4/macos/lib/QtOpenGL.framework/Headers -isystem /Users/wchen/Qt/6.2.4/macos/lib/QtOpenGLWidgets.framework/Headers -isystem /Users/wchen/Qt/6.2.4/macos/lib/QtWidgets.framework/Headers -isystem /Users/wchen/Qt/6.2.4/macos/lib/QtXml.framework/Headers
+  OBJECT_DIR = CMakeFiles/projects_realtime.dir
+  OBJECT_FILE_DIR = CMakeFiles/projects_realtime.dir/src/trimeshes
+  TARGET_COMPILE_PDB = CMakeFiles/projects_realtime.dir/
+  TARGET_PDB = projects_realtime.pdb
+
+build CMakeFiles/projects_realtime.dir/src/trimeshes/sphere.cpp.o: CXX_COMPILER__projects_realtime_Debug /Users/wchen/Documents/07$ Sem/graphics/projects-realtime-wchen777/src/trimeshes/sphere.cpp || cmake_object_order_depends_target_projects_realtime
+  DEFINES = -DQT_CORE_LIB -DQT_GUI_LIB -DQT_OPENGLWIDGETS_LIB -DQT_OPENGL_LIB -DQT_WIDGETS_LIB -DQT_XML_LIB
+  DEP_FILE = CMakeFiles/projects_realtime.dir/src/trimeshes/sphere.cpp.o.d
+  FLAGS = -Wno-deprecated-volatile -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk -std=gnu++20
+  INCLUDES = -I"/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777" -I"/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777/projects_realtime_autogen/include" -I"/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777/src" -I"/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777/projects_realtime" -I"/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777/PRIVATE" -I"/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777/glew/include" -iframework /Users/wchen/Qt/6.2.4/macos/lib -isystem /Users/wchen/Qt/6.2.4/macos/lib/QtCore.framework/Headers -isystem /Users/wchen/Qt/6.2.4/macos/mkspecs/macx-clang -isystem /Users/wchen/Qt/6.2.4/macos/include -isystem /Users/wchen/Qt/6.2.4/macos/lib/QtGui.framework/Headers -isystem /Users/wchen/Qt/6.2.4/macos/lib/QtOpenGL.framework/Headers -isystem /Users/wchen/Qt/6.2.4/macos/lib/QtOpenGLWidgets.framework/Headers -isystem /Users/wchen/Qt/6.2.4/macos/lib/QtWidgets.framework/Headers -isystem /Users/wchen/Qt/6.2.4/macos/lib/QtXml.framework/Headers
+  OBJECT_DIR = CMakeFiles/projects_realtime.dir
+  OBJECT_FILE_DIR = CMakeFiles/projects_realtime.dir/src/trimeshes
+  TARGET_COMPILE_PDB = CMakeFiles/projects_realtime.dir/
+  TARGET_PDB = projects_realtime.pdb
+
+build CMakeFiles/projects_realtime.dir/src/trimeshes/cylinder.cpp.o: CXX_COMPILER__projects_realtime_Debug /Users/wchen/Documents/07$ Sem/graphics/projects-realtime-wchen777/src/trimeshes/cylinder.cpp || cmake_object_order_depends_target_projects_realtime
+  DEFINES = -DQT_CORE_LIB -DQT_GUI_LIB -DQT_OPENGLWIDGETS_LIB -DQT_OPENGL_LIB -DQT_WIDGETS_LIB -DQT_XML_LIB
+  DEP_FILE = CMakeFiles/projects_realtime.dir/src/trimeshes/cylinder.cpp.o.d
+  FLAGS = -Wno-deprecated-volatile -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk -std=gnu++20
+  INCLUDES = -I"/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777" -I"/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777/projects_realtime_autogen/include" -I"/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777/src" -I"/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777/projects_realtime" -I"/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777/PRIVATE" -I"/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777/glew/include" -iframework /Users/wchen/Qt/6.2.4/macos/lib -isystem /Users/wchen/Qt/6.2.4/macos/lib/QtCore.framework/Headers -isystem /Users/wchen/Qt/6.2.4/macos/mkspecs/macx-clang -isystem /Users/wchen/Qt/6.2.4/macos/include -isystem /Users/wchen/Qt/6.2.4/macos/lib/QtGui.framework/Headers -isystem /Users/wchen/Qt/6.2.4/macos/lib/QtOpenGL.framework/Headers -isystem /Users/wchen/Qt/6.2.4/macos/lib/QtOpenGLWidgets.framework/Headers -isystem /Users/wchen/Qt/6.2.4/macos/lib/QtWidgets.framework/Headers -isystem /Users/wchen/Qt/6.2.4/macos/lib/QtXml.framework/Headers
+  OBJECT_DIR = CMakeFiles/projects_realtime.dir
+  OBJECT_FILE_DIR = CMakeFiles/projects_realtime.dir/src/trimeshes
+  TARGET_COMPILE_PDB = CMakeFiles/projects_realtime.dir/
+  TARGET_PDB = projects_realtime.pdb
+
+build CMakeFiles/projects_realtime.dir/src/trimeshes/obj_mesh.cpp.o: CXX_COMPILER__projects_realtime_Debug /Users/wchen/Documents/07$ Sem/graphics/projects-realtime-wchen777/src/trimeshes/obj_mesh.cpp || cmake_object_order_depends_target_projects_realtime
+  DEFINES = -DQT_CORE_LIB -DQT_GUI_LIB -DQT_OPENGLWIDGETS_LIB -DQT_OPENGL_LIB -DQT_WIDGETS_LIB -DQT_XML_LIB
+  DEP_FILE = CMakeFiles/projects_realtime.dir/src/trimeshes/obj_mesh.cpp.o.d
+  FLAGS = -Wno-deprecated-volatile -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk -std=gnu++20
+  INCLUDES = -I"/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777" -I"/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777/projects_realtime_autogen/include" -I"/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777/src" -I"/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777/projects_realtime" -I"/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777/PRIVATE" -I"/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777/glew/include" -iframework /Users/wchen/Qt/6.2.4/macos/lib -isystem /Users/wchen/Qt/6.2.4/macos/lib/QtCore.framework/Headers -isystem /Users/wchen/Qt/6.2.4/macos/mkspecs/macx-clang -isystem /Users/wchen/Qt/6.2.4/macos/include -isystem /Users/wchen/Qt/6.2.4/macos/lib/QtGui.framework/Headers -isystem /Users/wchen/Qt/6.2.4/macos/lib/QtOpenGL.framework/Headers -isystem /Users/wchen/Qt/6.2.4/macos/lib/QtOpenGLWidgets.framework/Headers -isystem /Users/wchen/Qt/6.2.4/macos/lib/QtWidgets.framework/Headers -isystem /Users/wchen/Qt/6.2.4/macos/lib/QtXml.framework/Headers
+  OBJECT_DIR = CMakeFiles/projects_realtime.dir
+  OBJECT_FILE_DIR = CMakeFiles/projects_realtime.dir/src/trimeshes
+  TARGET_COMPILE_PDB = CMakeFiles/projects_realtime.dir/
+  TARGET_PDB = projects_realtime.pdb
+
+build CMakeFiles/projects_realtime.dir/src/renderer/primitive.cpp.o: CXX_COMPILER__projects_realtime_Debug /Users/wchen/Documents/07$ Sem/graphics/projects-realtime-wchen777/src/renderer/primitive.cpp || cmake_object_order_depends_target_projects_realtime
+  DEFINES = -DQT_CORE_LIB -DQT_GUI_LIB -DQT_OPENGLWIDGETS_LIB -DQT_OPENGL_LIB -DQT_WIDGETS_LIB -DQT_XML_LIB
+  DEP_FILE = CMakeFiles/projects_realtime.dir/src/renderer/primitive.cpp.o.d
+  FLAGS = -Wno-deprecated-volatile -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk -std=gnu++20
+  INCLUDES = -I"/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777" -I"/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777/projects_realtime_autogen/include" -I"/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777/src" -I"/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777/projects_realtime" -I"/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777/PRIVATE" -I"/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777/glew/include" -iframework /Users/wchen/Qt/6.2.4/macos/lib -isystem /Users/wchen/Qt/6.2.4/macos/lib/QtCore.framework/Headers -isystem /Users/wchen/Qt/6.2.4/macos/mkspecs/macx-clang -isystem /Users/wchen/Qt/6.2.4/macos/include -isystem /Users/wchen/Qt/6.2.4/macos/lib/QtGui.framework/Headers -isystem /Users/wchen/Qt/6.2.4/macos/lib/QtOpenGL.framework/Headers -isystem /Users/wchen/Qt/6.2.4/macos/lib/QtOpenGLWidgets.framework/Headers -isystem /Users/wchen/Qt/6.2.4/macos/lib/QtWidgets.framework/Headers -isystem /Users/wchen/Qt/6.2.4/macos/lib/QtXml.framework/Headers
+  OBJECT_DIR = CMakeFiles/projects_realtime.dir
+  OBJECT_FILE_DIR = CMakeFiles/projects_realtime.dir/src/renderer
+  TARGET_COMPILE_PDB = CMakeFiles/projects_realtime.dir/
+  TARGET_PDB = projects_realtime.pdb
+
+build CMakeFiles/projects_realtime.dir/src/renderer/render.cpp.o: CXX_COMPILER__projects_realtime_Debug /Users/wchen/Documents/07$ Sem/graphics/projects-realtime-wchen777/src/renderer/render.cpp || cmake_object_order_depends_target_projects_realtime
+  DEFINES = -DQT_CORE_LIB -DQT_GUI_LIB -DQT_OPENGLWIDGETS_LIB -DQT_OPENGL_LIB -DQT_WIDGETS_LIB -DQT_XML_LIB
+  DEP_FILE = CMakeFiles/projects_realtime.dir/src/renderer/render.cpp.o.d
+  FLAGS = -Wno-deprecated-volatile -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk -std=gnu++20
+  INCLUDES = -I"/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777" -I"/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777/projects_realtime_autogen/include" -I"/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777/src" -I"/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777/projects_realtime" -I"/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777/PRIVATE" -I"/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777/glew/include" -iframework /Users/wchen/Qt/6.2.4/macos/lib -isystem /Users/wchen/Qt/6.2.4/macos/lib/QtCore.framework/Headers -isystem /Users/wchen/Qt/6.2.4/macos/mkspecs/macx-clang -isystem /Users/wchen/Qt/6.2.4/macos/include -isystem /Users/wchen/Qt/6.2.4/macos/lib/QtGui.framework/Headers -isystem /Users/wchen/Qt/6.2.4/macos/lib/QtOpenGL.framework/Headers -isystem /Users/wchen/Qt/6.2.4/macos/lib/QtOpenGLWidgets.framework/Headers -isystem /Users/wchen/Qt/6.2.4/macos/lib/QtWidgets.framework/Headers -isystem /Users/wchen/Qt/6.2.4/macos/lib/QtXml.framework/Headers
+  OBJECT_DIR = CMakeFiles/projects_realtime.dir
+  OBJECT_FILE_DIR = CMakeFiles/projects_realtime.dir/src/renderer
+  TARGET_COMPILE_PDB = CMakeFiles/projects_realtime.dir/
+  TARGET_PDB = projects_realtime.pdb
+
+build CMakeFiles/projects_realtime.dir/.rcc/qrc_Resources.cpp.o: CXX_COMPILER__projects_realtime_Debug /Users/wchen/Documents/07$ Sem/graphics/projects-realtime-wchen777/.rcc/qrc_Resources.cpp || cmake_object_order_depends_target_projects_realtime
+  DEFINES = -DQT_CORE_LIB -DQT_GUI_LIB -DQT_OPENGLWIDGETS_LIB -DQT_OPENGL_LIB -DQT_WIDGETS_LIB -DQT_XML_LIB
+  DEP_FILE = CMakeFiles/projects_realtime.dir/.rcc/qrc_Resources.cpp.o.d
+  FLAGS = -Wno-deprecated-volatile -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk -std=gnu++20
+  INCLUDES = -I"/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777" -I"/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777/projects_realtime_autogen/include" -I"/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777/src" -I"/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777/projects_realtime" -I"/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777/PRIVATE" -I"/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777/glew/include" -iframework /Users/wchen/Qt/6.2.4/macos/lib -isystem /Users/wchen/Qt/6.2.4/macos/lib/QtCore.framework/Headers -isystem /Users/wchen/Qt/6.2.4/macos/mkspecs/macx-clang -isystem /Users/wchen/Qt/6.2.4/macos/include -isystem /Users/wchen/Qt/6.2.4/macos/lib/QtGui.framework/Headers -isystem /Users/wchen/Qt/6.2.4/macos/lib/QtOpenGL.framework/Headers -isystem /Users/wchen/Qt/6.2.4/macos/lib/QtOpenGLWidgets.framework/Headers -isystem /Users/wchen/Qt/6.2.4/macos/lib/QtWidgets.framework/Headers -isystem /Users/wchen/Qt/6.2.4/macos/lib/QtXml.framework/Headers
+  OBJECT_DIR = CMakeFiles/projects_realtime.dir
+  OBJECT_FILE_DIR = CMakeFiles/projects_realtime.dir/.rcc
+  TARGET_COMPILE_PDB = CMakeFiles/projects_realtime.dir/
+  TARGET_PDB = projects_realtime.pdb
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target projects_realtime
+
+
+#############################################
+# Link the executable projects_realtime
+
+build projects_realtime: CXX_EXECUTABLE_LINKER__projects_realtime_Debug CMakeFiles/projects_realtime.dir/projects_realtime_autogen/mocs_compilation.cpp.o CMakeFiles/projects_realtime.dir/src/main.cpp.o CMakeFiles/projects_realtime.dir/src/realtime.cpp.o CMakeFiles/projects_realtime.dir/src/mainwindow.cpp.o CMakeFiles/projects_realtime.dir/src/settings.cpp.o CMakeFiles/projects_realtime.dir/src/utils/scenefilereader.cpp.o CMakeFiles/projects_realtime.dir/src/utils/sceneparser.cpp.o CMakeFiles/projects_realtime.dir/src/camera/camera.cpp.o CMakeFiles/projects_realtime.dir/src/camera/transforms.cpp.o CMakeFiles/projects_realtime.dir/src/trimeshes/cube.cpp.o CMakeFiles/projects_realtime.dir/src/trimeshes/cone.cpp.o CMakeFiles/projects_realtime.dir/src/trimeshes/sphere.cpp.o CMakeFiles/projects_realtime.dir/src/trimeshes/cylinder.cpp.o CMakeFiles/projects_realtime.dir/src/trimeshes/obj_mesh.cpp.o CMakeFiles/projects_realtime.dir/src/renderer/primitive.cpp.o CMakeFiles/projects_realtime.dir/src/renderer/render.cpp.o CMakeFiles/projects_realtime.dir/.rcc/qrc_Resources.cpp.o | libStaticGLEW.a /Users/wchen/Qt/6.2.4/macos/lib/QtOpenGLWidgets.framework/Versions/A/QtOpenGLWidgets /Users/wchen/Qt/6.2.4/macos/lib/QtOpenGL.framework/Versions/A/QtOpenGL /Users/wchen/Qt/6.2.4/macos/lib/QtWidgets.framework/Versions/A/QtWidgets /Users/wchen/Qt/6.2.4/macos/lib/QtGui.framework/Versions/A/QtGui /Users/wchen/Qt/6.2.4/macos/lib/QtXml.framework/Versions/A/QtXml /Users/wchen/Qt/6.2.4/macos/lib/QtCore.framework/Versions/A/QtCore || libStaticGLEW.a projects_realtime_autogen projects_realtime_autogen_timestamp_deps
+  FLAGS = -Wno-deprecated-volatile -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk
+  LINK_LIBRARIES = -Wl,-rpath,/Users/wchen/Qt/6.2.4/macos/lib  libStaticGLEW.a  /Users/wchen/Qt/6.2.4/macos/lib/QtOpenGLWidgets.framework/Versions/A/QtOpenGLWidgets  /Users/wchen/Qt/6.2.4/macos/lib/QtOpenGL.framework/Versions/A/QtOpenGL  /Users/wchen/Qt/6.2.4/macos/lib/QtWidgets.framework/Versions/A/QtWidgets  /Users/wchen/Qt/6.2.4/macos/lib/QtGui.framework/Versions/A/QtGui  -framework  OpenGL  -framework  AGL  -framework AppKit  -framework ImageIO  -framework Metal  /Users/wchen/Qt/6.2.4/macos/lib/QtXml.framework/Versions/A/QtXml  /Users/wchen/Qt/6.2.4/macos/lib/QtCore.framework/Versions/A/QtCore  -framework DiskArbitration  -framework IOKit
+  OBJECT_DIR = CMakeFiles/projects_realtime.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_COMPILE_PDB = CMakeFiles/projects_realtime.dir/
+  TARGET_FILE = projects_realtime
+  TARGET_PDB = projects_realtime.pdb
+
+# =============================================================================
+# Object build statements for STATIC_LIBRARY target StaticGLEW
+
+
+#############################################
+# Order-only phony target for StaticGLEW
+
+build cmake_object_order_depends_target_StaticGLEW: phony || StaticGLEW_autogen StaticGLEW_autogen/mocs_compilation.cpp StaticGLEW_autogen/timestamp StaticGLEW_autogen_timestamp_deps
+
+build CMakeFiles/StaticGLEW.dir/StaticGLEW_autogen/mocs_compilation.cpp.o: CXX_COMPILER__StaticGLEW_Debug /Users/wchen/Documents/07$ Sem/graphics/projects-realtime-wchen777/StaticGLEW_autogen/mocs_compilation.cpp || cmake_object_order_depends_target_StaticGLEW
+  DEP_FILE = CMakeFiles/StaticGLEW.dir/StaticGLEW_autogen/mocs_compilation.cpp.o.d
+  FLAGS = -Wno-deprecated-volatile -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk -std=gnu++20
+  INCLUDES = -I"/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777" -I"/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777/StaticGLEW_autogen/include" -I"/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777/src" -I"/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777/projects_realtime" -I"/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777/PRIVATE" -I"/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777/glew/include"
+  OBJECT_DIR = CMakeFiles/StaticGLEW.dir
+  OBJECT_FILE_DIR = CMakeFiles/StaticGLEW.dir/StaticGLEW_autogen
+  TARGET_COMPILE_PDB = CMakeFiles/StaticGLEW.dir/StaticGLEW.pdb
+  TARGET_PDB = libStaticGLEW.pdb
+
+build CMakeFiles/StaticGLEW.dir/glew/src/glew.c.o: C_COMPILER__StaticGLEW_Debug /Users/wchen/Documents/07$ Sem/graphics/projects-realtime-wchen777/glew/src/glew.c || cmake_object_order_depends_target_StaticGLEW
+  DEP_FILE = CMakeFiles/StaticGLEW.dir/glew/src/glew.c.o.d
+  FLAGS = -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk
+  INCLUDES = -I"/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777" -I"/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777/StaticGLEW_autogen/include" -I"/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777/src" -I"/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777/projects_realtime" -I"/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777/PRIVATE" -I"/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777/glew/include"
+  OBJECT_DIR = CMakeFiles/StaticGLEW.dir
+  OBJECT_FILE_DIR = CMakeFiles/StaticGLEW.dir/glew/src
+  TARGET_COMPILE_PDB = CMakeFiles/StaticGLEW.dir/StaticGLEW.pdb
+  TARGET_PDB = libStaticGLEW.pdb
+
+
+# =============================================================================
+# Link build statements for STATIC_LIBRARY target StaticGLEW
+
+
+#############################################
+# Link the static library libStaticGLEW.a
+
+build libStaticGLEW.a: CXX_STATIC_LIBRARY_LINKER__StaticGLEW_Debug CMakeFiles/StaticGLEW.dir/StaticGLEW_autogen/mocs_compilation.cpp.o CMakeFiles/StaticGLEW.dir/glew/src/glew.c.o || StaticGLEW_autogen StaticGLEW_autogen_timestamp_deps
+  ARCH_FLAGS = -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk
+  LANGUAGE_COMPILE_FLAGS = -Wno-deprecated-volatile -g
+  OBJECT_DIR = CMakeFiles/StaticGLEW.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_COMPILE_PDB = CMakeFiles/StaticGLEW.dir/StaticGLEW.pdb
+  TARGET_FILE = libStaticGLEW.a
+  TARGET_PDB = libStaticGLEW.pdb
+
+
+#############################################
+# Utility command for projects_realtime_other_files
+
+build projects_realtime_other_files: phony
+
+
+#############################################
+# Utility command for edit_cache
+
+build CMakeFiles/edit_cache.util: CUSTOM_COMMAND
+  COMMAND = cd "/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777" && /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/bin/ccmake -S"/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777" -B"/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777"
+  DESC = Running CMake cache editor...
+  pool = console
+  restat = 1
+
+build edit_cache: phony CMakeFiles/edit_cache.util
+
+
+#############################################
+# Utility command for rebuild_cache
+
+build CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
+  COMMAND = cd "/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777" && /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/bin/cmake --regenerate-during-build -S"/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777" -B"/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777"
+  DESC = Running CMake to regenerate build system...
+  pool = console
+  restat = 1
+
+build rebuild_cache: phony CMakeFiles/rebuild_cache.util
+
+
+#############################################
+# Utility command for list_install_components
+
+build list_install_components: phony
+
+
+#############################################
+# Utility command for install
+
+build CMakeFiles/install.util: CUSTOM_COMMAND all
+  COMMAND = cd "/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777" && /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/bin/cmake -P cmake_install.cmake
+  DESC = Install the project...
+  pool = console
+  restat = 1
+
+build install: phony CMakeFiles/install.util
+
+
+#############################################
+# Utility command for install/local
+
+build CMakeFiles/install/local.util: CUSTOM_COMMAND all
+  COMMAND = cd "/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777" && /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+  DESC = Installing only the local directory...
+  pool = console
+  restat = 1
+
+build install/local: phony CMakeFiles/install/local.util
+
+
+#############################################
+# Utility command for install/strip
+
+build CMakeFiles/install/strip.util: CUSTOM_COMMAND all
+  COMMAND = cd "/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777" && /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+  DESC = Installing the project stripped...
+  pool = console
+  restat = 1
+
+build install/strip: phony CMakeFiles/install/strip.util
+
+
+#############################################
+# Utility command for projects_realtime_autogen_timestamp_deps
+
+build projects_realtime_autogen_timestamp_deps: phony CMakeFiles/projects_realtime_autogen_timestamp_deps libStaticGLEW.a
+
+
+#############################################
+# Utility command for projects_realtime_autogen
+
+build projects_realtime_autogen: phony CMakeFiles/projects_realtime_autogen projects_realtime_autogen/timestamp projects_realtime_autogen/mocs_compilation.cpp projects_realtime_autogen_timestamp_deps
+
+
+#############################################
+# Utility command for StaticGLEW_autogen_timestamp_deps
+
+build StaticGLEW_autogen_timestamp_deps: phony CMakeFiles/StaticGLEW_autogen_timestamp_deps
+
+
+#############################################
+# Utility command for StaticGLEW_autogen
+
+build StaticGLEW_autogen: phony CMakeFiles/StaticGLEW_autogen StaticGLEW_autogen/timestamp StaticGLEW_autogen/mocs_compilation.cpp StaticGLEW_autogen_timestamp_deps
+
+
+#############################################
+# Custom command for .rcc/qrc_Resources.cpp
+
+build .rcc/qrc_Resources.cpp | ${cmake_ninja_workdir}.rcc/qrc_Resources.cpp: CUSTOM_COMMAND resources/shaders/default.frag resources/shaders/default.vert .rcc/Resources.qrc /Users/wchen/Qt/6.2.4/macos/./libexec/rcc || StaticGLEW_autogen StaticGLEW_autogen_timestamp_deps libStaticGLEW.a projects_realtime_autogen projects_realtime_autogen_timestamp_deps
+  COMMAND = cd "/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777" && /Users/wchen/Qt/6.2.4/macos/./libexec/rcc --output "/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777/.rcc/qrc_Resources.cpp" --name Resources "/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777/.rcc/Resources.qrc" --no-zstd
+  DESC = Running rcc for resource Resources
+  restat = 1
+
+
+#############################################
+# Custom command for projects_realtime_autogen/timestamp
+
+build projects_realtime_autogen/timestamp projects_realtime_autogen/mocs_compilation.cpp | ${cmake_ninja_workdir}projects_realtime_autogen/timestamp ${cmake_ninja_workdir}projects_realtime_autogen/mocs_compilation.cpp: CUSTOM_COMMAND /Users/wchen/Qt/6.2.4/macos/./libexec/moc /Users/wchen/Qt/6.2.4/macos/./libexec/uic || StaticGLEW_autogen StaticGLEW_autogen_timestamp_deps libStaticGLEW.a projects_realtime_autogen_timestamp_deps
+  COMMAND = cd "/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777" && /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/bin/cmake -E cmake_autogen "/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777/CMakeFiles/projects_realtime_autogen.dir/AutogenInfo.json" Debug && /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/bin/cmake -E touch "/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777/projects_realtime_autogen/timestamp" && /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/bin/cmake -E cmake_transform_depfile Ninja gccdepfile "/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777" "/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777" "/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777" "/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777" "/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777/projects_realtime_autogen/deps" "/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777/CMakeFiles/d/0e61bb8f05a103bf17556c1f9c57fa02226ded558b1d14f8496fdaf43fd70ce6.d"
+  DESC = Automatic MOC and UIC for target projects_realtime
+  depfile = /Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777/CMakeFiles/d/0e61bb8f05a103bf17556c1f9c57fa02226ded558b1d14f8496fdaf43fd70ce6.d
+  restat = 1
+
+
+#############################################
+# Custom command for StaticGLEW_autogen/timestamp
+
+build StaticGLEW_autogen/timestamp StaticGLEW_autogen/mocs_compilation.cpp | ${cmake_ninja_workdir}StaticGLEW_autogen/timestamp ${cmake_ninja_workdir}StaticGLEW_autogen/mocs_compilation.cpp: CUSTOM_COMMAND /Users/wchen/Qt/6.2.4/macos/./libexec/moc /Users/wchen/Qt/6.2.4/macos/./libexec/uic || StaticGLEW_autogen_timestamp_deps
+  COMMAND = cd "/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777" && /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/bin/cmake -E cmake_autogen "/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777/CMakeFiles/StaticGLEW_autogen.dir/AutogenInfo.json" Debug && /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/bin/cmake -E touch "/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777/StaticGLEW_autogen/timestamp" && /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/bin/cmake -E cmake_transform_depfile Ninja gccdepfile "/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777" "/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777" "/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777" "/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777" "/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777/StaticGLEW_autogen/deps" "/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777/CMakeFiles/d/436d520fff3041971a14f4119febcd6d9666337c8dac55fff77aad9b96559d34.d"
+  DESC = Automatic MOC and UIC for target StaticGLEW
+  depfile = /Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777/CMakeFiles/d/436d520fff3041971a14f4119febcd6d9666337c8dac55fff77aad9b96559d34.d
+  restat = 1
+
+
+#############################################
+# Phony custom command for CMakeFiles/projects_realtime_autogen_timestamp_deps
+
+build CMakeFiles/projects_realtime_autogen_timestamp_deps | ${cmake_ninja_workdir}CMakeFiles/projects_realtime_autogen_timestamp_deps: phony /Users/wchen/Qt/6.2.4/macos/./libexec/uic /Users/wchen/Qt/6.2.4/macos/./libexec/moc libStaticGLEW.a || StaticGLEW_autogen StaticGLEW_autogen_timestamp_deps libStaticGLEW.a
+
+
+#############################################
+# Phony custom command for CMakeFiles/projects_realtime_autogen
+
+build CMakeFiles/projects_realtime_autogen | ${cmake_ninja_workdir}CMakeFiles/projects_realtime_autogen: phony projects_realtime_autogen/timestamp || StaticGLEW_autogen StaticGLEW_autogen_timestamp_deps libStaticGLEW.a projects_realtime_autogen_timestamp_deps
+
+
+#############################################
+# Phony custom command for CMakeFiles/StaticGLEW_autogen_timestamp_deps
+
+build CMakeFiles/StaticGLEW_autogen_timestamp_deps | ${cmake_ninja_workdir}CMakeFiles/StaticGLEW_autogen_timestamp_deps: phony /Users/wchen/Qt/6.2.4/macos/./libexec/uic /Users/wchen/Qt/6.2.4/macos/./libexec/moc
+
+
+#############################################
+# Phony custom command for CMakeFiles/StaticGLEW_autogen
+
+build CMakeFiles/StaticGLEW_autogen | ${cmake_ninja_workdir}CMakeFiles/StaticGLEW_autogen: phony StaticGLEW_autogen/timestamp || StaticGLEW_autogen_timestamp_deps
+
+# =============================================================================
+# Write statements declared in CMakeLists.txt:
+# /Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777/CMakeLists.txt
+# =============================================================================
+
+
+#############################################
+# Utility command for edit_cache
+
+build glm/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
+  COMMAND = cd "/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777/glm" && /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/bin/ccmake -S"/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777" -B"/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777"
+  DESC = Running CMake cache editor...
+  pool = console
+  restat = 1
+
+build glm/edit_cache: phony glm/CMakeFiles/edit_cache.util
+
+
+#############################################
+# Utility command for rebuild_cache
+
+build glm/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
+  COMMAND = cd "/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777/glm" && /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/bin/cmake --regenerate-during-build -S"/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777" -B"/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777"
+  DESC = Running CMake to regenerate build system...
+  pool = console
+  restat = 1
+
+build glm/rebuild_cache: phony glm/CMakeFiles/rebuild_cache.util
+
+
+#############################################
+# Utility command for list_install_components
+
+build glm/list_install_components: phony
+
+
+#############################################
+# Utility command for install
+
+build glm/CMakeFiles/install.util: CUSTOM_COMMAND glm/all
+  COMMAND = cd "/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777/glm" && /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/bin/cmake -P cmake_install.cmake
+  DESC = Install the project...
+  pool = console
+  restat = 1
+
+build glm/install: phony glm/CMakeFiles/install.util
+
+
+#############################################
+# Utility command for install/local
+
+build glm/CMakeFiles/install/local.util: CUSTOM_COMMAND glm/all
+  COMMAND = cd "/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777/glm" && /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+  DESC = Installing only the local directory...
+  pool = console
+  restat = 1
+
+build glm/install/local: phony glm/CMakeFiles/install/local.util
+
+
+#############################################
+# Utility command for install/strip
+
+build glm/CMakeFiles/install/strip.util: CUSTOM_COMMAND glm/all
+  COMMAND = cd "/Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777/glm" && /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+  DESC = Installing the project stripped...
+  pool = console
+  restat = 1
+
+build glm/install/strip: phony glm/CMakeFiles/install/strip.util
+
+# =============================================================================
+# Target aliases.
+
+build StaticGLEW: phony libStaticGLEW.a
+
+# =============================================================================
+# Folder targets.
+
+# =============================================================================
+
+#############################################
+# Folder: /Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777
+
+build all: phony projects_realtime libStaticGLEW.a glm/all
+
+# =============================================================================
+
+#############################################
+# Folder: /Users/wchen/Documents/07 Sem/graphics/projects-realtime-wchen777/glm
+
+build glm/all: phony
+
+# =============================================================================
+# Built-in targets
+
+
+#############################################
+# Re-run CMake if any of its inputs changed.
+
+build build.ninja: RERUN_CMAKE | /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6/FindWrapAtomic.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6/FindWrapOpenGL.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6/Qt6Config.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6/Qt6ConfigExtras.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6/Qt6ConfigVersion.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6/Qt6ConfigVersionImpl.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6/Qt6Dependencies.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6/Qt6Targets.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6/Qt6VersionlessTargets.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6/QtFeature.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6/QtFeatureCommon.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6/QtPublicCMakeHelpers.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6/QtPublicCMakeVersionHelpers.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6/QtPublicDependencyHelpers.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6/QtPublicFinalizerHelpers.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6/QtPublicFindPackageHelpers.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6/QtPublicPluginHelpers.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6/QtPublicTargetHelpers.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6/QtPublicWalkLibsHelpers.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6Core/Qt6CoreAdditionalTargetInfo.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6Core/Qt6CoreConfig.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6Core/Qt6CoreConfigExtras.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6Core/Qt6CoreConfigVersion.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6Core/Qt6CoreConfigVersionImpl.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6Core/Qt6CoreConfigureFileTemplate.in /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6Core/Qt6CoreDependencies.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6Core/Qt6CoreMacros.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6Core/Qt6CoreTargets-relwithdebinfo.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6Core/Qt6CoreTargets.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6Core/Qt6CoreVersionlessTargets.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6CoreTools/Qt6CoreToolsAdditionalTargetInfo.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6CoreTools/Qt6CoreToolsConfig.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6CoreTools/Qt6CoreToolsConfigVersion.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6CoreTools/Qt6CoreToolsConfigVersionImpl.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6CoreTools/Qt6CoreToolsDependencies.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6CoreTools/Qt6CoreToolsTargets-relwithdebinfo.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6CoreTools/Qt6CoreToolsTargets.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6CoreTools/Qt6CoreToolsVersionlessTargets.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6DBus/Qt6DBusAdditionalTargetInfo.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6DBus/Qt6DBusConfig.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6DBus/Qt6DBusConfigVersion.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6DBus/Qt6DBusConfigVersionImpl.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6DBus/Qt6DBusDependencies.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6DBus/Qt6DBusMacros.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6DBus/Qt6DBusTargets-relwithdebinfo.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6DBus/Qt6DBusTargets.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6DBus/Qt6DBusVersionlessTargets.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6DBusTools/Qt6DBusToolsAdditionalTargetInfo.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6DBusTools/Qt6DBusToolsConfig.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6DBusTools/Qt6DBusToolsConfigVersion.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6DBusTools/Qt6DBusToolsConfigVersionImpl.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6DBusTools/Qt6DBusToolsDependencies.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6DBusTools/Qt6DBusToolsTargets-relwithdebinfo.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6DBusTools/Qt6DBusToolsTargets.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6DBusTools/Qt6DBusToolsVersionlessTargets.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6Gui/Qt6GuiAdditionalTargetInfo.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6Gui/Qt6GuiConfig.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6Gui/Qt6GuiConfigVersion.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6Gui/Qt6GuiConfigVersionImpl.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6Gui/Qt6GuiDependencies.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6Gui/Qt6GuiTargets-relwithdebinfo.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6Gui/Qt6GuiTargets.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6Gui/Qt6GuiVersionlessTargets.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6GuiTools/Qt6GuiToolsAdditionalTargetInfo.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6GuiTools/Qt6GuiToolsConfig.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6GuiTools/Qt6GuiToolsConfigVersion.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6GuiTools/Qt6GuiToolsConfigVersionImpl.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6GuiTools/Qt6GuiToolsDependencies.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6GuiTools/Qt6GuiToolsTargets-relwithdebinfo.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6GuiTools/Qt6GuiToolsTargets.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6GuiTools/Qt6GuiToolsVersionlessTargets.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6OpenGL/Qt6OpenGLAdditionalTargetInfo.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6OpenGL/Qt6OpenGLConfig.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6OpenGL/Qt6OpenGLConfigVersion.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6OpenGL/Qt6OpenGLConfigVersionImpl.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6OpenGL/Qt6OpenGLDependencies.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6OpenGL/Qt6OpenGLTargets-relwithdebinfo.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6OpenGL/Qt6OpenGLTargets.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6OpenGL/Qt6OpenGLVersionlessTargets.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6OpenGLWidgets/Qt6OpenGLWidgetsAdditionalTargetInfo.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6OpenGLWidgets/Qt6OpenGLWidgetsConfig.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6OpenGLWidgets/Qt6OpenGLWidgetsConfigVersion.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6OpenGLWidgets/Qt6OpenGLWidgetsConfigVersionImpl.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6OpenGLWidgets/Qt6OpenGLWidgetsDependencies.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6OpenGLWidgets/Qt6OpenGLWidgetsTargets-relwithdebinfo.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6OpenGLWidgets/Qt6OpenGLWidgetsTargets.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6OpenGLWidgets/Qt6OpenGLWidgetsVersionlessTargets.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6Widgets/Qt6WidgetsAdditionalTargetInfo.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6Widgets/Qt6WidgetsConfig.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6Widgets/Qt6WidgetsConfigVersion.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6Widgets/Qt6WidgetsConfigVersionImpl.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6Widgets/Qt6WidgetsDependencies.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6Widgets/Qt6WidgetsMacros.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6Widgets/Qt6WidgetsTargets-relwithdebinfo.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6Widgets/Qt6WidgetsTargets.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6Widgets/Qt6WidgetsVersionlessTargets.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6WidgetsTools/Qt6WidgetsToolsAdditionalTargetInfo.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6WidgetsTools/Qt6WidgetsToolsConfig.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6WidgetsTools/Qt6WidgetsToolsConfigVersion.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6WidgetsTools/Qt6WidgetsToolsConfigVersionImpl.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6WidgetsTools/Qt6WidgetsToolsDependencies.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6WidgetsTools/Qt6WidgetsToolsTargets-relwithdebinfo.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6WidgetsTools/Qt6WidgetsToolsTargets.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6WidgetsTools/Qt6WidgetsToolsVersionlessTargets.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6Xml/Qt6XmlAdditionalTargetInfo.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6Xml/Qt6XmlConfig.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6Xml/Qt6XmlConfigVersion.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6Xml/Qt6XmlConfigVersionImpl.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6Xml/Qt6XmlDependencies.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6Xml/Qt6XmlTargets-relwithdebinfo.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6Xml/Qt6XmlTargets.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6Xml/Qt6XmlVersionlessTargets.cmake /Users/wchen/Qt/Qt$ Creator.app/Contents/Resources/package-manager/auto-setup.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/CMakeCCompiler.cmake.in /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/CMakeCCompilerABI.c /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/CMakeCInformation.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/CMakeCXXCompiler.cmake.in /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/CMakeCXXCompilerABI.cpp /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/CMakeCXXInformation.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/CMakeCheckCompilerFlagCommonPatterns.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/CMakeCommonLanguageInclude.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/CMakeCompilerIdDetection.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/CMakeDetermineCCompiler.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/CMakeDetermineCXXCompiler.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/CMakeDetermineCompileFeatures.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/CMakeDetermineCompiler.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/CMakeDetermineCompilerABI.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/CMakeDetermineCompilerId.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/CMakeDetermineSystem.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/CMakeFindBinUtils.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/CMakeFindDependencyMacro.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/CMakeGenericSystem.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/CMakeInitializeConfigs.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/CMakeLanguageInformation.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/CMakeNinjaFindMake.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/CMakeParseArguments.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/CMakeParseImplicitIncludeInfo.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/CMakeParseImplicitLinkInfo.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/CMakeParseLibraryArchitecture.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/CMakeSystem.cmake.in /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/CMakeSystemSpecificInformation.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/CMakeSystemSpecificInitialize.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/CMakeTestCCompiler.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/CMakeTestCXXCompiler.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/CMakeTestCompilerCommon.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/CheckCSourceCompiles.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/CheckCXXCompilerFlag.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/CheckCXXSourceCompiles.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/CheckIncludeFile.c.in /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/CheckIncludeFile.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/CheckLibraryExists.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Compiler/ADSP-DetermineCompiler.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Compiler/ARMCC-DetermineCompiler.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Compiler/ARMClang-DetermineCompiler.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Compiler/AppleClang-C.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Compiler/AppleClang-CXX.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Compiler/AppleClang-DetermineCompiler.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Compiler/Borland-DetermineCompiler.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Compiler/Bruce-C-DetermineCompiler.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Compiler/CMakeCommonCompilerMacros.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Compiler/Clang-DetermineCompiler.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Compiler/Clang-DetermineCompilerInternal.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Compiler/Clang.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Compiler/Comeau-CXX-DetermineCompiler.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Compiler/Compaq-C-DetermineCompiler.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Compiler/Compaq-CXX-DetermineCompiler.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Compiler/Cray-DetermineCompiler.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Compiler/Embarcadero-DetermineCompiler.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Compiler/Fujitsu-DetermineCompiler.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Compiler/FujitsuClang-DetermineCompiler.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Compiler/GHS-DetermineCompiler.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Compiler/GNU-C-DetermineCompiler.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Compiler/GNU-CXX-DetermineCompiler.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Compiler/GNU.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Compiler/HP-C-DetermineCompiler.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Compiler/HP-CXX-DetermineCompiler.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Compiler/IAR-DetermineCompiler.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Compiler/IBMCPP-C-DetermineVersionInternal.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Compiler/IBMCPP-CXX-DetermineVersionInternal.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Compiler/IBMClang-C-DetermineCompiler.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Compiler/IBMClang-CXX-DetermineCompiler.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Compiler/Intel-DetermineCompiler.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Compiler/IntelLLVM-DetermineCompiler.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Compiler/LCC-C-DetermineCompiler.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Compiler/LCC-CXX-DetermineCompiler.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Compiler/MSVC-DetermineCompiler.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Compiler/NVHPC-DetermineCompiler.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Compiler/NVIDIA-DetermineCompiler.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Compiler/OpenWatcom-DetermineCompiler.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Compiler/PGI-DetermineCompiler.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Compiler/PathScale-DetermineCompiler.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Compiler/SCO-DetermineCompiler.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Compiler/SDCC-C-DetermineCompiler.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Compiler/SunPro-C-DetermineCompiler.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Compiler/SunPro-CXX-DetermineCompiler.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Compiler/TI-DetermineCompiler.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Compiler/TinyCC-C-DetermineCompiler.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Compiler/VisualAge-C-DetermineCompiler.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Compiler/VisualAge-CXX-DetermineCompiler.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Compiler/Watcom-DetermineCompiler.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Compiler/XL-C-DetermineCompiler.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Compiler/XL-CXX-DetermineCompiler.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Compiler/XLClang-C-DetermineCompiler.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Compiler/XLClang-CXX-DetermineCompiler.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Compiler/zOS-C-DetermineCompiler.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Compiler/zOS-CXX-DetermineCompiler.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/FindOpenGL.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/FindPackageHandleStandardArgs.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/FindPackageMessage.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/FindThreads.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/GNUInstallDirs.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Internal/CheckCompilerFlag.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Internal/CheckFlagCommonConfig.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Internal/CheckSourceCompiles.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Internal/FeatureTesting.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/MacroAddFileDependencies.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Platform/Apple-AppleClang-C.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Platform/Apple-AppleClang-CXX.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Platform/Apple-Clang-C.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Platform/Apple-Clang-CXX.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Platform/Apple-Clang.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Platform/Darwin-Determine-CXX.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Platform/Darwin-Initialize.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Platform/Darwin.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Platform/UnixPaths.cmake CMakeCache.txt CMakeFiles/3.23.2/CMakeCCompiler.cmake CMakeFiles/3.23.2/CMakeCXXCompiler.cmake CMakeFiles/3.23.2/CMakeSystem.cmake CMakeLists.txt glm/CMakeLists.txt
+  pool = console
+
+
+#############################################
+# A missing CMake input file is not an error.
+
+build /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6/FindWrapAtomic.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6/FindWrapOpenGL.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6/Qt6Config.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6/Qt6ConfigExtras.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6/Qt6ConfigVersion.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6/Qt6ConfigVersionImpl.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6/Qt6Dependencies.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6/Qt6Targets.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6/Qt6VersionlessTargets.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6/QtFeature.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6/QtFeatureCommon.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6/QtPublicCMakeHelpers.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6/QtPublicCMakeVersionHelpers.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6/QtPublicDependencyHelpers.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6/QtPublicFinalizerHelpers.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6/QtPublicFindPackageHelpers.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6/QtPublicPluginHelpers.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6/QtPublicTargetHelpers.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6/QtPublicWalkLibsHelpers.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6Core/Qt6CoreAdditionalTargetInfo.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6Core/Qt6CoreConfig.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6Core/Qt6CoreConfigExtras.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6Core/Qt6CoreConfigVersion.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6Core/Qt6CoreConfigVersionImpl.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6Core/Qt6CoreConfigureFileTemplate.in /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6Core/Qt6CoreDependencies.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6Core/Qt6CoreMacros.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6Core/Qt6CoreTargets-relwithdebinfo.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6Core/Qt6CoreTargets.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6Core/Qt6CoreVersionlessTargets.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6CoreTools/Qt6CoreToolsAdditionalTargetInfo.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6CoreTools/Qt6CoreToolsConfig.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6CoreTools/Qt6CoreToolsConfigVersion.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6CoreTools/Qt6CoreToolsConfigVersionImpl.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6CoreTools/Qt6CoreToolsDependencies.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6CoreTools/Qt6CoreToolsTargets-relwithdebinfo.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6CoreTools/Qt6CoreToolsTargets.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6CoreTools/Qt6CoreToolsVersionlessTargets.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6DBus/Qt6DBusAdditionalTargetInfo.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6DBus/Qt6DBusConfig.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6DBus/Qt6DBusConfigVersion.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6DBus/Qt6DBusConfigVersionImpl.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6DBus/Qt6DBusDependencies.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6DBus/Qt6DBusMacros.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6DBus/Qt6DBusTargets-relwithdebinfo.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6DBus/Qt6DBusTargets.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6DBus/Qt6DBusVersionlessTargets.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6DBusTools/Qt6DBusToolsAdditionalTargetInfo.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6DBusTools/Qt6DBusToolsConfig.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6DBusTools/Qt6DBusToolsConfigVersion.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6DBusTools/Qt6DBusToolsConfigVersionImpl.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6DBusTools/Qt6DBusToolsDependencies.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6DBusTools/Qt6DBusToolsTargets-relwithdebinfo.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6DBusTools/Qt6DBusToolsTargets.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6DBusTools/Qt6DBusToolsVersionlessTargets.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6Gui/Qt6GuiAdditionalTargetInfo.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6Gui/Qt6GuiConfig.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6Gui/Qt6GuiConfigVersion.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6Gui/Qt6GuiConfigVersionImpl.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6Gui/Qt6GuiDependencies.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6Gui/Qt6GuiTargets-relwithdebinfo.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6Gui/Qt6GuiTargets.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6Gui/Qt6GuiVersionlessTargets.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6GuiTools/Qt6GuiToolsAdditionalTargetInfo.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6GuiTools/Qt6GuiToolsConfig.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6GuiTools/Qt6GuiToolsConfigVersion.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6GuiTools/Qt6GuiToolsConfigVersionImpl.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6GuiTools/Qt6GuiToolsDependencies.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6GuiTools/Qt6GuiToolsTargets-relwithdebinfo.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6GuiTools/Qt6GuiToolsTargets.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6GuiTools/Qt6GuiToolsVersionlessTargets.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6OpenGL/Qt6OpenGLAdditionalTargetInfo.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6OpenGL/Qt6OpenGLConfig.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6OpenGL/Qt6OpenGLConfigVersion.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6OpenGL/Qt6OpenGLConfigVersionImpl.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6OpenGL/Qt6OpenGLDependencies.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6OpenGL/Qt6OpenGLTargets-relwithdebinfo.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6OpenGL/Qt6OpenGLTargets.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6OpenGL/Qt6OpenGLVersionlessTargets.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6OpenGLWidgets/Qt6OpenGLWidgetsAdditionalTargetInfo.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6OpenGLWidgets/Qt6OpenGLWidgetsConfig.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6OpenGLWidgets/Qt6OpenGLWidgetsConfigVersion.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6OpenGLWidgets/Qt6OpenGLWidgetsConfigVersionImpl.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6OpenGLWidgets/Qt6OpenGLWidgetsDependencies.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6OpenGLWidgets/Qt6OpenGLWidgetsTargets-relwithdebinfo.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6OpenGLWidgets/Qt6OpenGLWidgetsTargets.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6OpenGLWidgets/Qt6OpenGLWidgetsVersionlessTargets.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6Widgets/Qt6WidgetsAdditionalTargetInfo.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6Widgets/Qt6WidgetsConfig.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6Widgets/Qt6WidgetsConfigVersion.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6Widgets/Qt6WidgetsConfigVersionImpl.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6Widgets/Qt6WidgetsDependencies.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6Widgets/Qt6WidgetsMacros.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6Widgets/Qt6WidgetsTargets-relwithdebinfo.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6Widgets/Qt6WidgetsTargets.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6Widgets/Qt6WidgetsVersionlessTargets.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6WidgetsTools/Qt6WidgetsToolsAdditionalTargetInfo.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6WidgetsTools/Qt6WidgetsToolsConfig.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6WidgetsTools/Qt6WidgetsToolsConfigVersion.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6WidgetsTools/Qt6WidgetsToolsConfigVersionImpl.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6WidgetsTools/Qt6WidgetsToolsDependencies.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6WidgetsTools/Qt6WidgetsToolsTargets-relwithdebinfo.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6WidgetsTools/Qt6WidgetsToolsTargets.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6WidgetsTools/Qt6WidgetsToolsVersionlessTargets.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6Xml/Qt6XmlAdditionalTargetInfo.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6Xml/Qt6XmlConfig.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6Xml/Qt6XmlConfigVersion.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6Xml/Qt6XmlConfigVersionImpl.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6Xml/Qt6XmlDependencies.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6Xml/Qt6XmlTargets-relwithdebinfo.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6Xml/Qt6XmlTargets.cmake /Users/wchen/Qt/6.2.4/macos/lib/cmake/Qt6Xml/Qt6XmlVersionlessTargets.cmake /Users/wchen/Qt/Qt$ Creator.app/Contents/Resources/package-manager/auto-setup.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/CMakeCCompiler.cmake.in /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/CMakeCCompilerABI.c /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/CMakeCInformation.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/CMakeCXXCompiler.cmake.in /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/CMakeCXXCompilerABI.cpp /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/CMakeCXXInformation.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/CMakeCheckCompilerFlagCommonPatterns.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/CMakeCommonLanguageInclude.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/CMakeCompilerIdDetection.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/CMakeDetermineCCompiler.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/CMakeDetermineCXXCompiler.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/CMakeDetermineCompileFeatures.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/CMakeDetermineCompiler.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/CMakeDetermineCompilerABI.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/CMakeDetermineCompilerId.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/CMakeDetermineSystem.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/CMakeFindBinUtils.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/CMakeFindDependencyMacro.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/CMakeGenericSystem.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/CMakeInitializeConfigs.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/CMakeLanguageInformation.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/CMakeNinjaFindMake.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/CMakeParseArguments.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/CMakeParseImplicitIncludeInfo.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/CMakeParseImplicitLinkInfo.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/CMakeParseLibraryArchitecture.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/CMakeSystem.cmake.in /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/CMakeSystemSpecificInformation.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/CMakeSystemSpecificInitialize.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/CMakeTestCCompiler.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/CMakeTestCXXCompiler.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/CMakeTestCompilerCommon.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/CheckCSourceCompiles.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/CheckCXXCompilerFlag.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/CheckCXXSourceCompiles.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/CheckIncludeFile.c.in /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/CheckIncludeFile.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/CheckLibraryExists.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Compiler/ADSP-DetermineCompiler.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Compiler/ARMCC-DetermineCompiler.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Compiler/ARMClang-DetermineCompiler.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Compiler/AppleClang-C.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Compiler/AppleClang-CXX.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Compiler/AppleClang-DetermineCompiler.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Compiler/Borland-DetermineCompiler.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Compiler/Bruce-C-DetermineCompiler.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Compiler/CMakeCommonCompilerMacros.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Compiler/Clang-DetermineCompiler.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Compiler/Clang-DetermineCompilerInternal.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Compiler/Clang.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Compiler/Comeau-CXX-DetermineCompiler.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Compiler/Compaq-C-DetermineCompiler.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Compiler/Compaq-CXX-DetermineCompiler.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Compiler/Cray-DetermineCompiler.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Compiler/Embarcadero-DetermineCompiler.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Compiler/Fujitsu-DetermineCompiler.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Compiler/FujitsuClang-DetermineCompiler.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Compiler/GHS-DetermineCompiler.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Compiler/GNU-C-DetermineCompiler.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Compiler/GNU-CXX-DetermineCompiler.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Compiler/GNU.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Compiler/HP-C-DetermineCompiler.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Compiler/HP-CXX-DetermineCompiler.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Compiler/IAR-DetermineCompiler.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Compiler/IBMCPP-C-DetermineVersionInternal.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Compiler/IBMCPP-CXX-DetermineVersionInternal.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Compiler/IBMClang-C-DetermineCompiler.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Compiler/IBMClang-CXX-DetermineCompiler.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Compiler/Intel-DetermineCompiler.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Compiler/IntelLLVM-DetermineCompiler.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Compiler/LCC-C-DetermineCompiler.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Compiler/LCC-CXX-DetermineCompiler.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Compiler/MSVC-DetermineCompiler.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Compiler/NVHPC-DetermineCompiler.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Compiler/NVIDIA-DetermineCompiler.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Compiler/OpenWatcom-DetermineCompiler.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Compiler/PGI-DetermineCompiler.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Compiler/PathScale-DetermineCompiler.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Compiler/SCO-DetermineCompiler.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Compiler/SDCC-C-DetermineCompiler.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Compiler/SunPro-C-DetermineCompiler.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Compiler/SunPro-CXX-DetermineCompiler.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Compiler/TI-DetermineCompiler.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Compiler/TinyCC-C-DetermineCompiler.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Compiler/VisualAge-C-DetermineCompiler.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Compiler/VisualAge-CXX-DetermineCompiler.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Compiler/Watcom-DetermineCompiler.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Compiler/XL-C-DetermineCompiler.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Compiler/XL-CXX-DetermineCompiler.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Compiler/XLClang-C-DetermineCompiler.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Compiler/XLClang-CXX-DetermineCompiler.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Compiler/zOS-C-DetermineCompiler.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Compiler/zOS-CXX-DetermineCompiler.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/FindOpenGL.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/FindPackageHandleStandardArgs.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/FindPackageMessage.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/FindThreads.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/GNUInstallDirs.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Internal/CheckCompilerFlag.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Internal/CheckFlagCommonConfig.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Internal/CheckSourceCompiles.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Internal/FeatureTesting.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/MacroAddFileDependencies.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Platform/Apple-AppleClang-C.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Platform/Apple-AppleClang-CXX.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Platform/Apple-Clang-C.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Platform/Apple-Clang-CXX.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Platform/Apple-Clang.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Platform/Darwin-Determine-CXX.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Platform/Darwin-Initialize.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Platform/Darwin.cmake /Users/wchen/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.23/Modules/Platform/UnixPaths.cmake CMakeCache.txt CMakeFiles/3.23.2/CMakeCCompiler.cmake CMakeFiles/3.23.2/CMakeCXXCompiler.cmake CMakeFiles/3.23.2/CMakeSystem.cmake CMakeLists.txt glm/CMakeLists.txt: phony
+
+
+#############################################
+# Clean additional files.
+
+build CMakeFiles/clean.additional: CLEAN_ADDITIONAL
+  CONFIG = Debug
+
+
+#############################################
+# Clean all the built files.
+
+build clean: CLEAN CMakeFiles/clean.additional
+
+
+#############################################
+# Print all primary targets available.
+
+build help: HELP
+
+
+#############################################
+# Make the all target the default.
+
+default all
