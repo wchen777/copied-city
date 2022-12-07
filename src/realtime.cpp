@@ -66,7 +66,6 @@ void Realtime::initializeGL() {
     std::cout << "initialize" << std::endl;
 
     m_devicePixelRatio = this->devicePixelRatio();
-
     m_timer = startTimer(1000/60);
     m_elapsedTimer.start();
 
@@ -98,7 +97,7 @@ void Realtime::initializeGL() {
     Realtime::shaderTexture = ShaderLoader::createShaderProgram(":/resources/shaders/texture.vert", ":/resources/shaders/texture.frag");
     // initialize the default FBO
 
-//    Realtime::defaultFBO = 0;
+    // Realtime::defaultFBO = 0;
     Realtime::defaultFBO = 2; // UNCOMMENT TO CHANGE DEFAULT FBO VALUE
 
     // setup the texture shader for post-processing effects
@@ -106,29 +105,27 @@ void Realtime::initializeGL() {
 
     // create FBO
     Realtime::MakeFBO();
-
-//    Realtime::InitializeBuffers();
 }
 
 void Realtime::paintGL() {
-//    std::cout << "paintgl top" << std::endl;
+
     // Students: anything requiring OpenGL calls every frame should be done here
 
-    if (!Realtime::isInitialized && !Realtime::isRayTraceOutput) {
+    if (!Realtime::isInitialized) {
         return;
     }
 
     // if we have freshly loaded in a scene, initailize the buffers only once
     if (Realtime::changedScene) {
+
         // initilize all VBO and VAO data into the mesh objects
         Realtime::InitializeBuffers();
         Realtime::changedScene = false;
     }
 
-//    std::cout << "paint gl loop" << std::endl;
 
     // if we have ran the ray tracer
-    if (!Realtime::isRayTraceOutput) {
+
         // otherwise, draw the realtime objects into the render buffer
 
         // set the current draw buffer to be render buffer
@@ -146,7 +143,7 @@ void Realtime::paintGL() {
 
         // unbind render shader
         glUseProgram(0);
-    }
+
 
     // draw the texture buffer (objects or ray tracer image) with post-processing effects, set uniforms as necessary
     Realtime::DrawTextureFBO();
@@ -157,8 +154,6 @@ void Realtime::paintGL() {
 }
 
 void Realtime::resizeGL(int w, int h) {
-
-//    std::cout << "resize" << std::endl;
 
     Realtime::screenHeight = size().height() * m_devicePixelRatio;
     Realtime::screenWidth = size().width() * m_devicePixelRatio;
@@ -172,7 +167,6 @@ void Realtime::resizeGL(int w, int h) {
     }
 
     // Students: anything requiring OpenGL calls when the program starts should be done here
-    // what does this mean?
 
     float aspectRatio = static_cast<float>(w) / static_cast<float>(h);
 
@@ -186,7 +180,6 @@ void Realtime::resizeGL(int w, int h) {
     // destroy old FBO
     Realtime::MakeFBO();
 
-
 //    // destroy old buffers
 //    Realtime::DestroyBuffers();
 //    // reinitialize them
@@ -195,8 +188,6 @@ void Realtime::resizeGL(int w, int h) {
 }
 
 void Realtime::sceneChanged() {
-    // TODOs:
-//    std::cout << "scene changed" << std::endl;
 
     // destroy old meshes
     Realtime::DestroyMeshes();
@@ -213,18 +204,13 @@ void Realtime::sceneChanged() {
     Realtime::currentParam1 = settings.shapeParameter1;
     Realtime::currentParam2 = settings.shapeParameter2;
 
-
-    // parse the scene that was stored in settings from the call to upload scenefile
-    Realtime::sceneParser.parse(settings.sceneFilePath, Realtime::sceneRenderData);
-    Camera* cam = new Camera(Realtime::sceneRenderData.cameraData, size().height(), size().width(), settings.farPlane, settings.nearPlane);
+    SceneCameraData camData = {.pos=glm::vec4(0,0,16,1), .look=glm::vec4(0,0,-1,0), .up=glm::vec4(0,1,0,0), .heightAngle=0.863938, .aperture=0.008, .focalLength=3};
+    Camera* cam = new Camera(camData, size().height(), size().width(), 100.0, 0.01);
     Realtime::sceneCamera = cam;
 
     // build each primitive into a composite struct that contains the class for the trimesh, etc.
     // apply it to the realtime class
     Realtime::CompilePrimitiveMeshes();
-
-//    // create new FBOs
-//    Realtime::MakeFBO();
 
     Realtime::isInitialized = true;
     Realtime::changedScene = true;
@@ -233,7 +219,6 @@ void Realtime::sceneChanged() {
 }
 
 void Realtime::settingsChanged() {
-//    std::cout << "sttings changed" << std::endl;
 
     // if the scene isn't initialized yet
     if (!Realtime::isInitialized) {
@@ -243,31 +228,24 @@ void Realtime::settingsChanged() {
     // near plane and far plane updates
     if (Realtime::sceneCamera->nearPlane != settings.nearPlane || Realtime::sceneCamera->farPlane != settings.farPlane) {
 
-//        std::cout << "camera udpate" << std::endl;
         Realtime::sceneCamera->updateViewPlanes(settings.farPlane, settings.nearPlane);
     }
 
     // updates for tesselation params
     if (settings.shapeParameter1 != Realtime::currentParam1 || settings.shapeParameter2 != Realtime::currentParam2) {
+
         // set current params (for on startup)
         Realtime::currentParam1 = settings.shapeParameter1;
         Realtime::currentParam2 = settings.shapeParameter2;
-
-//        std::cout << " tesselstaion udpate" << std::endl;
 
         // update tesselation parameters
         Realtime::UpdateTesselations();
         // destroy old buffers
         Realtime::DestroyBuffers(false);
 
-//        // destroy old FBO
-//        Realtime::DestroyFBO();
-
         // create new buffers
         Realtime::InitializeBuffers();
 
-//        // create new FBO
-//        Realtime::MakeFBO();
     }
 
     // set the current filters
@@ -276,16 +254,8 @@ void Realtime::settingsChanged() {
     Realtime::perPixelFilterExtra = settings.perPixelFilterExtra;
     Realtime::kernelBasedFilterExtra = settings.kernelBasedFilterExtra;
 
-
-//    std::cout << "exit" << std::endl;
-
-    // TODO: updates for extra credit features
-
-//    Debug::glErrorCheck();
     update(); // asks for a PaintGL() call to occur
 }
-
-// ================== Project 6: Action!
 
 void Realtime::keyPressEvent(QKeyEvent *event) {
     m_keyMap[Qt::Key(event->key())] = true;
@@ -382,7 +352,6 @@ void Realtime::timerEvent(QTimerEvent *event) {
         movement *= speed;
         Realtime::sceneCamera->ApplyTranslation(movement);
     }
-
 
     update(); // asks for a PaintGL() call to occur
 }

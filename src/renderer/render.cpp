@@ -345,11 +345,8 @@ void Realtime::DrawTextureFBO() {
 
     // bind active texture
 
-    if (Realtime::isRayTraceOutput) {
-      glBindTexture(GL_TEXTURE_2D, Realtime::m_ray_texture);
-    } else {
       glBindTexture(GL_TEXTURE_2D, Realtime::fbo_texturebuffer);
-    }
+
 
 //    std::cout << fbo_texturebuffer << std::endl;
 
@@ -364,41 +361,41 @@ void Realtime::DrawTextureFBO() {
 //    this->doneCurrent();
 }
 
-void Realtime::SetupRayTracerTexture(QImage& texture) {
+//void Realtime::SetupRayTracerTexture(QImage& texture) {
 
-    // if no ray trace output is specified, return
-    if (!Realtime::isRayTraceOutput) {
-        return;
-    }
+//    // if no ray trace output is specified, return
+//    if (!Realtime::isRayTraceOutput) {
+//        return;
+//    }
 
-//    // Prepare filepath for ray tracer output
-//    QString kitten_filepath = QString(":/resources/output.png");
+////    // Prepare filepath for ray tracer output
+////    QString kitten_filepath = QString(":/resources/output.png");
 
-    // Obtain image from filepath
-    auto m_image = QImage(texture);
+//    // Obtain image from filepath
+//    auto m_image = QImage(texture);
 
-    // Format image to fit OpenGL
-    m_image = m_image.convertToFormat(QImage::Format_RGBA8888).mirrored();
+//    // Format image to fit OpenGL
+//    m_image = m_image.convertToFormat(QImage::Format_RGBA8888).mirrored();
 
-    // Generate kitten texture
-    glGenTextures(1, &m_ray_texture);
+//    // Generate kitten texture
+//    glGenTextures(1, &m_ray_texture);
 
-    // Set the active texture slot to texture slot 0
-    glActiveTexture(GL_TEXTURE0);
+//    // Set the active texture slot to texture slot 0
+//    glActiveTexture(GL_TEXTURE0);
 
-    // Bind kitten texture
-    glBindTexture(GL_TEXTURE_2D, m_ray_texture);
+//    // Bind kitten texture
+//    glBindTexture(GL_TEXTURE_2D, m_ray_texture);
 
-    // Load image into kitten texture
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, m_image.width(), m_image.height(), 0, GL_RGBA, GL_UNSIGNED_BYTE, m_image.bits());
+//    // Load image into kitten texture
+//    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, m_image.width(), m_image.height(), 0, GL_RGBA, GL_UNSIGNED_BYTE, m_image.bits());
 
-    // Set min and mag filters' interpolation mode to linear
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+//    // Set min and mag filters' interpolation mode to linear
+//    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+//    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
-    // Unbind ray tracer output texture
-    glBindTexture(GL_TEXTURE_2D, 0);
-}
+//    // Unbind ray tracer output texture
+//    glBindTexture(GL_TEXTURE_2D, 0);
+//}
 
 
 /*

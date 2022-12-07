@@ -5,7 +5,6 @@
 #include <algorithm>
 #include "utils/scenedata.h"
 #include "shadow.h"
-#include "../raytracer/raytracer.h"
 
 
 inline RGBA toRGBA(const glm::vec3 &illumination) {
@@ -23,7 +22,7 @@ namespace BRDFs {
 
     inline constexpr float Lambertian(float k_d, float Odiffuse, float NdotL);
 
-    inline constexpr float Specular(float k_s, float Ospecular, float RdotV, float shininess);
+    inline float Specular(float k_s, float Ospecular, float RdotV, float shininess);
 
 }
 

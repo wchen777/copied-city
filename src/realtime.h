@@ -3,6 +3,7 @@
 // Defined before including GLEW to suppress deprecation messages on macOS
 #include "camera/camera.h"
 #include "renderer/primitive.h"
+#include "utils/scenedata.h"
 #ifdef __APPLE__
 #define GL_SILENCE_DEPRECATION
 #endif
@@ -15,9 +16,6 @@
 #include <QTime>
 #include <QTimer>
 
-#include "utils/sceneparser.h"
-
-
 class Realtime : public QOpenGLWidget
 {
 public:
@@ -29,8 +27,7 @@ public:
     int screenWidth;
     int screenHeight;
 
-    // necessary for scene and views
-    SceneParser sceneParser = SceneParser{};                          // initialize the scene parser
+    // necessary for scene and views                       // initialize the scene parser
     RenderData sceneRenderData;
     Camera* sceneCamera = NULL;
     GLuint shaderRender;
@@ -64,7 +61,6 @@ public:
     GLuint fbo;
     GLuint fbo_renderbuffer;
     GLuint fbo_texturebuffer;
-
     GLuint m_ray_texture;
 
     // texture shader stuff
@@ -82,8 +78,8 @@ public:
     void DrawTextureFBO();
 
     // ray tracer output
-    bool isRayTraceOutput = false; // ensures when ray tracer output is rendered
-    void SetupRayTracerTexture(QImage& texture);
+//    bool isRayTraceOutput = false; // ensures when ray tracer output is rendered
+//    void SetupRayTracerTexture(QImage& texture);
 
 public slots:
     void tick(QTimerEvent* event);                      // Called once per tick of m_timer

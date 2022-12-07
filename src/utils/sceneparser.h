@@ -5,19 +5,8 @@
 #include <string>
 
 // Struct which contains data for a single primitive, to be used for rendering
-struct RenderShapeData {
-    ScenePrimitive primitive;
-    glm::mat4 ctm; // the cumulative transformation matrix
-};
 
 // Struct which contains all the data needed to render a scene
-struct RenderData {
-    SceneGlobalData globalData;
-    SceneCameraData cameraData;
-
-    std::vector<SceneLightData> lights;
-    std::vector<RenderShapeData> shapes;
-};
 
 class SceneParser {
 public:

@@ -14,14 +14,14 @@ namespace BRDFs {
         return k_d * Odiffuse * NdotL;
     }
 
-    inline constexpr float Specular(float k_s, float Ospecular, float RdotV, float shininess) {
+    inline float Specular(float k_s, float Ospecular, float RdotV, float shininess) {
         return k_s * Ospecular * std::pow(RdotV, shininess);
     }
 
 }
 
 // falloff factor for spot lights
-inline constexpr float falloff(float angle, float innerA, float outerA) {
+inline float falloff(float angle, float innerA, float outerA) {
     auto t = (angle - innerA)/(outerA - innerA);
     return -2 * std::pow(t, 3) + 3 * std::pow(t, 2);
 }

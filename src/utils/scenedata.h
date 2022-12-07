@@ -152,3 +152,17 @@ struct SceneNode {
    std::vector<SceneNode*>           children;
 };
 
+struct RenderShapeData {
+    ScenePrimitive primitive;
+    glm::mat4 ctm; // the cumulative transformation matrix
+};
+
+struct RenderData {
+    SceneGlobalData globalData;
+    SceneCameraData cameraData;
+
+    std::vector<SceneLightData> lights;
+    std::vector<RenderShapeData> shapes;
+};
+
+
