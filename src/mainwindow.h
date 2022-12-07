@@ -18,7 +18,7 @@ public:
 
 private:
 
-    Realtime *realtime;
+    CopiedCity *city;
 
 private slots:
 };

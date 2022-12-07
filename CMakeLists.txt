@@ -33,12 +33,12 @@ add_executable(${PROJECT_NAME}
     src/camera/camera.cpp
     src/camera/transforms.cpp
     src/trimeshes/cube.cpp
-    src/trimeshes/cone.cpp
-    src/trimeshes/sphere.cpp
-    src/trimeshes/cylinder.cpp
     src/trimeshes/obj_mesh.cpp
     src/renderer/primitive.cpp
     src/renderer/render.cpp
+
+    src/citygenerator/generator.cpp
+    src/cityrenderer/rendercity.cpp
 
     src/mainwindow.h
     src/realtime.h
@@ -49,14 +49,15 @@ add_executable(${PROJECT_NAME}
     src/camera/transforms.h
     src/trimeshes/trimesh.h
     src/trimeshes/cube.h
-    src/trimeshes/cone.h
-    src/trimeshes/sphere.h
-    src/trimeshes/cylinder.h
     src/trimeshes/obj_mesh.h
     src/renderer/debug.h
     src/renderer/primitive.h
-    src/filter/filter.h
     src/utils/rgba.h
+
+    src/citygenerator/generator.h
+    src/citygenerator/objutils.h
+    src/citygenerator/staticposdata.h
+
 )
 
 # GLM: this creates its library and allows you to `#include "glm/..."`

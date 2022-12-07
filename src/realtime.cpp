@@ -12,7 +12,7 @@
 
 // ================== Project 5: Lights, Camera
 
-Realtime::Realtime(QWidget *parent)
+CopiedCity::CopiedCity(QWidget *parent)
     : QOpenGLWidget(parent)
 {
     m_prev_mouse_pos = glm::vec2(size().width()/2, size().height()/2);
@@ -31,39 +31,39 @@ Realtime::Realtime(QWidget *parent)
     m_keyMap[Qt::Key_Meta]   = false;
 }
 
-void Realtime::finish() {
+void CopiedCity::finish() {
     killTimer(m_timer);
     this->makeCurrent();
 
     // Students: anything requiring OpenGL calls when the program exits should be done here
 
     // delete shaders
-    glDeleteProgram(Realtime::shaderTexture);
-    glDeleteProgram(Realtime::shaderRender);
+    glDeleteProgram(CopiedCity::shaderTexture);
+    glDeleteProgram(CopiedCity::shaderRender);
 
     // delete fullscreen vao/vbo data
     glDeleteVertexArrays(1, &fullscreen_vao);
     glDeleteBuffers(1, &fullscreen_vbo);
 
-    Realtime::DestroyMeshes();
+    CopiedCity::DestroyMeshes();
 
     // destroy all buffers
-    Realtime::DestroyBuffers(true);
+    CopiedCity::DestroyBuffers(true);
 
     // delete the camera is the scene is initialized
-    if (Realtime::isInitialized) {
-        delete Realtime::sceneCamera;
+    if (CopiedCity::isInitialized) {
+        delete CopiedCity::sceneCamera;
     }
 
     // destroy FBO
-    Realtime::DestroyFBO();
+    CopiedCity::DestroyFBO();
 
     this->doneCurrent();
 }
 
-void Realtime::initializeGL() {
+void CopiedCity::initializeGL() {
 
-    std::cout << "initialize" << std::endl;
+//    std::cout << "initialize" << std::endl;
 
     m_devicePixelRatio = this->devicePixelRatio();
     m_timer = startTimer(1000/60);
@@ -84,85 +84,96 @@ void Realtime::initializeGL() {
     glEnable(GL_CULL_FACE);
 
     // resizing
-    Realtime::screenHeight = size().height() * m_devicePixelRatio;
-    Realtime::screenWidth = size().width() * m_devicePixelRatio;
+    CopiedCity::screenHeight = size().height() * m_devicePixelRatio;
+    CopiedCity::screenWidth = size().width() * m_devicePixelRatio;
 
     // Tells OpenGL how big the screen is
-    glViewport(0, 0, Realtime::screenWidth, Realtime::screenHeight);
+    glViewport(0, 0, CopiedCity::screenWidth, CopiedCity::screenHeight);
 
     // Students: anything requiring OpenGL calls when the program starts should be done here
 
     // initialize the shader
-    Realtime::shaderRender = ShaderLoader::createShaderProgram(":/resources/shaders/default.vert", ":/resources/shaders/default.frag");
-    Realtime::shaderTexture = ShaderLoader::createShaderProgram(":/resources/shaders/texture.vert", ":/resources/shaders/texture.frag");
+    CopiedCity::shaderRender = ShaderLoader::createShaderProgram(":/resources/shaders/default.vert", ":/resources/shaders/default.frag");
+    CopiedCity::shaderTexture = ShaderLoader::createShaderProgram(":/resources/shaders/texture.vert", ":/resources/shaders/texture.frag");
     // initialize the default FBO
 
-    // Realtime::defaultFBO = 0;
-    Realtime::defaultFBO = 2; // UNCOMMENT TO CHANGE DEFAULT FBO VALUE
+    // CopiedCity::defaultFBO = 0;
+    CopiedCity::defaultFBO = 2; // UNCOMMENT TO CHANGE DEFAULT FBO VALUE
 
     // setup the texture shader for post-processing effects
-    Realtime::SetupTextureShader();
+    CopiedCity::SetupTextureShader();
 
     // create FBO
-    Realtime::MakeFBO();
+    CopiedCity::MakeFBO();
+
+    // setup city
+
+    // set current params (for on startup)
+    CopiedCity::currentParam1 = 10;
+    CopiedCity::currentParam2 = 10;
+
+    SceneCameraData camData = {.pos=glm::vec4(0,0,16,1), .look=glm::vec4(0,0,-1,0), .up=glm::vec4(0,1,0,0), .heightAngle=0.863938, .aperture=0.008, .focalLength=3};
+    Camera* cam = new Camera(camData, size().height(), size().width(), 100.0, 0.01);
+    CopiedCity::sceneCamera = cam;
+
+    CopiedCity::GenerateCity(); // generate the city
+    CopiedCity::InitializeBuffers(); // initialize buffers for the city
+
 }
 
-void Realtime::paintGL() {
+void CopiedCity::paintGL() {
 
     // Students: anything requiring OpenGL calls every frame should be done here
 
-    if (!Realtime::isInitialized) {
-        return;
-    }
+//    if (!CopiedCity::isInitialized) {
+//        return;
+//    }
 
-    // if we have freshly loaded in a scene, initailize the buffers only once
-    if (Realtime::changedScene) {
+//    // if we have freshly loaded in a scene, initailize the buffers only once
+//    if (CopiedCity::changedScene) {
 
-        // initilize all VBO and VAO data into the mesh objects
-        Realtime::InitializeBuffers();
-        Realtime::changedScene = false;
-    }
+//        // initilize all VBO and VAO data into the mesh objects
+//        CopiedCity::InitializeBuffers();
+//        CopiedCity::changedScene = false;
+//    }
 
+    // otherwise, draw the CopiedCity objects into the render buffer
 
-    // if we have ran the ray tracer
+    // set the current draw buffer to be render buffer
+    CopiedCity::SetRenderFBO();
 
-        // otherwise, draw the realtime objects into the render buffer
+    // Bind the render shader
+    glUseProgram(CopiedCity::shaderRender);
 
-        // set the current draw buffer to be render buffer
-        Realtime::SetRenderFBO();
+    // initialize uniforms, not per object
+    CopiedCity::InitializeCameraUniforms();
+    CopiedCity::InitializeLightUniforms();
 
-        // Bind the render shader
-        glUseProgram(Realtime::shaderRender);
+    // initilialize uniforms per object, draw object
+    CopiedCity::DrawBuffers();
 
-        // initialize uniforms, not per object
-        Realtime::InitializeCameraUniforms();
-        Realtime::InitializeLightUniforms();
-
-        // initilialize uniforms per object, draw object
-        Realtime::DrawBuffers();
-
-        // unbind render shader
-        glUseProgram(0);
+    // unbind render shader
+    glUseProgram(0);
 
 
     // draw the texture buffer (objects or ray tracer image) with post-processing effects, set uniforms as necessary
-    Realtime::DrawTextureFBO();
+    CopiedCity::DrawTextureFBO();
 
     // Unbind the texture shader
     glUseProgram(0);
 
 }
 
-void Realtime::resizeGL(int w, int h) {
+void CopiedCity::resizeGL(int w, int h) {
 
-    Realtime::screenHeight = size().height() * m_devicePixelRatio;
-    Realtime::screenWidth = size().width() * m_devicePixelRatio;
+    CopiedCity::screenHeight = size().height() * m_devicePixelRatio;
+    CopiedCity::screenWidth = size().width() * m_devicePixelRatio;
 
     // Tells OpenGL how big the screen is
-    glViewport(0, 0, Realtime::screenWidth, Realtime::screenHeight);
+    glViewport(0, 0, CopiedCity::screenWidth, CopiedCity::screenHeight);
 
     // if the scene isn't initialized yet
-    if (!Realtime::isInitialized) {
+    if (!CopiedCity::isInitialized) {
         return;
     }
 
@@ -170,115 +181,102 @@ void Realtime::resizeGL(int w, int h) {
 
     float aspectRatio = static_cast<float>(w) / static_cast<float>(h);
 
-    if (Realtime::sceneCamera->getAspectRatio() != aspectRatio) {
-        Realtime::sceneCamera->updateAspectRatio(aspectRatio);
+    if (CopiedCity::sceneCamera->getAspectRatio() != aspectRatio) {
+        CopiedCity::sceneCamera->updateAspectRatio(aspectRatio);
     }
 
     // destroy old FBO
-    Realtime::DestroyFBO();
+    CopiedCity::DestroyFBO();
 
-    // destroy old FBO
-    Realtime::MakeFBO();
-
-//    // destroy old buffers
-//    Realtime::DestroyBuffers();
-//    // reinitialize them
-//    Realtime::InitializeBuffers();
+    // make new FBO
+    CopiedCity::MakeFBO();
 
 }
 
-void Realtime::sceneChanged() {
+void CopiedCity::sceneChanged() {
 
     // destroy old meshes
-    Realtime::DestroyMeshes();
+    CopiedCity::DestroyMeshes();
 
-    // destroy old meshes
-    Realtime::DestroyBuffers(true);
+    // destroy old buffers
+    CopiedCity::DestroyBuffers(true);
 
     // delete the camera and old FBOs if the scene is initialized
-    if (Realtime::isInitialized) {
-        delete Realtime::sceneCamera;
+    if (CopiedCity::isInitialized) {
+        delete CopiedCity::sceneCamera;
     }
 
-    // set current params (for on startup)
-    Realtime::currentParam1 = settings.shapeParameter1;
-    Realtime::currentParam2 = settings.shapeParameter2;
-
-    SceneCameraData camData = {.pos=glm::vec4(0,0,16,1), .look=glm::vec4(0,0,-1,0), .up=glm::vec4(0,1,0,0), .heightAngle=0.863938, .aperture=0.008, .focalLength=3};
-    Camera* cam = new Camera(camData, size().height(), size().width(), 100.0, 0.01);
-    Realtime::sceneCamera = cam;
-
     // build each primitive into a composite struct that contains the class for the trimesh, etc.
-    // apply it to the realtime class
-    Realtime::CompilePrimitiveMeshes();
+    // apply it to the CopiedCity class
+//    CopiedCity::CompilePrimitiveMeshes();
 
-    Realtime::isInitialized = true;
-    Realtime::changedScene = true;
+    CopiedCity::isInitialized = true;
+    CopiedCity::changedScene = true;
 
     update(); // asks for a PaintGL() call to occur
 }
 
-void Realtime::settingsChanged() {
+void CopiedCity::settingsChanged() {
 
     // if the scene isn't initialized yet
-    if (!Realtime::isInitialized) {
+    if (!CopiedCity::isInitialized) {
         return;
     }
 
     // near plane and far plane updates
-    if (Realtime::sceneCamera->nearPlane != settings.nearPlane || Realtime::sceneCamera->farPlane != settings.farPlane) {
+    if (CopiedCity::sceneCamera->nearPlane != settings.nearPlane || CopiedCity::sceneCamera->farPlane != settings.farPlane) {
 
-        Realtime::sceneCamera->updateViewPlanes(settings.farPlane, settings.nearPlane);
+        CopiedCity::sceneCamera->updateViewPlanes(settings.farPlane, settings.nearPlane);
     }
 
     // updates for tesselation params
-    if (settings.shapeParameter1 != Realtime::currentParam1 || settings.shapeParameter2 != Realtime::currentParam2) {
+    if (settings.shapeParameter1 != CopiedCity::currentParam1 || settings.shapeParameter2 != CopiedCity::currentParam2) {
 
         // set current params (for on startup)
-        Realtime::currentParam1 = settings.shapeParameter1;
-        Realtime::currentParam2 = settings.shapeParameter2;
+        CopiedCity::currentParam1 = settings.shapeParameter1;
+        CopiedCity::currentParam2 = settings.shapeParameter2;
 
         // update tesselation parameters
-        Realtime::UpdateTesselations();
+        CopiedCity::UpdateTesselations();
         // destroy old buffers
-        Realtime::DestroyBuffers(false);
+        CopiedCity::DestroyBuffers(false);
 
         // create new buffers
-        Realtime::InitializeBuffers();
+        CopiedCity::InitializeBuffers();
 
     }
 
     // set the current filters
-    Realtime::perPixelFilter = settings.perPixelFilter;
-    Realtime::kernelBasedFilter = settings.kernelBasedFilter;
-    Realtime::perPixelFilterExtra = settings.perPixelFilterExtra;
-    Realtime::kernelBasedFilterExtra = settings.kernelBasedFilterExtra;
+    CopiedCity::perPixelFilter = settings.perPixelFilter;
+    CopiedCity::kernelBasedFilter = settings.kernelBasedFilter;
+    CopiedCity::perPixelFilterExtra = settings.perPixelFilterExtra;
+    CopiedCity::kernelBasedFilterExtra = settings.kernelBasedFilterExtra;
 
     update(); // asks for a PaintGL() call to occur
 }
 
-void Realtime::keyPressEvent(QKeyEvent *event) {
+void CopiedCity::keyPressEvent(QKeyEvent *event) {
     m_keyMap[Qt::Key(event->key())] = true;
 }
 
-void Realtime::keyReleaseEvent(QKeyEvent *event) {
+void CopiedCity::keyReleaseEvent(QKeyEvent *event) {
     m_keyMap[Qt::Key(event->key())] = false;
 }
 
-void Realtime::mousePressEvent(QMouseEvent *event) {
+void CopiedCity::mousePressEvent(QMouseEvent *event) {
     if (event->buttons().testFlag(Qt::LeftButton)) {
         m_mouseDown = true;
         m_prev_mouse_pos = glm::vec2(event->position().x(), event->position().y());
     }
 }
 
-void Realtime::mouseReleaseEvent(QMouseEvent *event) {
+void CopiedCity::mouseReleaseEvent(QMouseEvent *event) {
     if (!event->buttons().testFlag(Qt::LeftButton)) {
         m_mouseDown = false;
     }
 }
 
-void Realtime::mouseMoveEvent(QMouseEvent *event) {
+void CopiedCity::mouseMoveEvent(QMouseEvent *event) {
     if (m_mouseDown) {
         int posX = event->position().x();
         int posY = event->position().y();
@@ -288,18 +286,18 @@ void Realtime::mouseMoveEvent(QMouseEvent *event) {
 
         // Use deltaX and deltaY here to rotate
 
-        if (Realtime::sceneCamera == nullptr) {
+        if (CopiedCity::sceneCamera == nullptr) {
             return;
         }
 
-        Realtime::sceneCamera->RotateX(deltaX);
-        Realtime::sceneCamera->RotateY(deltaY);
+        CopiedCity::sceneCamera->RotateX(deltaX);
+        CopiedCity::sceneCamera->RotateY(deltaY);
 
         update(); // asks for a PaintGL() call to occur
     }
 }
 
-void Realtime::timerEvent(QTimerEvent *event) {
+void CopiedCity::timerEvent(QTimerEvent *event) {
     int elapsedms   = m_elapsedTimer.elapsed();
     float deltaTime = elapsedms * 0.001f;
     m_elapsedTimer.restart();
@@ -307,7 +305,7 @@ void Realtime::timerEvent(QTimerEvent *event) {
     // Use deltaTime and m_keyMap here to move around
 
     // no camera -> return
-    if (Realtime::sceneCamera == nullptr) {
+    if (CopiedCity::sceneCamera == nullptr) {
         return;
     }
 
@@ -318,39 +316,39 @@ void Realtime::timerEvent(QTimerEvent *event) {
     glm::vec3 movement = glm::vec3(0.f);
 
     // W key pressed
-    if (Realtime::m_keyMap[Qt::Key_W]) {
-        movement += Realtime::sceneCamera->WPressed();
+    if (CopiedCity::m_keyMap[Qt::Key_W]) {
+        movement += CopiedCity::sceneCamera->WPressed();
     }
 
     // A key pressed
-    if (Realtime::m_keyMap[Qt::Key_A]) {
-        movement += Realtime::sceneCamera->APressed();
+    if (CopiedCity::m_keyMap[Qt::Key_A]) {
+        movement += CopiedCity::sceneCamera->APressed();
     }
 
-    // D key pressed
-    if (Realtime::m_keyMap[Qt::Key_D]) {
-        movement += Realtime::sceneCamera->DPressed();
-    }
+//    // D key pressed
+//    if (CopiedCity::m_keyMap[Qt::Key_D]) {
+//        movement += CopiedCity::sceneCamera->DPressed();
+//    }
 
-    // S key pressed
-    if (Realtime::m_keyMap[Qt::Key_S]) {
-        movement += Realtime::sceneCamera->SPressed();
-    }
+//    // S key pressed
+//    if (CopiedCity::m_keyMap[Qt::Key_S]) {
+//        movement += CopiedCity::sceneCamera->SPressed();
+//    }
 
-    // Space key pressed
-    if (Realtime::m_keyMap[Qt::Key_Space]) {
-        movement += Realtime::sceneCamera->SpacePressed();
-    }
+//    // Space key pressed
+//    if (CopiedCity::m_keyMap[Qt::Key_Space]) {
+//        movement += CopiedCity::sceneCamera->SpacePressed();
+//    }
 
-    // Ctrl key pressed
-    if (Realtime::m_keyMap[Qt::Key_Control] || Realtime::m_keyMap[Qt::Key_Meta]) {
-       movement += Realtime::sceneCamera->CtrlPressed();
-    }
+//    // Ctrl key pressed
+//    if (CopiedCity::m_keyMap[Qt::Key_Control] || CopiedCity::m_keyMap[Qt::Key_Meta]) {
+//       movement += CopiedCity::sceneCamera->CtrlPressed();
+//    }
 
     if (glm::length(movement) != 0.f) {
         // apply the accumulated translation
         movement *= speed;
-        Realtime::sceneCamera->ApplyTranslation(movement);
+        CopiedCity::sceneCamera->ApplyTranslation(movement);
     }
 
     update(); // asks for a PaintGL() call to occur

@@ -4,6 +4,8 @@
 #include "camera/camera.h"
 #include "renderer/primitive.h"
 #include "utils/scenedata.h"
+#include "citygenerator/generator.h"
+
 #ifdef __APPLE__
 #define GL_SILENCE_DEPRECATION
 #endif
@@ -16,10 +18,10 @@
 #include <QTime>
 #include <QTimer>
 
-class Realtime : public QOpenGLWidget
+class CopiedCity : public QOpenGLWidget
 {
 public:
-    Realtime(QWidget *parent = nullptr);
+    CopiedCity(QWidget *parent = nullptr);
     void finish();                                      // Called on program exit
     void sceneChanged();
     void settingsChanged();
@@ -37,7 +39,7 @@ public:
     void CompilePrimitiveMeshes();
     void UpdateTesselations();
     void DestroyMeshes();
-    std::vector<MeshPrimitive> objectMeshes;
+    std::vector<MeshPrimitive> objectMeshes; // for old object types
 
     // tesselation params
     int currentParam1;
@@ -77,9 +79,10 @@ public:
     void SetRenderFBO();
     void DrawTextureFBO();
 
-    // ray tracer output
-//    bool isRayTraceOutput = false; // ensures when ray tracer output is rendered
-//    void SetupRayTracerTexture(QImage& texture);
+    // COPIED CITY STUFF
+    GLuint cubeVBO;
+    void GenerateCity();
+    CopiedCityData city;
 
 public slots:
     void tick(QTimerEvent* event);                      // Called once per tick of m_timer

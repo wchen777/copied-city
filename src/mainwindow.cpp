@@ -11,16 +11,16 @@
 #include <iostream>
 
 void MainWindow::initialize() {
-    realtime = new Realtime;
+    city = new CopiedCity;
     QHBoxLayout *hLayout = new QHBoxLayout; // horizontal alignment
     QVBoxLayout *vLayout = new QVBoxLayout(); // vertical alignment
     vLayout->setAlignment(Qt::AlignTop);
     hLayout->addLayout(vLayout);
-    hLayout->addWidget(realtime, 1);
+    hLayout->addWidget(city, 1);
     this->setLayout(hLayout);
 }
 
 void MainWindow::finish() {
-    realtime->finish();
-    delete(realtime);
+    city->finish();
+    delete(city);
 }
