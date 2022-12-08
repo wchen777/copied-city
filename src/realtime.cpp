@@ -147,6 +147,11 @@ void CopiedCity::paintGL() {
 
     // initialize uniforms, not per object
     CopiedCity::InitializeCameraUniforms();
+
+    SceneLightData directionalLight = {.id = 0, .type = LightType::LIGHT_DIRECTIONAL, .color = SceneColor(1.f,1.f,1.f,1.f),
+                                       .function = glm::vec3(1.f,0.f,0.f), .pos = glm::vec4(3.f,3.f,3.f,1.f), .dir = glm::vec4(0.f,-1.f, 0.f, 0.f),
+                                       .penumbra = 0.f, .angle = 0.f, .width =0, .height = 0};
+    CopiedCity::sceneRenderData.lights.emplace_back(directionalLight);
     CopiedCity::InitializeLightUniforms();
 
     // initilialize uniforms per object, draw object

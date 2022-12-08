@@ -1,3 +1,5 @@
+#pragma once
+
 #include "trimesh.h"
 
 // derived class for a cube from trimesh implicit

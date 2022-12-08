@@ -1,4 +1,5 @@
 #pragma once
+
 #include "utils/scenedata.h"
 #include <iostream>
 #include <ostream>
@@ -109,6 +110,7 @@ class TrimeshData {
         virtual inline glm::vec3 ShapeNormal(glm::vec3& xyz) = 0; // the trimesh's custom normal function, if applicable
 
         virtual PrimitiveType GetType() = 0; // get mesh type of trimesh
+
 
 
 
