@@ -24,8 +24,8 @@ struct ObjSceneData {
 //                                   .specular = glm::vec3(0.f),
 //                                   .shininess = 0.f};
 
-static ObjSceneData PLANE = {.translation = glm::vec3(0.f, -6.f, 0.f),
-                                   .scale = glm::vec3(20.f, 10.f, 160.f),
+static ObjSceneData PLANE = {.translation = glm::vec3(0.f, -10.f, 0.f),
+                                   .scale = glm::vec3(40.f, 10.f, 200.f),
                                    .diffuse = DIFFUSE_WHITE_1,
                                    .specular = glm::vec3(0.f),
                                    .shininess = 0.f};

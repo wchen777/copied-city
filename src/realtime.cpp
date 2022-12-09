@@ -45,6 +45,9 @@ void CopiedCity::finish() {
     glDeleteVertexArrays(1, &fullscreen_vao);
     glDeleteBuffers(1, &fullscreen_vbo);
 
+    glDeleteVertexArrays(1, &skyboxVAO);
+    glDeleteBuffers(1, &skyboxVBO);
+
     CopiedCity::DestroyMeshes();
 
     // destroy all buffers
@@ -95,8 +98,9 @@ void CopiedCity::initializeGL() {
     // initialize the shader
     CopiedCity::shaderRender = ShaderLoader::createShaderProgram(":/resources/shaders/default.vert", ":/resources/shaders/default.frag");
     CopiedCity::shaderTexture = ShaderLoader::createShaderProgram(":/resources/shaders/texture.vert", ":/resources/shaders/texture.frag");
-    // initialize the default FBO
+    CopiedCity::shaderSky = ShaderLoader::createShaderProgram(":/resources/shaders/sky.vert", ":/resources/shaders/sky.frag");
 
+    // initialize the default FBO
     // CopiedCity::defaultFBO = 0;
     CopiedCity::defaultFBO = 2; // UNCOMMENT TO CHANGE DEFAULT FBO VALUE
 
@@ -104,9 +108,10 @@ void CopiedCity::initializeGL() {
     CopiedCity::SetupTextureShader();
 
     // create FBO
-    CopiedCity::MakeFBO();
+//    CopiedCity::MakeFBO();
 
     // setup city
+
 
     // set current params (for on startup)
     CopiedCity::currentParam1 = 10;
@@ -118,6 +123,10 @@ void CopiedCity::initializeGL() {
 
     CopiedCity::GenerateCity(); // generate the city
     CopiedCity::InitializeBuffers(); // initialize buffers for the city
+
+    // initialize sky stuff
+    CopiedCity::InitializeSkyShader();
+    CopiedCity::InitializeSkyBox();
 
 }
 
@@ -140,27 +149,30 @@ void CopiedCity::paintGL() {
     // otherwise, draw the CopiedCity objects into the render buffer
 
     // set the current draw buffer to be render buffer
-    CopiedCity::SetRenderFBO();
+//    CopiedCity::SetRenderFBO();
 
     // Bind the render shader
-    glUseProgram(CopiedCity::shaderRender);
+//    glUseProgram(CopiedCity::shaderRender);
 
     // initialize uniforms, not per object
-    CopiedCity::InitializeCameraUniforms();
-    CopiedCity::InitializeLightUniforms();
+//    CopiedCity::InitializeCameraUniforms();
+//    CopiedCity::InitializeLightUniforms();
 
     // initilialize uniforms per object, draw object
-    CopiedCity::DrawBuffers();
+//    CopiedCity::DrawBuffers();
+    CopiedCity::RenderSkyBox();
 
     // unbind render shader
-    glUseProgram(0);
+//    glUseProgram(0);
 
 
-    // draw the texture buffer (objects or ray tracer image) with post-processing effects, set uniforms as necessary
-    CopiedCity::DrawTextureFBO();
+
+
+//    // draw the texture buffer (objects or ray tracer image) with post-processing effects, set uniforms as necessary
+//    CopiedCity::DrawTextureFBO();
 
     // Unbind the texture shader
-    glUseProgram(0);
+//    glUseProgram(0);
 
 }
 

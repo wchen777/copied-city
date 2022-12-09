@@ -29,7 +29,7 @@ public:
     int screenWidth;
     int screenHeight;
 
-    // necessary for scene and views                       // initialize the scene parser
+    // necessary for scene and views
     RenderData sceneRenderData;
     Camera* sceneCamera = NULL;
     GLuint shaderRender;
@@ -83,6 +83,14 @@ public:
     GLuint cubeVBO;
     void GenerateCity();
     CopiedCityData city;
+
+    // sky
+    void RenderSkyBox();
+    void InitializeSkyShader();
+    void InitializeSkyBox();
+    GLuint skyTextureID;
+    GLuint shaderSky;
+    GLuint skyboxVAO, skyboxVBO;
 
 public slots:
     void tick(QTimerEvent* event);                      // Called once per tick of m_timer

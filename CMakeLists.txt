@@ -39,6 +39,7 @@ add_executable(${PROJECT_NAME}
 
     src/citygenerator/generator.cpp
     src/cityrenderer/rendercity.cpp
+    src/cityrenderer/rendersky.cpp
 
     src/mainwindow.h
     src/realtime.h
@@ -82,11 +83,15 @@ qt6_add_resources(${PROJECT_NAME} "Resources"
     PREFIX
         "/"
     FILES
-        resources/shaders/kitten.png
+
+        resources/textures/sky.png
+
         resources/shaders/default.frag
         resources/shaders/default.vert
         resources/shaders/texture.frag
         resources/shaders/texture.vert
+        resources/shaders/sky.frag
+        resources/shaders/sky.vert
 )
 
 # GLEW: this provides support for Windows (including 64-bit)
