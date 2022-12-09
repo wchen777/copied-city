@@ -5,7 +5,7 @@
 
 // TODO: CHANGE THESE
 #define CITY_KA 0.5f
-#define CITY_KD 0.5f
+#define CITY_KD 0.8f
 #define CITY_KS 0.5f
 
 void CopiedCity::GenerateCity() {
