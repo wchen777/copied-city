@@ -15,4 +15,5 @@ private:
                   glm::vec3 topRight,
                   glm::vec3 bottomLeft,
                   glm::vec3 bottomRight);
+
 };
