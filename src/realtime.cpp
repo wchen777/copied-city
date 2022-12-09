@@ -147,11 +147,6 @@ void CopiedCity::paintGL() {
 
     // initialize uniforms, not per object
     CopiedCity::InitializeCameraUniforms();
-
-    SceneLightData directionalLight = {.id = 0, .type = LightType::LIGHT_DIRECTIONAL, .color = SceneColor(1.f,1.f,1.f,1.f),
-                                       .function = glm::vec3(1.f,0.f,0.f), .pos = glm::vec4(3.f,3.f,3.f,1.f), .dir = glm::vec4(0.f,-1.f, 0.f, 0.f),
-                                       .penumbra = 0.f, .angle = 0.f, .width =0, .height = 0};
-    CopiedCity::sceneRenderData.lights.emplace_back(directionalLight);
     CopiedCity::InitializeLightUniforms();
 
     // initilialize uniforms per object, draw object
@@ -325,10 +320,10 @@ void CopiedCity::timerEvent(QTimerEvent *event) {
         movement += CopiedCity::sceneCamera->WPressed();
     }
 
-    // A key pressed
-    if (CopiedCity::m_keyMap[Qt::Key_A]) {
-        movement += CopiedCity::sceneCamera->APressed();
-    }
+//    // A key pressed
+//    if (CopiedCity::m_keyMap[Qt::Key_A]) {
+//        movement += CopiedCity::sceneCamera->APressed();
+//    }
 
 //    // D key pressed
 //    if (CopiedCity::m_keyMap[Qt::Key_D]) {
@@ -336,9 +331,9 @@ void CopiedCity::timerEvent(QTimerEvent *event) {
 //    }
 
 //    // S key pressed
-//    if (CopiedCity::m_keyMap[Qt::Key_S]) {
-//        movement += CopiedCity::sceneCamera->SPressed();
-//    }
+    if (CopiedCity::m_keyMap[Qt::Key_S]) {
+        movement += CopiedCity::sceneCamera->SPressed();
+    }
 
 //    // Space key pressed
 //    if (CopiedCity::m_keyMap[Qt::Key_Space]) {

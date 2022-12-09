@@ -64,5 +64,7 @@ struct CopiedCityData {
 
     TrimeshData* cube; // the cube trimesh we can reuse for all objects in the scene
 
+    std::vector<CityMeshObject*> cityData; // all the meshes
+
     // for future: extend view/generate more data when camera reaches beyond a certain point in the plane
 };

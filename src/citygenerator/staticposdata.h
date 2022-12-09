@@ -18,8 +18,14 @@ struct ObjSceneData {
 };
 
 
-static ObjSceneData PLANE = {.translation = glm::vec3(0.f),
-                                   .scale = glm::vec3(20.f, 0.1f, 20.f),
+//static ObjSceneData PLANE = {.translation = glm::vec3(0.f),
+//                                   .scale = glm::vec3(20.f, 0.1f, 20.f),
+//                                   .diffuse = DIFFUSE_WHITE_1,
+//                                   .specular = glm::vec3(0.f),
+//                                   .shininess = 0.f};
+
+static ObjSceneData PLANE = {.translation = glm::vec3(0.f, -6.f, 0.f),
+                                   .scale = glm::vec3(20.f, 10.f, 160.f),
                                    .diffuse = DIFFUSE_WHITE_1,
                                    .specular = glm::vec3(0.f),
                                    .shininess = 0.f};

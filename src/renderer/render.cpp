@@ -83,7 +83,7 @@ void CopiedCity::InitializeLightUniforms() {
 
     int count = 0;
     // for each light data, up until 8
-    for (auto& light : CopiedCity::sceneRenderData.lights) {
+    for (auto& light : CopiedCity::city.lights) {
         if (count == MAX_LIGHTS) {
             break;
         }
@@ -176,39 +176,39 @@ void CopiedCity::DrawBuffers() {
 //    this->makeCurrent();
 
     // initialize uniforms, draw the object
-    for (MeshPrimitive& mesh : CopiedCity::objectMeshes) {
+    for (CityMeshObject* mesh : CopiedCity::city.cityData) {
 
-//        std::cout << mesh.vao << std::endl;
+//        std::cout << "here" << std::endl;
 
         // bind the object's vao
-        glBindVertexArray(mesh.vao);
+        glBindVertexArray(mesh->vao);
 
         // pass in model matrix as a uniform
         GLint model_mat_loc = glGetUniformLocation(CopiedCity::shaderRender, "model_matrix");
-        glUniformMatrix4fv(model_mat_loc, 1, GL_FALSE, &mesh.modelMatrix[0][0]);
+        glUniformMatrix4fv(model_mat_loc, 1, GL_FALSE, &mesh->modelMatrix[0][0]);
 
         // pass in inv transpose model matrix as a uniform
         GLint inv_transpose_model_mat_loc = glGetUniformLocation(CopiedCity::shaderRender, "inv_trans_model_matrix");
-        glUniformMatrix4fv(inv_transpose_model_mat_loc, 1, GL_FALSE, &mesh.invTransposeModelMatrix[0][0]);
+        glUniformMatrix4fv(inv_transpose_model_mat_loc, 1, GL_FALSE, &mesh->invTransposeModelMatrix[0][0]);
 
         // pass in shininess
         GLint shininess_loc = glGetUniformLocation(CopiedCity::shaderRender, "shininess");
-        glUniform1f(shininess_loc, mesh.material.shininess);
+        glUniform1f(shininess_loc, mesh->material.shininess);
 
         // pass in cAmbient
         GLint cAmbient_loc = glGetUniformLocation(CopiedCity::shaderRender, "cAmbient");
-        glUniform3fv(cAmbient_loc, 1, &mesh.material.cAmbient[0]);
+        glUniform3fv(cAmbient_loc, 1, &mesh->material.cAmbient[0]);
 
         // pass in cDiffuse
         GLint cDiffuse_loc = glGetUniformLocation(CopiedCity::shaderRender, "cDiffuse");
-        glUniform3fv(cDiffuse_loc, 1, &mesh.material.cDiffuse[0]);
+        glUniform3fv(cDiffuse_loc, 1, &mesh->material.cDiffuse[0]);
 
         // pass in cSpecular
         GLint cSpecular_loc = glGetUniformLocation(CopiedCity::shaderRender, "cSpecular");
-        glUniform3fv(cSpecular_loc, 1, &mesh.material.cSpecular[0]);
+        glUniform3fv(cSpecular_loc, 1, &mesh->material.cSpecular[0]);
 
         // draw command for this object
-        glDrawArrays(GL_TRIANGLES, 0, mesh.trimesh->m_vertexData.size() / 6);
+        glDrawArrays(GL_TRIANGLES, 0, CopiedCity::city.cube->m_vertexData.size() / 6);
         // Unbind Vertex Array
         glBindVertexArray(0);
 //        std::cout << "draw size: " << mesh.trimesh->m_vertexData.size() << std::endl;
