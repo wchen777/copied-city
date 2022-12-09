@@ -30,6 +30,18 @@ uniform float k_s;
 uniform vec3 cam_pos;
 uniform vec3 cSpecular;
 
+// fog attentuation
+float getFogFactor(float d)
+{
+    const float FogMax = 100.0;
+    const float FogMin = 5.0;
+
+    if (d>=FogMax) return 1;
+    if (d<=FogMin) return 0;
+
+    return 1 - (FogMax - d) / (FogMax - FogMin);
+}
+
 // falloff for spot lights
 float falloffFactor(float angle, float innerA, float outerA) {
     float t = (angle - innerA) / (outerA - innerA);
@@ -128,6 +140,14 @@ void Phong(){
 }
 
 void main() {
+    vec4 fog_color = vec4(0.9f, 0.9f, 0.9f, 0.6f);
     output_color = vec4(0.f, 0.f, 0.f, 0.f);
+
+    float pointD = distance(vertex_pos_world, cam_pos);
+    float alphaFog = getFogFactor(pointD);
+
     Phong();
+
+    // blend fog and color
+    output_color = mix(output_color, fog_color, alphaFog);
 }

@@ -32,10 +32,17 @@ void CopiedCity::GenerateCity() {
     CopiedCity::city.GenerateFacades();
 
     // add lights
-    SceneLightData directionalLight = {.id = 0, .type = LightType::LIGHT_DIRECTIONAL, .color = SceneColor(1.f,1.f,1.f,1.f),
-                                       .function = glm::vec3(1.f,0.f,0.f), .pos = glm::vec4(3.f,3.f,3.f,1.f), .dir = glm::vec4(0.f,-1.f, 0.f, 0.f),
+    SceneLightData directionalLightL = {.id = 0, .type = LightType::LIGHT_DIRECTIONAL, .color = SceneColor(1.f,1.f,1.f,1.f),
+                                       .function = glm::vec3(1.f,0.f,0.f), .pos = glm::vec4(3.f,3.f,3.f,1.f),
+                                        .dir = glm::normalize(glm::vec4(-0.7f,-1.f, 0.5f, 0.f)),
                                        .penumbra = 0.f, .angle = 0.f, .width =0, .height = 0};
-    CopiedCity::city.lights.emplace_back(directionalLight);
+
+    SceneLightData directionalLightR = {.id = 0, .type = LightType::LIGHT_DIRECTIONAL, .color = SceneColor(1.f,1.f,1.f,1.f),
+                                       .function = glm::vec3(1.f,0.f,0.f), .pos = glm::vec4(3.f,3.f,3.f,1.f),
+                                        .dir = glm::normalize(glm::vec4(0.7f,-1.f, 0.5f, 0.f)),
+                                       .penumbra = 0.f, .angle = 0.f, .width =0, .height = 0};
+    CopiedCity::city.lights.emplace_back(directionalLightL);
+    CopiedCity::city.lights.emplace_back(directionalLightR);
 }
 
 
@@ -64,7 +71,26 @@ void CopiedCityData::GenerateBoundaryBox() {
 
 void CopiedCityData::GenerateFacades() {
 
-//   CopiedCityData::boundaryBox.front;
+    auto leftF = CityMeshObject{};
+
+    // initialize CTM and inv transpose CTM
+    InitializeSpaceConversions(&leftF, &LEFTFACADEPLACE);
+
+    // initialize material
+    InitializeMaterial(&leftF, &LEFTFACADEPLACE);
+
+    auto rightF = CityMeshObject{};
+
+    // initialize CTM and inv transpose CTM
+    InitializeSpaceConversions(&rightF, &RIGHTFACADEPLACE);
+
+    // initialize material
+    InitializeMaterial(&rightF, &RIGHTFACADEPLACE);
+
+
+    CopiedCityData::leftFacade.data.emplace_back(leftF);
+    CopiedCityData::leftFacade.data.emplace_back(rightF);
+
 }
 
 

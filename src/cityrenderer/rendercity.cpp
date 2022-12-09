@@ -44,6 +44,46 @@ void CopiedCity::InitializeBuffers() {
 
     // TODO: boundary box and facades.
 
+    for (CityMeshObject& m : CopiedCity::city.leftFacade.data) {
+        // Generate, and bind VAO
+        glGenVertexArrays(1, &m.vao);
+        glBindVertexArray(m.vao);
+
+        // Enable and define attribute 0 to store vertex positions (vec3)
+        glEnableVertexAttribArray(0);
+        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(GLfloat), reinterpret_cast<void *>(0));
+
+        // Enable and define attribute 1 to store vertex normals (vec3)
+        glEnableVertexAttribArray(1);
+        glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(GLfloat), reinterpret_cast<void*>(3 * sizeof(GL_FLOAT)));
+
+        // Clean-up bindings for VAO
+        glBindVertexArray(0);
+
+        // add to city data (should this be here?)
+        CopiedCity::city.cityData.emplace_back(&m);
+    }
+
+    for (CityMeshObject& m : CopiedCity::city.rightFacade.data) {
+        // Generate, and bind VAO
+        glGenVertexArrays(1, &m.vao);
+        glBindVertexArray(m.vao);
+
+        // Enable and define attribute 0 to store vertex positions (vec3)
+        glEnableVertexAttribArray(0);
+        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(GLfloat), reinterpret_cast<void *>(0));
+
+        // Enable and define attribute 1 to store vertex normals (vec3)
+        glEnableVertexAttribArray(1);
+        glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(GLfloat), reinterpret_cast<void*>(3 * sizeof(GL_FLOAT)));
+
+        // Clean-up bindings for VAO
+        glBindVertexArray(0);
+
+        // add to city data (should this be here?)
+        CopiedCity::city.cityData.emplace_back(&m);
+    }
+
     // clean up VBO
     glBindBuffer(GL_ARRAY_BUFFER, 0);
 }
@@ -67,6 +107,14 @@ void CopiedCity::InitializeLightUniforms() {
     // pass k_s as a uniform
     GLint ks_loc = glGetUniformLocation(CopiedCity::shaderRender, "k_s");
     glUniform1f(ks_loc, CopiedCity::city.globals.ks);
+
+    // add a small point light at the camera
+    SceneLightData camLight = {.id = 0, .type = LightType::LIGHT_POINT, .color = SceneColor(0.8f,0.8f,0.8f,1.f),
+                                       .function = glm::vec3(0.f,0.2f,0.2f), .pos = glm::vec4(CopiedCity::sceneCamera->pos, 1.f),
+                                        .dir = glm::vec4(0.f),
+                                       .penumbra = 0.f, .angle = 0.f, .width =0, .height = 0};
+
+    CopiedCity::city.lights.emplace_back(camLight);
 
     int count = 0;
     // for each light data, up until 8
@@ -109,6 +157,9 @@ void CopiedCity::InitializeLightUniforms() {
     // num lights uniform
     GLint num_lights_loc = glGetUniformLocation(CopiedCity::shaderRender, "num_lights");
     glUniform1i(num_lights_loc, count);
+
+    // remove camera light
+    CopiedCity::city.lights.pop_back();
 
 //    this->doneCurrent();
 }
