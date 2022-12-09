@@ -152,14 +152,16 @@ void CopiedCity::paintGL() {
 //    CopiedCity::SetRenderFBO();
 
     // Bind the render shader
-//    glUseProgram(CopiedCity::shaderRender);
+    glUseProgram(CopiedCity::shaderRender);
 
     // initialize uniforms, not per object
-//    CopiedCity::InitializeCameraUniforms();
-//    CopiedCity::InitializeLightUniforms();
+    CopiedCity::InitializeCameraUniforms();
+    CopiedCity::InitializeLightUniforms();
 
     // initilialize uniforms per object, draw object
-//    CopiedCity::DrawBuffers();
+    CopiedCity::DrawBuffers();
+    glUseProgram(0);
+
     CopiedCity::RenderSkyBox();
 
     // unbind render shader

@@ -6,7 +6,7 @@
 
 
 // define grayscale/white color constants here
-#define DIFFUSE_WHITE_1 glm::vec3(0.9f, 0.9f, 0.9f)
+#define DIFFUSE_WHITE_1 glm::vec3(0.95f, 0.95f, 0.95f)
 
 
 struct ObjSceneData {
@@ -27,5 +27,5 @@ struct ObjSceneData {
 static ObjSceneData PLANE = {.translation = glm::vec3(0.f, -10.f, 0.f),
                                    .scale = glm::vec3(40.f, 10.f, 200.f),
                                    .diffuse = DIFFUSE_WHITE_1,
-                                   .specular = glm::vec3(0.f),
+                                   .specular = glm::vec3(0.8f, 0.8f, 0.8f),
                                    .shininess = 0.f};
