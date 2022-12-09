@@ -83,7 +83,6 @@ qt6_add_resources(${PROJECT_NAME} "Resources"
     PREFIX
         "/"
     FILES
-
         resources/textures/sky.png
 
         resources/shaders/default.frag

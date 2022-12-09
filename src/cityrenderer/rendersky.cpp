@@ -6,8 +6,15 @@
 
 #define SKY_WHITE glm::vec3(0.871f, 0.859f, 0.855f)
 #define SKY_TEXTURE_PATH ":/resources/textures/sky.png"
+#define SKY_TEXTURE_PATH_TOP ":/resources/textures/sky.png"
+#define SKY_TEXTURE_PATH_BOTTOM ":/resources/textures/sky.png"
+#define SKY_TEXTURE_PATH_FRONT ":/resources/textures/sky.png"
+#define SKY_TEXTURE_PATH_BACK ":/resources/textures/sky.png"
+#define SKY_TEXTURE_PATH_RIGHT ":/resources/textures/sky.png"
+#define SKY_TEXTURE_PATH_LEFT ":/resources/textures/sky.png"
 
 void CopiedCity::RenderSkyBox() {
+
     glDepthFunc(GL_LEQUAL);
     glUseProgram(CopiedCity::shaderSky);
 
@@ -21,12 +28,8 @@ void CopiedCity::RenderSkyBox() {
 
     glBindVertexArray(skyboxVAO);
 
-    std::cout << "skybox VAO" << skyboxVAO << std::endl;
-
     glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_CUBE_MAP, CopiedCity::skyTextureID);
-
-    std::cout << "skytexture" << CopiedCity::skyTextureID << std::endl;
 
     glDrawArrays(GL_TRIANGLES, 0, 36);
     glBindVertexArray(0);
@@ -36,20 +39,22 @@ void CopiedCity::RenderSkyBox() {
 
 
 void CopiedCity::InitializeSkyBox() {
+//    this->makeCurrent();
     glGenTextures(1, &skyTextureID);
     glBindTexture(GL_TEXTURE_CUBE_MAP, skyTextureID);
 
-    // Prepare filepath
-    QString filepath = QString(SKY_TEXTURE_PATH);
-
-    // obtain image from filepath
-    auto textSky = QImage(filepath);
-
-    // format image to fit OpenGL
-    textSky = textSky.convertToFormat(QImage::Format_RGBA8888).mirrored();
+    char *skys[] = {SKY_TEXTURE_PATH_RIGHT, SKY_TEXTURE_PATH_LEFT, SKY_TEXTURE_PATH_BOTTOM,  SKY_TEXTURE_PATH_TOP, SKY_TEXTURE_PATH_FRONT,
+                    SKY_TEXTURE_PATH_BACK};
 
     for (unsigned int i = 0; i < 6; i++)
     {
+        QString filepath = QString(skys[i]);
+
+        // obtain image from filepath
+        auto textSky = QImage(filepath);
+
+        // format image to fit OpenGL
+        textSky = textSky.convertToFormat(QImage::Format_RGBA8888).mirrored();
 
         glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_X + i, 0, GL_RGBA, textSky.width(),
                      textSky.height(), 0, GL_RGBA, GL_UNSIGNED_BYTE, textSky.bits());
