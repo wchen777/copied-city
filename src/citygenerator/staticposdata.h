@@ -31,16 +31,22 @@ static ObjSceneData PLANE = {.translation = glm::vec3(0.f, -10.f, 0.f),
                                    .shininess = 0.f};
 
 
-static ObjSceneData LEFTFACADEPLACE = {.translation = glm::vec3(-10.f, -4.f, 0.f),
+static ObjSceneData LEFTFACADEPLACE = {.translation = glm::vec3(-15.f, -4.f, 0.f),
                                    .scale = glm::vec3(10.f, 10.f, 100.f),
                                    .diffuse = DIFFUSE_WHITE_2,
                                    .specular = glm::vec3(0.8f, 0.8f, 0.8f),
                                    .shininess = 0.f};
 
 
-static ObjSceneData RIGHTFACADEPLACE = {.translation = glm::vec3(10.f, -4.f, 0.f),
+static ObjSceneData RIGHTFACADEPLACE = {.translation = glm::vec3(15.f, -4.f, 0.f),
                                    .scale = glm::vec3(10.f, 10.f, 100.f),
                                    .diffuse = DIFFUSE_WHITE_2,
                                    .specular = glm::vec3(0.85f, 0.85f, 0.85f),
                                    .shininess = 0.f};
 
+
+static ObjSceneData BACKFACADEPLACE = {.translation = glm::vec3(0.f, -4.f, -80.f),
+                                   .scale = glm::vec3(30.f, 10.f, 10.f),
+                                   .diffuse = DIFFUSE_WHITE_2,
+                                   .specular = glm::vec3(0.85f, 0.85f, 0.85f),
+                                   .shininess = 0.f};

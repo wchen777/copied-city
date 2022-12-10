@@ -87,10 +87,18 @@ void CopiedCityData::GenerateFacades() {
     // initialize material
     InitializeMaterial(&rightF, &RIGHTFACADEPLACE);
 
+    auto backF = CityMeshObject{};
+
+    // initialize CTM and inv transpose CTM
+    InitializeSpaceConversions(&backF, &BACKFACADEPLACE);
+
+    // initialize material
+    InitializeMaterial(&backF, &BACKFACADEPLACE);
+
 
     CopiedCityData::leftFacade.data.emplace_back(leftF);
-    CopiedCityData::leftFacade.data.emplace_back(rightF);
-
+    CopiedCityData::rightFacade.data.emplace_back(rightF);
+    CopiedCityData::leftFacade.data.emplace_back(backF);
 }
 
 
