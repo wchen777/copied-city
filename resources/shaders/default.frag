@@ -157,7 +157,6 @@ void main() {
     // blend fog and color
     output_color = mix(output_color, fog_color, alphaFog);
 
+    // dim to stymie lighting effects
     output_color *= 0.9f;
-
-//    output_color = vec4(uv_coord, 0.f, 0.f);
 }
