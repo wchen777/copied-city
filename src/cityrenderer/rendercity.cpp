@@ -33,11 +33,15 @@ void CopiedCity::InitializeBuffers() {
 
     // Enable and define attribute 0 to store vertex positions (vec3)
     glEnableVertexAttribArray(0);
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(GLfloat), reinterpret_cast<void *>(0));
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), reinterpret_cast<void *>(0));
 
     // Enable and define attribute 1 to store vertex normals (vec3)
     glEnableVertexAttribArray(1);
-    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(GLfloat), reinterpret_cast<void*>(3 * sizeof(GL_FLOAT)));
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), reinterpret_cast<void*>(3 * sizeof(GL_FLOAT)));
+
+    // Enable and define attribute 2 to store uv coordinate (vec2)
+    glEnableVertexAttribArray(2);
+    glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), reinterpret_cast<void*>(6 * sizeof(GL_FLOAT)));
 
     // Clean-up bindings for VAO
     glBindVertexArray(0);
@@ -50,11 +54,15 @@ void CopiedCity::InitializeBuffers() {
 
         // Enable and define attribute 0 to store vertex positions (vec3)
         glEnableVertexAttribArray(0);
-        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(GLfloat), reinterpret_cast<void *>(0));
+        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), reinterpret_cast<void *>(0));
 
         // Enable and define attribute 1 to store vertex normals (vec3)
         glEnableVertexAttribArray(1);
-        glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(GLfloat), reinterpret_cast<void*>(3 * sizeof(GL_FLOAT)));
+        glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), reinterpret_cast<void*>(3 * sizeof(GL_FLOAT)));
+
+        // Enable and define attribute 2 to store uv coordinate (vec2)
+        glEnableVertexAttribArray(2);
+        glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), reinterpret_cast<void*>(6 * sizeof(GL_FLOAT)));
 
         // Clean-up bindings for VAO
         glBindVertexArray(0);
@@ -70,11 +78,15 @@ void CopiedCity::InitializeBuffers() {
 
         // Enable and define attribute 0 to store vertex positions (vec3)
         glEnableVertexAttribArray(0);
-        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(GLfloat), reinterpret_cast<void *>(0));
+        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), reinterpret_cast<void *>(0));
 
         // Enable and define attribute 1 to store vertex normals (vec3)
         glEnableVertexAttribArray(1);
-        glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(GLfloat), reinterpret_cast<void*>(3 * sizeof(GL_FLOAT)));
+        glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), reinterpret_cast<void*>(3 * sizeof(GL_FLOAT)));
+
+        // Enable and define attribute 2 to store uv coordinate (vec2)
+        glEnableVertexAttribArray(2);
+        glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), reinterpret_cast<void*>(6 * sizeof(GL_FLOAT)));
 
         // Clean-up bindings for VAO
         glBindVertexArray(0);
@@ -90,11 +102,15 @@ void CopiedCity::InitializeBuffers() {
 
         // Enable and define attribute 0 to store vertex positions (vec3)
         glEnableVertexAttribArray(0);
-        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(GLfloat), reinterpret_cast<void *>(0));
+        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), reinterpret_cast<void *>(0));
 
         // Enable and define attribute 1 to store vertex normals (vec3)
         glEnableVertexAttribArray(1);
-        glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(GLfloat), reinterpret_cast<void*>(3 * sizeof(GL_FLOAT)));
+        glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), reinterpret_cast<void*>(3 * sizeof(GL_FLOAT)));
+
+        // Enable and define attribute 2 to store uv coordinate (vec2)
+        glEnableVertexAttribArray(2);
+        glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), reinterpret_cast<void*>(6 * sizeof(GL_FLOAT)));
 
         // Clean-up bindings for VAO
         glBindVertexArray(0);
@@ -111,11 +127,15 @@ void CopiedCity::InitializeBuffers() {
 
         // Enable and define attribute 0 to store vertex positions (vec3)
         glEnableVertexAttribArray(0);
-        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(GLfloat), reinterpret_cast<void *>(0));
+        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), reinterpret_cast<void *>(0));
 
         // Enable and define attribute 1 to store vertex normals (vec3)
         glEnableVertexAttribArray(1);
-        glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(GLfloat), reinterpret_cast<void*>(3 * sizeof(GL_FLOAT)));
+        glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), reinterpret_cast<void*>(3 * sizeof(GL_FLOAT)));
+
+        // Enable and define attribute 2 to store uv coordinate (vec2)
+        glEnableVertexAttribArray(2);
+        glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), reinterpret_cast<void*>(6 * sizeof(GL_FLOAT)));
 
         // Clean-up bindings for VAO
         glBindVertexArray(0);
@@ -250,6 +270,14 @@ void CopiedCity::DestroyBuffers(bool isExit) {
 */
 void CopiedCity::DrawBuffers() {
 
+    // bind the block texture
+    glActiveTexture(GL_TEXTURE1);
+    glBindTexture(GL_TEXTURE_2D, CopiedCity::blockTexture);
+
+    // pass in the texture sampler uniform
+    GLint samplerLoc = glGetUniformLocation(CopiedCity::shaderRender, "block_texture");
+    glUniform1i(samplerLoc, 1);
+
     // initialize uniforms, draw the object
     for (CityMeshObject* mesh : CopiedCity::city.cityData) {
 
@@ -281,10 +309,12 @@ void CopiedCity::DrawBuffers() {
         glUniform3fv(cSpecular_loc, 1, &mesh->material.cSpecular[0]);
 
         // draw command for this object
-        glDrawArrays(GL_TRIANGLES, 0, CopiedCity::city.cube->m_vertexData.size() / 6);
+        glDrawArrays(GL_TRIANGLES, 0, CopiedCity::city.cube->m_vertexData.size() / 8);
         // Unbind Vertex Array
         glBindVertexArray(0);
     }
+
+    glBindTexture(GL_TEXTURE_2D, 0);
 
 }
 

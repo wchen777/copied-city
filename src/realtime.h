@@ -92,6 +92,10 @@ public:
     GLuint shaderSky;
     GLuint skyboxVAO, skyboxVBO;
 
+    // block texture
+    GLuint blockTexture;
+    void InitializeBlockTexture();
+
 public slots:
     void tick(QTimerEvent* event);                      // Called once per tick of m_timer
 

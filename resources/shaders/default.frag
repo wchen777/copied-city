@@ -2,6 +2,7 @@
 
 in vec3 vertex_pos_world; // from the vertex shader
 in vec3 vertex_norm_world; // from the vertex shader
+in vec2 uv_coord; // from vertex shader
 
 out vec4 output_color; // total illumination output color
 
@@ -30,6 +31,9 @@ uniform float k_s;
 uniform vec3 cam_pos;
 uniform vec3 cSpecular;
 
+// for block texture
+uniform sampler2D block_texture;
+
 // fog attentuation
 float getFogFactor(float d)
 {
@@ -55,7 +59,9 @@ vec3 Ambient() {
 
 // lambertian/diffuse
 vec3 Diffuse(float NdotL) {
-    return k_d * NdotL * cDiffuse;
+    vec3 diffColor = k_d * NdotL * cDiffuse;
+    vec3 texColor = vec3(NdotL * texture(block_texture, uv_coord));
+    return diffColor + (0.7 * (texColor - diffColor));
 }
 
 // specular
@@ -150,4 +156,8 @@ void main() {
 
     // blend fog and color
     output_color = mix(output_color, fog_color, alphaFog);
+
+    output_color *= 0.9f;
+
+//    output_color = vec4(uv_coord, 0.f, 0.f);
 }

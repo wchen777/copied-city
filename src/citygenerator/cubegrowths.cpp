@@ -1,6 +1,6 @@
 #include "generator.h"
 
-const static std::vector<float> LEFT_INTERVALS = {-8.f, -10.f, -20.f, -22.f, -27.f, -41.f, -73.f, -81.f,
+const static std::vector<float> LEFT_INTERVALS = {-8.f, -10.f, -14.f, -20.f, -22.f, -27.f, -41.f, -73.f, -81.f,
                                                   -120.f, -146.f, -155.f, -198.f, -202.f, -232.f, -260.f};
 
 

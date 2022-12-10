@@ -113,6 +113,8 @@ void CopiedCity::InitializeSkyBox() {
          1.0f, -1.0f,  1.0f
     };
 
+    glBindTexture(GL_TEXTURE_CUBE_MAP, 0);
+
     // skybox VAO and VBO
     glGenVertexArrays(1, &skyboxVAO);
     glGenBuffers(1, &skyboxVBO);

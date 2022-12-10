@@ -42,6 +42,7 @@ add_executable(${PROJECT_NAME}
     src/citygenerator/cubegrowths.cpp
     src/cityrenderer/rendercity.cpp
     src/cityrenderer/rendersky.cpp
+    src/cityrenderer/blocktexture.cpp
 
     src/mainwindow.h
     src/realtime.h
@@ -87,6 +88,7 @@ qt6_add_resources(${PROJECT_NAME} "Resources"
         "/"
     FILES
         resources/textures/sky.png
+        resources/textures/wall.png
 
         resources/shaders/default.frag
         resources/shaders/default.vert

@@ -113,8 +113,8 @@ void CopiedCity::initializeGL() {
     // setup city
 
     // set current params (for on startup)
-    CopiedCity::currentParam1 = 10;
-    CopiedCity::currentParam2 = 10;
+    CopiedCity::currentParam1 = 20;
+    CopiedCity::currentParam2 = 20;
 
     SceneCameraData camData = {.pos=glm::vec4(0,0,24,1), .look=glm::vec4(0,0,-1,0), .up=glm::vec4(0,1,0,0), .heightAngle=0.863938, .aperture=0.008, .focalLength=3};
     Camera* cam = new Camera(camData, size().height(), size().width(), 500.0, 0.01);
@@ -126,6 +126,9 @@ void CopiedCity::initializeGL() {
     // initialize sky stuff
     CopiedCity::InitializeSkyShader();
     CopiedCity::InitializeSkyBox();
+
+    // initialize block texture
+    CopiedCity::InitializeBlockTexture();
 
 }
 
