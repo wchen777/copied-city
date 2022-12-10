@@ -29,6 +29,13 @@ class TrimeshData {
             data.push_back(v.z);
         }
 
+        // static helper function to insert a vec2 into the vertex data
+        static inline void insertVec2(std::vector<float> &data, glm::vec2 v) {
+            data.push_back(v.x);
+            data.push_back(v.y);
+        }
+
+
         // called when params are updated, creates the trimesh
         void UpdateParams(int p1, int p2) {
             m_param1 = p1;
@@ -38,6 +45,7 @@ class TrimeshData {
 //            std::cout << "size after update: " << m_vertexData.size() << std::endl;
         }
 
+         // UNUSED
          // function for the shape's "side tile", using the shape-specific normal function
         inline void MakeSideTile(glm::vec3 topLeft,
                                  glm::vec3 topRight,
@@ -77,17 +85,27 @@ class TrimeshData {
 
           insertVec3(m_vertexData, topLeft);
           insertVec3(m_vertexData, tlNorm);
+          insertVec2(m_vertexData, glm::vec2(0.f, 1.f)); // UV coordinates for repeated texture mapping
+
           insertVec3(m_vertexData, bottomLeft);
           insertVec3(m_vertexData, blNorm);
-          insertVec3(m_vertexData, topRight);
-          insertVec3(m_vertexData, trNorm);
+          insertVec2(m_vertexData, glm::vec2(0.f, 0.f));
 
           insertVec3(m_vertexData, topRight);
           insertVec3(m_vertexData, trNorm);
+          insertVec2(m_vertexData, glm::vec2(1.f, 1.f));
+
+          insertVec3(m_vertexData, topRight);
+          insertVec3(m_vertexData, trNorm);
+          insertVec2(m_vertexData, glm::vec2(1.f, 1.f));
+
           insertVec3(m_vertexData, bottomLeft);
           insertVec3(m_vertexData, blNorm);
+          insertVec2(m_vertexData, glm::vec2(0.f, 0.f));
+
           insertVec3(m_vertexData, bottomRight);
           insertVec3(m_vertexData, brNorm);
+          insertVec2(m_vertexData, glm::vec2(1.f, 0.f));
         }
 
         // for efficient VBOs

@@ -8,7 +8,7 @@
 #include "settings.h"
 #include "utils/shaderloader.h"
 
-#define UNITS_PER_SECOND 5.f
+#define UNITS_PER_SECOND 10.f
 
 // ================== Project 5: Lights, Camera
 
@@ -115,10 +115,10 @@ void CopiedCity::initializeGL() {
     // setup city
 
     // set current params (for on startup)
-    CopiedCity::currentParam1 = 10;
-    CopiedCity::currentParam2 = 10;
+    CopiedCity::currentParam1 = 25;
+    CopiedCity::currentParam2 = 25;
 
-    SceneCameraData camData = {.pos=glm::vec4(0,0,16,1), .look=glm::vec4(0,0,-1,0), .up=glm::vec4(0,1,0,0), .heightAngle=0.863938, .aperture=0.008, .focalLength=3};
+    SceneCameraData camData = {.pos=glm::vec4(0,0,24,1), .look=glm::vec4(0,0,-1,0), .up=glm::vec4(0,1,0,0), .heightAngle=0.863938, .aperture=0.008, .focalLength=3};
     Camera* cam = new Camera(camData, size().height(), size().width(), 500.0, 0.01);
     CopiedCity::sceneCamera = cam;
 
@@ -129,6 +129,9 @@ void CopiedCity::initializeGL() {
     CopiedCity::InitializeSkyShader();
     CopiedCity::InitializeSkyBox();
     CopiedCity::InitializeShadow();
+
+    // initialize block texture
+    CopiedCity::InitializeBlockTexture();
 
 }
 
@@ -155,7 +158,7 @@ void CopiedCity::paintGL() {
 //    glUseProgram(CopiedCity::shaderDepth);
 
 //    glUseProgram(0);
-        CopiedCity::renderDepthFBO();
+    CopiedCity::renderDepthFBO();
     glViewport(0, 0, CopiedCity::screenWidth, CopiedCity::screenHeight);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
@@ -348,30 +351,30 @@ void CopiedCity::timerEvent(QTimerEvent *event) {
         movement += CopiedCity::sceneCamera->WPressed();
     }
 
-//    // A key pressed
-//    if (CopiedCity::m_keyMap[Qt::Key_A]) {
-//        movement += CopiedCity::sceneCamera->APressed();
-//    }
+    // A key pressed
+    if (CopiedCity::m_keyMap[Qt::Key_A]) {
+        movement += CopiedCity::sceneCamera->APressed();
+    }
 
-//    // D key pressed
-//    if (CopiedCity::m_keyMap[Qt::Key_D]) {
-//        movement += CopiedCity::sceneCamera->DPressed();
-//    }
+    // D key pressed
+    if (CopiedCity::m_keyMap[Qt::Key_D]) {
+        movement += CopiedCity::sceneCamera->DPressed();
+    }
 
 //    // S key pressed
     if (CopiedCity::m_keyMap[Qt::Key_S]) {
         movement += CopiedCity::sceneCamera->SPressed();
     }
 
-//    // Space key pressed
-//    if (CopiedCity::m_keyMap[Qt::Key_Space]) {
-//        movement += CopiedCity::sceneCamera->SpacePressed();
-//    }
+    // Space key pressed
+    if (CopiedCity::m_keyMap[Qt::Key_Space]) {
+        movement += CopiedCity::sceneCamera->SpacePressed();
+    }
 
-//    // Ctrl key pressed
-//    if (CopiedCity::m_keyMap[Qt::Key_Control] || CopiedCity::m_keyMap[Qt::Key_Meta]) {
-//       movement += CopiedCity::sceneCamera->CtrlPressed();
-//    }
+    // Ctrl key pressed
+    if (CopiedCity::m_keyMap[Qt::Key_Control] || CopiedCity::m_keyMap[Qt::Key_Meta]) {
+       movement += CopiedCity::sceneCamera->CtrlPressed();
+    }
 
     if (glm::length(movement) != 0.f) {
         // apply the accumulated translation

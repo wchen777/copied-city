@@ -100,6 +100,9 @@ public:
     GLuint depthMapFBO;
     GLuint depthMap;
     glm::mat4 lightSpaceMatrix;
+    // block texture
+    GLuint blockTexture;
+    void InitializeBlockTexture();
 
 public slots:
     void tick(QTimerEvent* event);                      // Called once per tick of m_timer

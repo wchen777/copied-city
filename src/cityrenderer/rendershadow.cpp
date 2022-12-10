@@ -45,11 +45,10 @@ void CopiedCity::renderDepthFBO(){
     glm::mat4 lightProjection, lightView;
 
     float near_plane = 10.0f, far_plane = 100.f;
-    lightProjection = glm::ortho(-1.0f, 1.0f, -1.0f, 1.0f, near_plane, far_plane);
-    lightView = glm::lookAt(CopiedCity::sceneCamera->pos, CopiedCity::sceneCamera->look , CopiedCity::sceneCamera->up);
+    lightProjection = glm::ortho(-35.0f, 35.0f, -35.0f, 35.0f,  500.0f, 0.01f);
+    lightView = glm::lookAt(20.f*glm::vec3(glm::normalize(glm::vec4(-0.7f,-1.f, 0.5f, 0.f))), glm::vec3(0.0f, 0.0f,0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 
-    CopiedCity:lightSpaceMatrix = CopiedCity::sceneCamera->getProjMatrix() * CopiedCity::sceneCamera->getViewMatrix();
-
+    CopiedCity:lightSpaceMatrix = lightProjection *lightView;
     // render scene from light's point of view
 
     GLint lsm = glGetUniformLocation(CopiedCity::shaderDepth, "lightSpaceMatrix");

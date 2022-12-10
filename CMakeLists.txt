@@ -38,9 +38,12 @@ add_executable(${PROJECT_NAME}
     src/renderer/render.cpp
 
     src/citygenerator/generator.cpp
+    src/citygenerator/cityfacade.cpp
+    src/citygenerator/cubegrowths.cpp
     src/cityrenderer/rendercity.cpp
     src/cityrenderer/rendersky.cpp
     src/cityrenderer/rendershadow.cpp
+    src/cityrenderer/blocktexture.cpp
 
     src/mainwindow.h
     src/realtime.h
@@ -58,6 +61,7 @@ add_executable(${PROJECT_NAME}
 
     src/citygenerator/generator.h
     src/citygenerator/objutils.h
+    src/citygenerator/block.h
     src/citygenerator/staticposdata.h
 
 )
@@ -85,6 +89,8 @@ qt6_add_resources(${PROJECT_NAME} "Resources"
         "/"
     FILES
         resources/textures/sky.png
+        resources/textures/wall.png
+        resources/textures/block1.png
 
         resources/shaders/default.frag
         resources/shaders/default.vert
