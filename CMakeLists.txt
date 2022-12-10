@@ -38,6 +38,7 @@ add_executable(${PROJECT_NAME}
     src/renderer/render.cpp
 
     src/citygenerator/generator.cpp
+    src/citygenerator/cityfacade.cpp
     src/cityrenderer/rendercity.cpp
     src/cityrenderer/rendersky.cpp
 
@@ -57,6 +58,7 @@ add_executable(${PROJECT_NAME}
 
     src/citygenerator/generator.h
     src/citygenerator/objutils.h
+    src/citygenerator/block.h
     src/citygenerator/staticposdata.h
 
 )

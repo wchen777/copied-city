@@ -7,24 +7,14 @@
 #include <vector>
 #include "settings.h"
 #include "../trimeshes/cube.h"
+#include "block.h"
+#include "objutils.h"
 
-
-
-struct CityMeshObject {
-    // vertex/trimesh data
-    TrimeshData* trimesh; // UNUSED RIGHT NOW
-
-    SceneMaterial material;
-
-    // for world space conversions
-    glm::mat4 modelMatrix;
-    glm::mat4 invTransposeModelMatrix;
-
-    // for openGL bindings
-    GLuint vbo;
-    GLuint vao;
+enum FacadeType {
+    LEFT,
+    RIGHT,
+    BACK
 };
-
 
 struct CityPlane {
     CityMeshObject planeData; // the baseline
@@ -32,29 +22,35 @@ struct CityPlane {
 };
 
 
-struct CityBoundaryBox {
-    CityMeshObject top;
-    CityMeshObject left;
-    CityMeshObject right;
-    CityMeshObject front;
-};
-
 struct CityFacade {
-    std::vector<CityMeshObject> data;
+    std::vector<CityMeshObject> data; // mesh data
+
+    std::vector<Block> shapeGrammarData; // shape grammar vocabulary
+
+    void InitShapeGrammar(); // initialize with starting block
+
+    void SubdividePhaseZAxis(); // first subdivision phase
+    void SubdividePhaseXAxis(); // second subdivision phase
+    void PerturbationPhase(); // perturb along x-axis
+    void DecorationPhase(); // EXTRA: create cube protrusions from top of structures
+
+    void VaryHeight(); // go through each block and modify the height within a certain range
+
+    void ConvertShapeGrammar(FacadeType facadeType); // fill mesh data from shape grammar. must pass in whether or not the facade is left or right
 };
 
 
 struct CopiedCityData {
-    CityBoundaryBox boundaryBox; // white bounding box to create a white environment
 
     CityPlane plane; // bottom plane
 
     CityFacade leftFacade; // left building
     CityFacade rightFacade; // right building
+    CityFacade backFacade; // back building
 
     std::vector<SceneLightData> lights; // the lights in the scene
 
-    void GenerateBoundaryBox();
+    void GenerateLights();
     void GenerateFacades();
     void GeneratePlane();
 
