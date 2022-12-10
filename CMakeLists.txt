@@ -39,6 +39,7 @@ add_executable(${PROJECT_NAME}
 
     src/citygenerator/generator.cpp
     src/citygenerator/cityfacade.cpp
+    src/citygenerator/cubegrowths.cpp
     src/cityrenderer/rendercity.cpp
     src/cityrenderer/rendersky.cpp
 

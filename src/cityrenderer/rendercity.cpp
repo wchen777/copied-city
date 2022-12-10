@@ -42,7 +42,6 @@ void CopiedCity::InitializeBuffers() {
     // Clean-up bindings for VAO
     glBindVertexArray(0);
 
-    // TODO: boundary box and facades.
 
     for (CityMeshObject& m : CopiedCity::city.leftFacade.data) {
         // Generate, and bind VAO
@@ -85,6 +84,27 @@ void CopiedCity::InitializeBuffers() {
     }
 
     for (CityMeshObject& m : CopiedCity::city.backFacade.data) {
+        // Generate, and bind VAO
+        glGenVertexArrays(1, &m.vao);
+        glBindVertexArray(m.vao);
+
+        // Enable and define attribute 0 to store vertex positions (vec3)
+        glEnableVertexAttribArray(0);
+        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(GLfloat), reinterpret_cast<void *>(0));
+
+        // Enable and define attribute 1 to store vertex normals (vec3)
+        glEnableVertexAttribArray(1);
+        glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(GLfloat), reinterpret_cast<void*>(3 * sizeof(GL_FLOAT)));
+
+        // Clean-up bindings for VAO
+        glBindVertexArray(0);
+
+        // add to city data (should this be here?)
+        CopiedCity::city.cityData.emplace_back(&m);
+    }
+
+    // cube growths
+    for (CityMeshObject& m : CopiedCity::city.plane.planeProtrusions) {
         // Generate, and bind VAO
         glGenVertexArrays(1, &m.vao);
         glBindVertexArray(m.vao);

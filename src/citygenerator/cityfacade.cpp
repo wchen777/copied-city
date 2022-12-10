@@ -4,8 +4,8 @@
 #define FIRST_PHASE_SPLITS 16 // for equal splits
 #define SECOND_PHASE_MAX_SPLITS 2
 
-#define LEFT_FACADE_OFFSET -47.f
-#define RIGHT_FACADE_OFFSET 20.f
+#define LEFT_FACADE_OFFSET -50.f
+#define RIGHT_FACADE_OFFSET 23.f
 #define BACK_FACADE_OFFSET 100.f
 
 #define SPLIT_FRAC_MIN 0.25f

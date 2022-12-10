@@ -18,6 +18,9 @@ enum FacadeType {
 struct CityPlane {
     CityMeshObject planeData; // the baseline
     std::vector<CityMeshObject> planeProtrusions; // extra details on the ground
+
+    // generate ground cube growths near the buildings
+    void GenerateGroundGrowths();
 };
 
 

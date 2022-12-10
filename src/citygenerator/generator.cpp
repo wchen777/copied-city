@@ -45,30 +45,14 @@ void CopiedCityData::GeneratePlane() {
 //    CopiedCityData::plane.planeData.trimesh->UpdateParams(settings.shapeParameter1, settings.shapeParameter2);
 
     CopiedCityData::cityData.emplace_back(&CopiedCityData::plane.planeData);
+
+    CopiedCityData::plane.GenerateGroundGrowths();
 }
 // more stuff goes here about potential details on the bottom of the plane
 
 
 
 void CopiedCityData::GenerateFacades() {
-
-//    // TODO: call city facade's functions to generate/populate the necessary mesh objects
-
-//    auto leftF = CityMeshObject{};
-
-//    // initialize CTM and inv transpose CTM
-//    InitializeSpaceConversions(&leftF, &LEFTFACADEPLACE);
-
-//    // initialize material
-//    InitializeMaterial(&leftF, &LEFTFACADEPLACE);
-
-//    auto rightF = CityMeshObject{};
-
-//    // initialize CTM and inv transpose CTM
-//    InitializeSpaceConversions(&rightF, &RIGHTFACADEPLACE);
-
-//    // initialize material
-//    InitializeMaterial(&rightF, &RIGHTFACADEPLACE);
 
     auto backF = CityMeshObject{};
 
@@ -82,10 +66,6 @@ void CopiedCityData::GenerateFacades() {
     CopiedCityData::backFacade.data.emplace_back(backF);
 
 
-//    CopiedCityData::leftFacade.data.emplace_back(leftF);
-//    CopiedCityData::rightFacade.data.emplace_back(rightF);
-//    CopiedCityData::leftFacade.data.emplace_back(backF);
-
     CopiedCityData::leftFacade.InitShapeGrammar();
     CopiedCityData::leftFacade.SubdividePhaseZAxis();
 //    CopiedCityData::leftFacade.PerturbationPhase();
@@ -98,12 +78,6 @@ void CopiedCityData::GenerateFacades() {
     CopiedCityData::rightFacade.SubdividePhaseXAxis();
     CopiedCityData::rightFacade.ConvertShapeGrammar(RIGHT);
 
-
-//    CopiedCityData::backFacade.InitShapeGrammar();
-//    CopiedCityData::backFacade.SubdividePhaseZAxis();
-////    CopiedCityData::backFacade.PerturbationPhase();
-//    CopiedCityData::backFacade.SubdividePhaseXAxis();
-//    CopiedCityData::backFacade.ConvertShapeGrammar(BACK);
 }
 
 
