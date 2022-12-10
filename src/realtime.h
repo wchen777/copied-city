@@ -34,6 +34,7 @@ public:
     Camera* sceneCamera = NULL;
     GLuint shaderRender;
     GLuint shaderTexture;
+    GLuint shaderDepth;
 
     // mesh related fields
     void CompilePrimitiveMeshes();
@@ -92,6 +93,14 @@ public:
     GLuint shaderSky;
     GLuint skyboxVAO, skyboxVBO;
 
+    // shadow
+    void InitializeShadow();
+    void SetShadowFBO();
+    void renderDepthFBO();
+    GLuint depthMapFBO;
+    GLuint depthMap;
+    glm::mat4 lightSpaceMatrix;
+
 public slots:
     void tick(QTimerEvent* event);                      // Called once per tick of m_timer
 
@@ -119,4 +128,5 @@ private:
 
     // Device Correction Variables
     int m_devicePixelRatio;
+    const unsigned int SHADOW_WIDTH = 1024, SHADOW_HEIGHT = 1024;
 };

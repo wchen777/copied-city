@@ -10,14 +10,18 @@ uniform mat4 inv_trans_model_matrix; // inv transpose CTM for obj norm -> world 
 uniform mat4 view_matrix;
 uniform mat4 proj_matrix;
 
+uniform mat4 lightSpaceMatrix;
+
 out vec3 vertex_pos_world; // vertex world position
 out vec3 vertex_norm_world; // vertex norm world position
+out vec4 fragPosLightSpace;
 
 
 void main() {
 
     // vertex world space position for lighting
     vertex_pos_world = vec3(model_matrix * vec4(vertex_pos_obj, 1.0));
+    fragPosLightSpace = lightSpaceMatrix * vec4(vertex_pos_world, 1.0);
 
     // vertex world space normal for lighting
     vertex_norm_world = vec3(inv_trans_model_matrix * vec4(vertex_norm_obj, 0.0));

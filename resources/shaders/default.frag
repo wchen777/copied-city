@@ -2,6 +2,7 @@
 
 in vec3 vertex_pos_world; // from the vertex shader
 in vec3 vertex_norm_world; // from the vertex shader
+in vec4 fragPosLightSpace;
 
 out vec4 output_color; // total illumination output color
 
@@ -15,6 +16,9 @@ uniform vec3 light_colors[8]; // light intensities
 uniform vec3 light_functions[8]; // light attenuation
 uniform float light_angles[8]; // light angles
 uniform float light_penumbras[8]; // only for spot
+
+uniform sampler2D shadowMap;
+
 
 // for ambient lighting
 uniform float k_a;
@@ -65,6 +69,22 @@ vec3 Specular(float RdotV) {
     } else {
         return k_s * RdotV * cSpecular;
     }
+}
+
+float ShadowCalculation(vec4 fragPosLightSpace)
+{
+    // perform perspective divide
+    vec3 projCoords = fragPosLightSpace.xyz / fragPosLightSpace.w;
+    // transform to [0,1] range
+    projCoords = projCoords * 0.5 + 0.5;
+    // get closest depth value from light's perspective (using [0,1] range fragPosLight as coords)
+    float closestDepth = texture(shadowMap, projCoords.xy).r;
+    // get depth of current fragment from light's perspective
+    float currentDepth = projCoords.z;
+    // check whether current frag pos is in shadow
+    float shadow = currentDepth > closestDepth  ? 1.0 : 0.0;
+
+    return shadow;
 }
 
 void Phong(){
@@ -131,13 +151,16 @@ void Phong(){
 
         illumAcc *= Fatt * falloff * light_colors[i];
 
-        output_color[0] += illumAcc[0];
-        output_color[1] += illumAcc[1];
-        output_color[2] += illumAcc[2];
+//        vec4 FragPosLightSpace = lightSpaceMatrix * vec4(vs_out.FragPos, 1.0);
+        float shadow = ShadowCalculation(fragPosLightSpace);
+        output_color[0] += (1-shadow)*illumAcc[0];
+        output_color[1] += (1-shadow)*illumAcc[1];
+        output_color[2] += (1-shadow)*illumAcc[2];
     }
 
     output_color[3] = 1.f;
 }
+
 
 void main() {
     vec4 fog_color = vec4(0.9f, 0.9f, 0.9f, 0.6f);

@@ -116,6 +116,12 @@ void CopiedCity::InitializeLightUniforms() {
 
     CopiedCity::city.lights.emplace_back(camLight);
 
+    GLint samplerLoc = glGetUniformLocation(CopiedCity::shaderRender, "shadowMap");
+    glUniform1i(samplerLoc, 0);
+
+    GLint lsm = glGetUniformLocation(CopiedCity::shaderRender, "lightSpaceMatrix");
+    glUniformMatrix4fv(lsm, 1, GL_FALSE, &(CopiedCity::lightSpaceMatrix[0][0]));
+
     int count = 0;
     // for each light data, up until 8
     for (auto& light : CopiedCity::city.lights) {
@@ -178,6 +184,7 @@ void CopiedCity::InitializeCameraUniforms() {
 
     GLint P_mat_loc = glGetUniformLocation(CopiedCity::shaderRender, "proj_matrix");
     glUniformMatrix4fv(P_mat_loc, 1, GL_FALSE, &CopiedCity::sceneCamera->getProjMatrix()[0][0]);
+
 
     GLint PV_mat_loc = glGetUniformLocation(CopiedCity::shaderRender, "view_matrix");
     glUniformMatrix4fv(PV_mat_loc, 1, GL_FALSE, &CopiedCity::sceneCamera->getViewMatrix()[0][0]);
@@ -311,6 +318,7 @@ void CopiedCity::DestroyFBO() {
  * sets the framebuffer to be drawn upon
 */
 void CopiedCity::SetRenderFBO() {
+
 
 //    this->makeCurrent();
 

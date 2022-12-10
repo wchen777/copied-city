@@ -40,6 +40,7 @@ add_executable(${PROJECT_NAME}
     src/citygenerator/generator.cpp
     src/cityrenderer/rendercity.cpp
     src/cityrenderer/rendersky.cpp
+    src/cityrenderer/rendershadow.cpp
 
     src/mainwindow.h
     src/realtime.h
@@ -91,6 +92,8 @@ qt6_add_resources(${PROJECT_NAME} "Resources"
         resources/shaders/texture.vert
         resources/shaders/sky.frag
         resources/shaders/sky.vert
+        resources/shaders/depth.vert
+        resources/shaders/depth.frag
 )
 
 # GLEW: this provides support for Windows (including 64-bit)

@@ -38,9 +38,10 @@ void CopiedCity::GenerateCity() {
                                        .penumbra = 0.f, .angle = 0.f, .width =0, .height = 0};
 
     SceneLightData directionalLightR = {.id = 0, .type = LightType::LIGHT_DIRECTIONAL, .color = SceneColor(1.f,1.f,1.f,1.f),
-                                       .function = glm::vec3(1.f,0.f,0.f), .pos = glm::vec4(3.f,3.f,3.f,1.f),
+                                       .function = glm::vec3(1.f,0.f,0.f), .pos = glm::vec4(10.f,10.f,10.f,1.f),
                                         .dir = glm::normalize(glm::vec4(0.7f,-1.f, 0.5f, 0.f)),
                                        .penumbra = 0.f, .angle = 0.f, .width =0, .height = 0};
+
     CopiedCity::city.lights.emplace_back(directionalLightL);
     CopiedCity::city.lights.emplace_back(directionalLightR);
 }

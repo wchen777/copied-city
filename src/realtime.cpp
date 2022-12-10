@@ -59,7 +59,7 @@ void CopiedCity::finish() {
     }
 
     // destroy FBO
-    CopiedCity::DestroyFBO();
+//    CopiedCity::DestroyFBO();
 
     this->doneCurrent();
 }
@@ -99,16 +99,18 @@ void CopiedCity::initializeGL() {
     CopiedCity::shaderRender = ShaderLoader::createShaderProgram(":/resources/shaders/default.vert", ":/resources/shaders/default.frag");
     CopiedCity::shaderTexture = ShaderLoader::createShaderProgram(":/resources/shaders/texture.vert", ":/resources/shaders/texture.frag");
     CopiedCity::shaderSky = ShaderLoader::createShaderProgram(":/resources/shaders/sky.vert", ":/resources/shaders/sky.frag");
+    CopiedCity::shaderDepth = ShaderLoader::createShaderProgram(":/resources/shaders/depth.vert", ":/resources/shaders/depth.frag");
 
     // initialize the default FBO
     // CopiedCity::defaultFBO = 0;
-    CopiedCity::defaultFBO = 2; // UNCOMMENT TO CHANGE DEFAULT FBO VALUE
+    CopiedCity::depthMapFBO = 0;
+//    CopiedCity::defaultFBO = 2; // UNCOMMENT TO CHANGE DEFAULT FBO VALUE
 
     // setup the texture shader for post-processing effects
     CopiedCity::SetupTextureShader();
 
     // create FBO
-//    CopiedCity::MakeFBO();
+
 
     // setup city
 
@@ -126,6 +128,7 @@ void CopiedCity::initializeGL() {
     // initialize sky stuff
     CopiedCity::InitializeSkyShader();
     CopiedCity::InitializeSkyBox();
+    CopiedCity::InitializeShadow();
 
 }
 
@@ -149,15 +152,25 @@ void CopiedCity::paintGL() {
 
     // set the current draw buffer to be render buffer
 //    CopiedCity::SetRenderFBO();
+//    glUseProgram(CopiedCity::shaderDepth);
 
+//    glUseProgram(0);
+        CopiedCity::renderDepthFBO();
+    glViewport(0, 0, CopiedCity::screenWidth, CopiedCity::screenHeight);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
     // Bind the render shader
     glUseProgram(CopiedCity::shaderRender);
+
 
     // initialize uniforms, not per object
     CopiedCity::InitializeCameraUniforms();
     CopiedCity::InitializeLightUniforms();
 
     // initilialize uniforms per object, draw object
+//     Shadow Map Texture
+    glActiveTexture(GL_TEXTURE1); // maybe use 0
+    glBindTexture(GL_TEXTURE_2D, depthMap);
     CopiedCity::DrawBuffers();
     glUseProgram(0);
 
@@ -171,6 +184,8 @@ void CopiedCity::paintGL() {
 
 //    // draw the texture buffer (objects or ray tracer image) with post-processing effects, set uniforms as necessary
 //    CopiedCity::DrawTextureFBO();
+
+
 
     // Unbind the texture shader
 //    glUseProgram(0);
@@ -198,11 +213,11 @@ void CopiedCity::resizeGL(int w, int h) {
         CopiedCity::sceneCamera->updateAspectRatio(aspectRatio);
     }
 
-    // destroy old FBO
-    CopiedCity::DestroyFBO();
+//    // destroy old FBO
+//    CopiedCity::DestroyFBO();
 
-    // make new FBO
-    CopiedCity::MakeFBO();
+//    // make new FBO
+//    CopiedCity::MakeFBO();
 
 }
 
