@@ -5,24 +5,27 @@
 
 // constants
 
-#define PROGENITOR_HEIGHT 50.f
-#define PROGENITOR_LENGTH 100.f
-#define PROGENITOR_WIDTH 35.f
+#define PROGENITOR_HEIGHT 80.f
+#define PROGENITOR_LENGTH 250.f
+#define PROGENITOR_WIDTH 20.f
 
 // MIN Z SIZE
 #define MIN_Z 5.f
-
 // MIN X SIZE
 #define MIN_X 5.f
-
 // MIN HEIGHT
 #define MIN_HEIGHT 3.f
 
 // MIN/MAX X TRANSLATE, should be small, for perturbations
+#define MIN_X_TRANS -1.5f
+#define MAX_X_TRANS 1.5f
+// MIN/MAX X SCALE
+#define MIN_X_SCALE 1.05f
+#define MAX_X_SCALE 0.95f
 
-// MIN/MAX X SCALE, should also be small
-
-// HEIGHT VARIANCE RANGE (between 0.3 and 1.0)
+// HEIGHT VARIANCE RANGE
+#define MIN_HEIGHT_SCALE 0.3
+#define MAX_HEIGHT_SCALE 0.9
 
 struct Block {
 
@@ -41,40 +44,37 @@ struct Block {
     float xTranslate;
     float xScale;
 
-    void BlockToMeshObject(CityMeshObject* meshToInit, float xOffset, float zOffset);
-    glm::vec3 GetCenter();
+    // TODO: account for back facade by adding a rotate parameter
+
+    // fill a mesh object given a block.
+    void BlockToMeshObject(CityMeshObject* meshToInit, float xOffset, float zOffset) {
+        // get center of the block
+        glm::vec3 centerXYZ = Block::GetCenter();
+
+        int randDiffuse = arc4random() % 3;
+        int randSpec = arc4random() % 2;
+
+        ObjSceneData blockData = ObjSceneData{
+                // translate using the center of the block, and the starting xOffset
+                .translation = glm::vec3(centerXYZ[0] + xOffset + xTranslate, -4.f + height/2.f, centerXYZ[2] + zOffset - 200.f),
+                // scale based off the size of the block, or its z and x length, and height
+                // MAY NEED TO MODIFY THIS
+                .scale = glm::vec3((Block::xEnd - Block::xStart)*xScale, height, Block::zEnd - Block::zStart),
+                // randomly choose shades of color
+                .diffuse = randDiffuse == 0 ? DIFFUSE_WHITE_1 : randDiffuse == 1 ? DIFFUSE_WHITE_2 : DIFFUSE_WHITE_3,
+                .specular = randSpec == 0 ? SPECULAR_WHITE_1 : SPECULAR_WHITE_2,
+                .ambient = AMBIENT_WHITE_1,
+                .shininess = 0.f
+        };
+
+        // fill the mesh's properties
+        InitializeSpaceConversions(meshToInit, &blockData);
+        InitializeMaterial(meshToInit, &blockData);
+    }
+
+    glm::vec3 GetCenter() {
+        return glm::vec3(xStart + (xEnd - xStart), height / 2.f, zStart + (zEnd - zStart));
+    }
 };
-
-// get the center of the start
-glm::vec3 Block::GetCenter() {
-    return glm::vec3(xStart + (xEnd - xStart), height / 2.f, zStart + (zEnd - zStart));
-}
-
-// fill a mesh object given a block.
-void Block::BlockToMeshObject(CityMeshObject* meshToInit, float xOffset, float zOffset) {
-    // get center of the block
-    glm::vec3 centerXYZ = Block::GetCenter();
-
-    int randDiffuse = arc4random() % 3;
-    int randSpec = arc4random() % 2;
-
-    ObjSceneData blockData = ObjSceneData{
-            // translate using the center of the block, and the starting xOffset
-            .translation = glm::vec3(centerXYZ[0] + xOffset, -4.f, centerXYZ[2] + zOffset),
-            // scale based off the size of the block, or its z and x length, and height
-            // MAY NEED TO MODIFY THIS
-            .scale = glm::vec3(Block::xEnd - Block::xStart, height, Block::zEnd - Block::zStart),
-            // randomly choose shades of color
-            .diffuse = randDiffuse == 0 ? DIFFUSE_WHITE_1 : randDiffuse == 1 ? DIFFUSE_WHITE_2 : DIFFUSE_WHITE_3,
-            .specular = randSpec == 0 ? SPECULAR_WHITE_1 : SPECULAR_WHITE_2,
-            .ambient = AMBIENT_WHITE_1,
-            .shininess = 0.f
-    };
-
-    // fill the mesh's properties
-    InitializeSpaceConversions(meshToInit, &blockData);
-    InitializeMaterial(meshToInit, &blockData);
-}
-
 
 // IDEA, either y perturbations or, create a block on the top part of the screen

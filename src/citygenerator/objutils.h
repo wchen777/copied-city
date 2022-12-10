@@ -1,12 +1,12 @@
 #pragma once
+
 #include "staticposdata.h"
-#include "trimeshes/trimesh.h"
 #include "utils/scenedata.h"
 #include <glm/gtx/transform.hpp>
 
 struct CityMeshObject {
     // vertex/trimesh data
-    TrimeshData* trimesh; // UNUSED RIGHT NOW
+//    TrimeshData* trimesh; // UNUSED RIGHT NOW
 
     SceneMaterial material;
 
@@ -19,7 +19,7 @@ struct CityMeshObject {
     GLuint vao;
 };
 
-void InitializeSpaceConversions(CityMeshObject *obj, ObjSceneData *sceneData) {
+inline void InitializeSpaceConversions(CityMeshObject *obj, ObjSceneData *sceneData) {
 
     glm::mat4 T = glm::translate(sceneData->translation);
     glm::mat4 S = glm::scale(sceneData->scale);
@@ -30,7 +30,7 @@ void InitializeSpaceConversions(CityMeshObject *obj, ObjSceneData *sceneData) {
 }
 
 
-void InitializeMaterial(CityMeshObject *obj, ObjSceneData *sceneData) {
+inline void InitializeMaterial(CityMeshObject *obj, ObjSceneData *sceneData) {
 
    // TODO: more here
    obj->material.cDiffuse = glm::vec4(sceneData->diffuse, 0.f);

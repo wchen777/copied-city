@@ -8,7 +8,6 @@
 #include "settings.h"
 #include "../trimeshes/cube.h"
 #include "block.h"
-#include "objutils.h"
 
 enum FacadeType {
     LEFT,
@@ -34,7 +33,7 @@ struct CityFacade {
     void PerturbationPhase(); // perturb along x-axis
     void DecorationPhase(); // EXTRA: create cube protrusions from top of structures
 
-    void VaryHeight(); // go through each block and modify the height within a certain range
+    void VaryHeight(std::vector<Block>& blocks); // go through each block in the given list and modify the height within a certain range
 
     void ConvertShapeGrammar(FacadeType facadeType); // fill mesh data from shape grammar. must pass in whether or not the facade is left or right
 };

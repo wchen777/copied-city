@@ -1,11 +1,9 @@
 #include "generator.h"
 #include "../realtime.h"
-#include "objutils.h"
-#include "staticposdata.h"
 
 // TODO: CHANGE THESE
-#define CITY_KA 0.3f
-#define CITY_KD 0.7f
+#define CITY_KA 0.6f
+#define CITY_KD 0.6f
 #define CITY_KS 0.5f
 
 void CopiedCity::GenerateCity() {
@@ -54,52 +52,87 @@ void CopiedCityData::GeneratePlane() {
 
 void CopiedCityData::GenerateFacades() {
 
-    // TODO: call city facade's functions to generate/populate the necessary mesh objects
+//    // TODO: call city facade's functions to generate/populate the necessary mesh objects
 
-    auto leftF = CityMeshObject{};
+//    auto leftF = CityMeshObject{};
 
-    // initialize CTM and inv transpose CTM
-    InitializeSpaceConversions(&leftF, &LEFTFACADEPLACE);
+//    // initialize CTM and inv transpose CTM
+//    InitializeSpaceConversions(&leftF, &LEFTFACADEPLACE);
 
-    // initialize material
-    InitializeMaterial(&leftF, &LEFTFACADEPLACE);
+//    // initialize material
+//    InitializeMaterial(&leftF, &LEFTFACADEPLACE);
 
-    auto rightF = CityMeshObject{};
+//    auto rightF = CityMeshObject{};
 
-    // initialize CTM and inv transpose CTM
-    InitializeSpaceConversions(&rightF, &RIGHTFACADEPLACE);
+//    // initialize CTM and inv transpose CTM
+//    InitializeSpaceConversions(&rightF, &RIGHTFACADEPLACE);
 
-    // initialize material
-    InitializeMaterial(&rightF, &RIGHTFACADEPLACE);
+//    // initialize material
+//    InitializeMaterial(&rightF, &RIGHTFACADEPLACE);
 
     auto backF = CityMeshObject{};
 
     // initialize CTM and inv transpose CTM
-    InitializeSpaceConversions(&backF, &BACKFACADEPLACE);
+    InitializeSpaceConversions(&backF, &BACKFACADE);
 
     // initialize material
-    InitializeMaterial(&backF, &BACKFACADEPLACE);
+    InitializeMaterial(&backF, &BACKFACADE);
+
+    // add to back
+    CopiedCityData::backFacade.data.emplace_back(backF);
 
 
-    CopiedCityData::leftFacade.data.emplace_back(leftF);
-    CopiedCityData::rightFacade.data.emplace_back(rightF);
-    CopiedCityData::leftFacade.data.emplace_back(backF);
+//    CopiedCityData::leftFacade.data.emplace_back(leftF);
+//    CopiedCityData::rightFacade.data.emplace_back(rightF);
+//    CopiedCityData::leftFacade.data.emplace_back(backF);
+
+    CopiedCityData::leftFacade.InitShapeGrammar();
+    CopiedCityData::leftFacade.SubdividePhaseZAxis();
+//    CopiedCityData::leftFacade.PerturbationPhase();
+    CopiedCityData::leftFacade.SubdividePhaseXAxis();
+    CopiedCityData::leftFacade.ConvertShapeGrammar(LEFT);
+
+    CopiedCityData::rightFacade.InitShapeGrammar();
+    CopiedCityData::rightFacade.SubdividePhaseZAxis();
+//    CopiedCityData::rightFacade.PerturbationPhase();
+    CopiedCityData::rightFacade.SubdividePhaseXAxis();
+    CopiedCityData::rightFacade.ConvertShapeGrammar(RIGHT);
+
+
+//    CopiedCityData::backFacade.InitShapeGrammar();
+//    CopiedCityData::backFacade.SubdividePhaseZAxis();
+////    CopiedCityData::backFacade.PerturbationPhase();
+//    CopiedCityData::backFacade.SubdividePhaseXAxis();
+//    CopiedCityData::backFacade.ConvertShapeGrammar(BACK);
 }
 
 
 void CopiedCityData::GenerateLights() {
     // add lights
-    SceneLightData directionalLightL = {.id = 0, .type = LightType::LIGHT_DIRECTIONAL, .color = SceneColor(1.f,1.f,1.f,1.f),
-                                       .function = glm::vec3(1.f,0.f,0.f), .pos = glm::vec4(3.f,3.f,3.f,1.f),
+    SceneLightData directionalLightR = {.id = 0, .type = LightType::LIGHT_DIRECTIONAL, .color = SceneColor(0.5f,0.5f,0.5f,1.f),
+                                       .function = glm::vec3(1.f,0.f,0.f), .pos = glm::vec4(15.f,20.f,-150.f,1.f),
                                         .dir = glm::normalize(glm::vec4(-0.7f,-1.f, 0.5f, 0.f)),
                                        .penumbra = 0.f, .angle = 0.f, .width =0, .height = 0};
 
-    SceneLightData directionalLightR = {.id = 0, .type = LightType::LIGHT_DIRECTIONAL, .color = SceneColor(1.f,1.f,1.f,1.f),
-                                       .function = glm::vec3(1.f,0.f,0.f), .pos = glm::vec4(3.f,3.f,3.f,1.f),
+    SceneLightData directionalLightL = {.id = 0, .type = LightType::LIGHT_DIRECTIONAL, .color = SceneColor(0.6f,0.6f,0.6f,1.f),
+                                       .function = glm::vec3(1.f,0.f,0.f), .pos = glm::vec4(15.f,20.f,-150.f,1.f),
                                         .dir = glm::normalize(glm::vec4(0.7f,-1.f, 0.5f, 0.f)),
                                        .penumbra = 0.f, .angle = 0.f, .width =0, .height = 0};
-    CopiedCityData::lights.emplace_back(directionalLightL);
+//    CopiedCityData::lights.emplace_back(directionalLightL);
     CopiedCityData::lights.emplace_back(directionalLightR);
+
+    // far
+    SceneLightData directionalLightFarR = {.id = 0, .type = LightType::LIGHT_DIRECTIONAL, .color = SceneColor(0.5f,0.5f,0.5f,1.f),
+                                       .function = glm::vec3(1.f,0.f,0.f), .pos = glm::vec4(15.f,20.f,0.f,1.f),
+                                        .dir = glm::normalize(glm::vec4(-0.7f,-1.f, 0.5f, 0.f)),
+                                       .penumbra = 0.f, .angle = 0.f, .width =0, .height = 0};
+
+    SceneLightData directionalLightFarL = {.id = 0, .type = LightType::LIGHT_DIRECTIONAL, .color = SceneColor(0.6f,0.6f,0.6f,1.f),
+                                       .function = glm::vec3(1.f,0.f,0.f), .pos = glm::vec4(15.f,20.f,0.f,1.f),
+                                        .dir = glm::normalize(glm::vec4(0.7f,-1.f, 0.5f, 0.f)),
+                                       .penumbra = 0.f, .angle = 0.f, .width =0, .height = 0};
+//    CopiedCityData::lights.emplace_back(directionalLightFarL);
+    CopiedCityData::lights.emplace_back(directionalLightFarR);
 }
 
 

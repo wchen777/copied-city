@@ -33,8 +33,8 @@ uniform vec3 cSpecular;
 // fog attentuation
 float getFogFactor(float d)
 {
-    const float FogMax = 100.0;
-    const float FogMin = 5.0;
+    const float FogMax = 250.0;
+    const float FogMin = 20.0;
 
     if (d>=FogMax) return 1;
     if (d<=FogMin) return 0;

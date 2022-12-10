@@ -8,7 +8,7 @@
 #include "settings.h"
 #include "utils/shaderloader.h"
 
-#define UNITS_PER_SECOND 5.f
+#define UNITS_PER_SECOND 10.f
 
 // ================== Project 5: Lights, Camera
 
