@@ -58,7 +58,7 @@ static ObjSceneData PLANE = {.translation = glm::vec3(0.f, -10.f, -120.f),
 
 
 static ObjSceneData BACKFACADE = {.translation = glm::vec3(0.f, -4.f, -200.f),
-                                   .scale = glm::vec3(1000.f, 120.f, 10.f),
+                                   .scale = glm::vec3(1000.f, 100.f, 10.f),
                                    .diffuse = glm::vec3(0.6f, 0.6f, 0.6f),
                                    .specular = SPECULAR_WHITE_2,
                                    .ambient = glm::vec3(0.6f, 0.6f, 0.6f),
