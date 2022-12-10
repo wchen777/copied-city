@@ -158,5 +158,5 @@ void main() {
     output_color = mix(output_color, fog_color, alphaFog);
 
     // dim to stymie lighting effects
-    output_color *= 0.9f;
+    output_color *= 0.8f;
 }

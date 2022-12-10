@@ -64,12 +64,12 @@ void CityPlane::GenerateGroundGrowths() {
 
     for (auto& zLoc : RIGHT_INTERVALS) {
         float xPerturb = ((arc4random() % 11) - 7) * 0.2f;
-        GenerateCubeGrowth(CityPlane::planeProtrusions, 25.f + xPerturb, zLoc, RIGHT);
+        GenerateCubeGrowth(CityPlane::planeProtrusions, 28.f + xPerturb, zLoc, RIGHT);
 
         // 1/2 of generating another
         if ((arc4random() % 2) == 0) {
             float zPerturb = ((arc4random() % 11) - 5) * 0.8f;
-            GenerateCubeGrowth(CityPlane::planeProtrusions, 25.f + -abs(xPerturb*2), zLoc + zPerturb, RIGHT);
+            GenerateCubeGrowth(CityPlane::planeProtrusions, 28.f + -abs(xPerturb*2), zLoc + zPerturb, RIGHT);
         }
     }
 

@@ -89,6 +89,7 @@ qt6_add_resources(${PROJECT_NAME} "Resources"
     FILES
         resources/textures/sky.png
         resources/textures/wall.png
+        resources/textures/block1.png
 
         resources/shaders/default.frag
         resources/shaders/default.vert
