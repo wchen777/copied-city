@@ -55,7 +55,7 @@ void CopiedCity::renderDepthFBO(){
 //    lightProjection = glm::ortho(-100.0f, 100.0f, -100.0f, 100.0f,  400.0f, 0.01f);
     lightProjection = glm::perspective(50.f, CopiedCity::sceneCamera->aspectRatio, 0.1f, 400.f);
 //    lightView = glm::lookAt(glm::vec3(-0.7f,-1.f, 0.5f), lightPos, CopiedCity::sceneCamera->up); // this is wrong for now
-    lightView = glm::lookAt(glm::vec3(50.f,25.f,0.f), glm::vec3(50.f,25.f,0.f) + glm::vec3(-0.5f,-1.f, 0.5f), CopiedCity::sceneCamera->up); // this is wrong for now
+    lightView = glm::lookAt(glm::vec3(50.f,25.f,0.f), glm::vec3(50.f,25.f,0.f) + glm::vec3(-0.65f,-1.f, 0.5f), CopiedCity::sceneCamera->up); // this is wrong for now
 
     CopiedCity:lightSpaceMatrix = lightProjection * lightView;
 
