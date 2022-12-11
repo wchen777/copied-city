@@ -20,7 +20,6 @@ uniform float light_penumbras[8]; // only for spot
 
 uniform sampler2D shadowMap;
 
-
 // for ambient lighting
 uniform float k_a;
 uniform vec3 cAmbient;
@@ -35,13 +34,25 @@ uniform float k_s;
 uniform vec3 cam_pos;
 uniform vec3 cSpecular;
 
+// for depth testing
+float near = 0.1;
+float far  = 400.0;
+
+float LinearizeDepth(float depth)
+{
+    float z = depth * 2.0 - 1.0; // back to NDC
+    return (2.0 * near * far) / (far + near - z * (far - near));
+}
+
+
+
 // for block texture
 uniform sampler2D block_texture;
 
 // fog attentuation
 float getFogFactor(float d)
 {
-    const float FogMax = 250.0;
+    const float FogMax = 300.0;
     const float FogMin = 20.0;
 
     if (d>=FogMax) return 1;
@@ -65,7 +76,7 @@ vec3 Ambient() {
 vec3 Diffuse(float NdotL) {
     vec3 diffColor = k_d * NdotL * cDiffuse;
     vec3 texColor = vec3(NdotL * texture(block_texture, uv_coord));
-    return diffColor + (0.7 * (texColor - diffColor));
+    return diffColor + (0.8 * (texColor - diffColor));
 }
 
 // specular
@@ -79,16 +90,22 @@ vec3 Specular(float RdotV) {
 
 float ShadowCalculation(vec4 fragPosLightSpace)
 {
-    // perform perspective divide
+//    // perform perspective divide
     vec3 projCoords = fragPosLightSpace.xyz / fragPosLightSpace.w;
+
     // transform to [0,1] range
     projCoords = projCoords * 0.5 + 0.5;
+
     // get closest depth value from light's perspective (using [0,1] range fragPosLight as coords)
     float closestDepth = texture(shadowMap, projCoords.xy).r;
+
     // get depth of current fragment from light's perspective
-    float currentDepth = projCoords.z;
+    float currentDepth = LinearizeDepth(fragPosLightSpace.z) / far;
+
     // check whether current frag pos is in shadow
     float shadow = currentDepth > closestDepth  ? 1.0 : 0.0;
+
+//    output_color = vec4(closestDepth, closestDepth, closestDepth, 0.f);
 
     return shadow;
 }
@@ -158,14 +175,18 @@ void Phong(){
         illumAcc *= Fatt * falloff * light_colors[i];
 
 //        vec4 FragPosLightSpace = lightSpaceMatrix * vec4(vs_out.FragPos, 1.0);
-//        float shadow = ShadowCalculation(fragPosLightSpace);
-//        output_color[0] += (1-shadow)*illumAcc[0];
-//        output_color[1] += (1-shadow)*illumAcc[1];
-//        output_color[2] += (1-shadow)*illumAcc[2];
+        float shadow = ShadowCalculation(fragPosLightSpace);
 
-        output_color[0] += illumAcc[0];
-        output_color[1] += illumAcc[1];
-        output_color[2] += illumAcc[2];
+        float shadowFrac = max(1-shadow, 0.4f);
+
+        output_color[0] += shadowFrac*illumAcc[0];
+        output_color[1] += shadowFrac*illumAcc[1];
+        output_color[2] += shadowFrac*illumAcc[2];
+
+
+//        output_color[0] += illumAcc[0];
+//        output_color[1] += illumAcc[1];
+//        output_color[2] += illumAcc[2];
     }
 
     output_color[3] = 1.f;
@@ -185,5 +206,5 @@ void main() {
     output_color = mix(output_color, fog_color, alphaFog);
 
     // dim to stymie lighting effects
-    output_color *= 0.8f;
+    output_color *= 0.83f;
 }

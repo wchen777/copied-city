@@ -5,7 +5,7 @@
 
 // constants
 
-#define PROGENITOR_HEIGHT 80.f
+#define PROGENITOR_HEIGHT 100.f
 #define PROGENITOR_LENGTH 250.f
 #define PROGENITOR_WIDTH 20.f
 

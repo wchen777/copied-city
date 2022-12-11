@@ -8,7 +8,7 @@
 #include "settings.h"
 #include "utils/shaderloader.h"
 
-#define UNITS_PER_SECOND 10.f
+#define UNITS_PER_SECOND 20.f
 
 // ================== Project 5: Lights, Camera
 
@@ -40,6 +40,8 @@ void CopiedCity::finish() {
     // delete shaders
     glDeleteProgram(CopiedCity::shaderTexture);
     glDeleteProgram(CopiedCity::shaderRender);
+    glDeleteProgram(CopiedCity::shaderSky);
+    glDeleteProgram(CopiedCity::shaderDepth);
 
     // delete fullscreen vao/vbo data
     glDeleteVertexArrays(1, &fullscreen_vao);
@@ -53,10 +55,18 @@ void CopiedCity::finish() {
     // destroy all buffers
     CopiedCity::DestroyBuffers(true);
 
-    // delete the camera is the scene is initialized
-    if (CopiedCity::isInitialized) {
-        delete CopiedCity::sceneCamera;
+    // delete the camera
+    delete CopiedCity::sceneCamera;
+
+    // delete cube vbo
+    glDeleteBuffers(1, &(CopiedCity::cubeVBO));
+
+    // delete city data
+    for (auto & obj : CopiedCity::city.cityData) {
+        glDeleteVertexArrays(1, &obj->vao);
     }
+
+    // TODO: delete everything else here
 
     // destroy FBO
 //    CopiedCity::DestroyFBO();
@@ -118,8 +128,8 @@ void CopiedCity::initializeGL() {
     CopiedCity::currentParam1 = 25;
     CopiedCity::currentParam2 = 25;
 
-    SceneCameraData camData = {.pos=glm::vec4(0,5.f,24.f,1), .look=glm::vec4(0,0,-1,0), .up=glm::vec4(0,1,0,0), .heightAngle=0.863938, .aperture=0.008, .focalLength=3};
-    Camera* cam = new Camera(camData, size().height(), size().width(), 500.0, 0.01);
+    SceneCameraData camData = {.pos=glm::vec4(0,5.f, 30.f,1), .look=glm::vec4(0,0,-1,0), .up=glm::vec4(0,1,0,0), .heightAngle=0.863938, .aperture=0.008, .focalLength=3};
+    Camera* cam = new Camera(camData, size().height(), size().width(), 400.0, 0.1f);
     CopiedCity::sceneCamera = cam;
 
     CopiedCity::GenerateCity(); // generate the city
@@ -158,13 +168,21 @@ void CopiedCity::paintGL() {
 //    glUseProgram(CopiedCity::shaderDepth);
 
 //    glUseProgram(0);
+
+    std::cout << "look" << std::endl;
+    std::cout << sceneCamera->look[0] << ", " << sceneCamera->look[1] << ", " << sceneCamera->look[2] << std::endl;
+
+    std::cout << "pos" << std::endl;
+    std::cout << sceneCamera->pos[0] << ", " << sceneCamera->pos[1] << ", " << sceneCamera->pos[2] << std::endl;
+
     CopiedCity::renderDepthFBO();
+
     glViewport(0, 0, CopiedCity::screenWidth, CopiedCity::screenHeight);
+
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
     // Bind the render shader
     glUseProgram(CopiedCity::shaderRender);
-
 
     // initialize uniforms, not per object
     CopiedCity::InitializeCameraUniforms();
@@ -172,14 +190,13 @@ void CopiedCity::paintGL() {
 
     // initilialize uniforms per object, draw object
 //     Shadow Map Texture
-    glActiveTexture(GL_TEXTURE1); // maybe use 0
-    glBindTexture(GL_TEXTURE_2D, depthMap);
+
     CopiedCity::DrawBuffers();
     glUseProgram(0);
 
     CopiedCity::RenderSkyBox();
 
-    // unbind render shader
+//     unbind render shader
 //    glUseProgram(0);
 
 

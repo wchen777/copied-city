@@ -39,23 +39,37 @@ void CopiedCity::renderDepthFBO(){
 
     glEnable(GL_DEPTH_TEST);
     glUseProgram(CopiedCity::shaderDepth);
-    glm::vec3 lightPos(-1.0f, 5.0f, -5.0f);
+    glm::vec3 lightPos(50.f, 10.f, -150.f);
+
     glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT);
     glm::mat4 lightProjection, lightView;
 
-    float near_plane = 10.0f, far_plane = 100.f;
-    lightProjection = glm::ortho(-35.0f, 35.0f, -35.0f, 35.0f,  500.0f, 0.01f);
-    lightView = glm::lookAt(20.f*glm::vec3(glm::normalize(glm::vec4(-0.7f,-1.f, 0.5f, 0.f))), glm::vec3(0.0f, 0.0f,0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+//    float near_plane = 1.0f, far_plane = 400.f;
 
-    CopiedCity:lightSpaceMatrix = lightProjection *lightView;
+    // look
+    // -0.417944, -0.150892, -0.895852
+    // pos
+    // 61.7784, 39.1123, 35.9149
+
+//    lightProjection = glm::ortho(-100.0f, 100.0f, -100.0f, 100.0f,  400.0f, 0.01f);
+    lightProjection = glm::perspective(50.f, CopiedCity::sceneCamera->aspectRatio, 0.1f, 400.f);
+//    lightView = glm::lookAt(glm::vec3(-0.7f,-1.f, 0.5f), lightPos, CopiedCity::sceneCamera->up); // this is wrong for now
+    lightView = glm::lookAt(glm::vec3(50.f,25.f,0.f), glm::vec3(50.f,25.f,0.f) + glm::vec3(-0.5f,-1.f, 0.5f), CopiedCity::sceneCamera->up); // this is wrong for now
+
+    CopiedCity:lightSpaceMatrix = lightProjection * lightView;
+
+//    CopiedCity:lightSpaceMatrix = CopiedCity::sceneCamera->getProjViewMatrix();
+
     // render scene from light's point of view
 
     GLint lsm = glGetUniformLocation(CopiedCity::shaderDepth, "lightSpaceMatrix");
     glUniformMatrix4fv(lsm, 1, GL_FALSE, &(CopiedCity::lightSpaceMatrix[0][0]));
 
-    glViewport(0, 0, SHADOW_WIDTH, SHADOW_HEIGHT);
+//    glViewport(0, 0, SHADOW_WIDTH, SHADOW_HEIGHT);
+    glViewport(0, 0, CopiedCity::screenWidth, CopiedCity::screenHeight);
     glBindFramebuffer(GL_FRAMEBUFFER, (CopiedCity::depthMapFBO));
+
     glClear(GL_DEPTH_BUFFER_BIT);
 
     for (CityMeshObject* mesh : CopiedCity::city.cityData) {
@@ -65,7 +79,7 @@ void CopiedCity::renderDepthFBO(){
         GLint model_mat_loc = glGetUniformLocation(CopiedCity::shaderDepth, "model");
         glUniformMatrix4fv(model_mat_loc, 1, GL_FALSE, &mesh->modelMatrix[0][0]);
 
-        glDrawArrays(GL_TRIANGLES, 0, CopiedCity::city.cube->m_vertexData.size() / 6);
+        glDrawArrays(GL_TRIANGLES, 0, CopiedCity::city.cube->m_vertexData.size() / 8);
         // Unbind Vertex Array
         glBindVertexArray(0);
 

@@ -1,7 +1,7 @@
 #include "generator.h"
 
 
-#define FIRST_PHASE_SPLITS 16 // for equal splits
+#define FIRST_PHASE_SPLITS 14 // for equal splits
 #define SECOND_PHASE_MAX_SPLITS 2
 
 #define LEFT_FACADE_OFFSET -50.f

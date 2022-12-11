@@ -134,13 +134,13 @@ glm::vec3 Camera::SPressed() {
 
 glm::vec3 Camera::APressed() {
 
-    return -0.4f * glm::cross(Camera::look, Camera::up);
+    return -glm::cross(Camera::look, Camera::up);
 }
 
 glm::vec3 Camera::DPressed() {
 
     // scale based on user sensitivity
-    return 0.4f * glm::cross(Camera::look, Camera::up);
+    return glm::cross(Camera::look, Camera::up);
 }
 
 glm::vec3 Camera::SpacePressed() {

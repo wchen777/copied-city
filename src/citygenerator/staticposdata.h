@@ -7,7 +7,7 @@
 
 // define grayscale/white color constants here
 
-#define AMBIENT_WHITE_1 glm::vec3(0.8f, 0.8f, 0.8f)
+#define AMBIENT_WHITE_1 glm::vec3(0.77f, 0.77f, 0.77f)
 
 #define DIFFUSE_WHITE_1 glm::vec3(0.90f, 0.90f, 0.90f)
 #define DIFFUSE_WHITE_2 glm::vec3(0.92f, 0.925f, 0.91f)

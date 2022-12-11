@@ -277,13 +277,17 @@ void CopiedCity::DestroyBuffers(bool isExit) {
 */
 void CopiedCity::DrawBuffers() {
 
-    // bind the block texture
-    glActiveTexture(GL_TEXTURE1);
+    // bind depth texture
+    glActiveTexture(GL_TEXTURE0);
+    glBindTexture(GL_TEXTURE_2D, depthMap);
+
+//    // bind the block texture
+    glActiveTexture(GL_TEXTURE2);
     glBindTexture(GL_TEXTURE_2D, CopiedCity::blockTexture);
 
     // pass in the texture sampler uniform
     GLint samplerLoc = glGetUniformLocation(CopiedCity::shaderRender, "block_texture");
-    glUniform1i(samplerLoc, 1);
+    glUniform1i(samplerLoc, 2);
 
     // initialize uniforms, draw the object
     for (CityMeshObject* mesh : CopiedCity::city.cityData) {
@@ -317,6 +321,11 @@ void CopiedCity::DrawBuffers() {
 
         // draw command for this object
         glDrawArrays(GL_TRIANGLES, 0, CopiedCity::city.cube->m_vertexData.size() / 8);
+
+        // light space matrix uniform
+        GLint lsm = glGetUniformLocation(CopiedCity::shaderRender, "lightSpaceMatrix");
+        glUniformMatrix4fv(lsm, 1, GL_FALSE, &(CopiedCity::lightSpaceMatrix[0][0]));
+
         // Unbind Vertex Array
         glBindVertexArray(0);
     }
