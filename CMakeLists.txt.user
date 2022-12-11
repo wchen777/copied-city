@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 8.0.1, 2022-12-10T12:35:49. -->
+<!-- Written by QtCreator 8.0.1, 2022-12-10T19:21:08. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -357,6 +357,7 @@
     <value type="bool" key="RunConfiguration.UseLibrarySearchPath">true</value>
     <value type="bool" key="RunConfiguration.UseQmlDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
+    <value type="QString" key="RunConfiguration.WorkingDirectory.default">/Users/wchen/Documents/07 Sem/graphics/build-copied-city-Qt_6_2_4_for_macOS-Release</value>
    </valuemap>
    <value type="qlonglong" key="ProjectExplorer.Target.RunConfigurationCount">1</value>
   </valuemap>

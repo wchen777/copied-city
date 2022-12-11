@@ -158,10 +158,14 @@ void Phong(){
         illumAcc *= Fatt * falloff * light_colors[i];
 
 //        vec4 FragPosLightSpace = lightSpaceMatrix * vec4(vs_out.FragPos, 1.0);
-        float shadow = ShadowCalculation(fragPosLightSpace);
-        output_color[0] += (1-shadow)*illumAcc[0];
-        output_color[1] += (1-shadow)*illumAcc[1];
-        output_color[2] += (1-shadow)*illumAcc[2];
+//        float shadow = ShadowCalculation(fragPosLightSpace);
+//        output_color[0] += (1-shadow)*illumAcc[0];
+//        output_color[1] += (1-shadow)*illumAcc[1];
+//        output_color[2] += (1-shadow)*illumAcc[2];
+
+        output_color[0] += illumAcc[0];
+        output_color[1] += illumAcc[1];
+        output_color[2] += illumAcc[2];
     }
 
     output_color[3] = 1.f;

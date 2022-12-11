@@ -118,7 +118,7 @@ void CopiedCity::initializeGL() {
     CopiedCity::currentParam1 = 25;
     CopiedCity::currentParam2 = 25;
 
-    SceneCameraData camData = {.pos=glm::vec4(0,0,24,1), .look=glm::vec4(0,0,-1,0), .up=glm::vec4(0,1,0,0), .heightAngle=0.863938, .aperture=0.008, .focalLength=3};
+    SceneCameraData camData = {.pos=glm::vec4(0,5.f,24.f,1), .look=glm::vec4(0,0,-1,0), .up=glm::vec4(0,1,0,0), .heightAngle=0.863938, .aperture=0.008, .focalLength=3};
     Camera* cam = new Camera(camData, size().height(), size().width(), 500.0, 0.01);
     CopiedCity::sceneCamera = cam;
 

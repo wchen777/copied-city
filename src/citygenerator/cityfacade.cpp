@@ -223,8 +223,6 @@ void CityFacade::DecorationPhase() {
 // convert shape grammar into mesh objects
 void CityFacade::ConvertShapeGrammar(FacadeType facadeType) {
 
-    std::cout << CityFacade::shapeGrammarData.size() << "size of shape grammar convert" << std::endl;
-
     for (auto& blk : CityFacade::shapeGrammarData) {
 
         // define and fill new mesh obj
