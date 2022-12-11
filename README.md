@@ -1,3 +1,3 @@
-# Copied City Procedural Generation - CS1230/1234
+# Copied City Procedural Generation
 
 ![reference image](references/copiedcity.jpeg)
