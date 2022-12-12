@@ -2,8 +2,9 @@
 
 in vec3 vertex_pos_world; // from the vertex shader
 in vec3 vertex_norm_world; // from the vertex shader
-in vec4 fragPosLightSpace;
+in vec4 fragPosLightSpace; // for shadow mapping
 in vec2 uv_coord; // from vertex shader
+in vec4 screen_pos_vert; // for ambient occlusion sampling
 
 out vec4 output_color; // total illumination output color
 
@@ -18,7 +19,12 @@ uniform vec3 light_functions[8]; // light attenuation
 uniform float light_angles[8]; // light angles
 uniform float light_penumbras[8]; // only for spot
 
+// for block texture
+uniform sampler2D block_texture;
+// for shadow mapping
 uniform sampler2D shadowMap;
+// for ambient occ
+uniform sampler2D ambient_occ;
 
 // for ambient lighting
 uniform float k_a;
@@ -45,10 +51,6 @@ float LinearizeDepth(float depth)
 }
 
 
-
-// for block texture
-uniform sampler2D block_texture;
-
 // fog attentuation
 float getFogFactor(float d)
 {
@@ -67,9 +69,15 @@ float falloffFactor(float angle, float innerA, float outerA) {
     return -2 * pow(t, 3) + 3 * pow(t, 2);
 }
 
-// ambient
-vec3 Ambient() {
-    return k_a * cAmbient;
+
+float SampleAmbientOcclusion() {
+    // perspective divide
+    vec3 projCoordsA = screen_pos_vert.xyz / screen_pos_vert.w;
+    // transform to [0,1] range
+    projCoordsA = projCoordsA * 0.5 + 0.5;
+    // sample map for factor
+    float ambientOccFactor = texture(ambient_occ, projCoordsA.xy).x;
+    return ambientOccFactor;
 }
 
 // lambertian/diffuse
@@ -90,7 +98,7 @@ vec3 Specular(float RdotV) {
 
 float ShadowCalculation(vec4 fragPosLightSpace)
 {
-//    // perform perspective divide
+    // perform perspective divide
     vec3 projCoords = fragPosLightSpace.xyz / fragPosLightSpace.w;
 
     // transform to [0,1] range
@@ -113,9 +121,12 @@ float ShadowCalculation(vec4 fragPosLightSpace)
 void Phong(){
 
     // AMBIENT
-    output_color[0] += k_a * cAmbient[0];
-    output_color[1] += k_a * cAmbient[1];
-    output_color[2] += k_a * cAmbient[2];
+
+    float ambOcc = SampleAmbientOcclusion();
+
+    output_color[0] += k_a * cAmbient[0] * ambOcc;
+    output_color[1] += k_a * cAmbient[1] * ambOcc;
+    output_color[2] += k_a * cAmbient[2] * ambOcc;
 
     vec3 N = normalize(vertex_norm_world);
 
@@ -207,4 +218,7 @@ void main() {
 
     // dim to stymie lighting effects
     output_color *= 0.83f;
+
+//    float fff = SampleAmbientOcclusion();
+//    output_color = vec4(fff, fff, fff, 1.f);
 }

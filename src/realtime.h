@@ -34,10 +34,8 @@ public:
     // necessary for scene and views
     RenderData sceneRenderData;
     Camera* sceneCamera = NULL;
-    GLuint shaderRender;
-    GLuint shaderTexture;
-    GLuint shaderDepth;
 
+    // unused here
     // mesh related fields
     void CompilePrimitiveMeshes();
     void UpdateTesselations();
@@ -55,25 +53,28 @@ public:
     void DrawBuffers();
     void DestroyBuffers(bool isExit);
 
+    // UNUSED
     bool isInitialized = false;
     bool changedScene = false;
-
     // extra credit
     float GetParamMultiple(glm::mat4 ctm);
 
-    // FBO
+    // FBO stuff
     GLuint defaultFBO;
-    GLuint fbo;
-    GLuint fbo_renderbuffer;
-    GLuint fbo_texturebuffer;
-    GLuint m_ray_texture;
 
-    // texture shader stuff
-    GLuint fullscreen_vbo;
-    GLuint fullscreen_vao;
-    void SetupTextureShader();
+    // quads
+    GLuint quadVBO;
+    GLuint quadVAO;
+    void InitializeQuad();
+    void RenderQuad();
 
     // COPIED CITY STUFF
+
+    GLuint shaderRender;
+    GLuint shaderTexture;
+    GLuint shaderDepth;
+    GLuint shaderTest;
+
     GLuint cubeVBO;
     void GenerateCity();
     CopiedCityData city;
@@ -102,28 +103,39 @@ public:
 
     // gBuffer
     GLuint gBuffer;
-    GLuint gPosition, gNormal, gAlbedo;
+    GLuint gPosition, gNormal;
 
+    // depth and SSAO formula
     GLuint ssaoDepth;
     GLuint ssaoFBO, ssaoBlurFBO;
     GLuint ssaoColorBuffer, ssaoColorBufferBlur;
 
+    // shaders
     GLuint shaderSSAO;
     GLuint shaderSSAOBlur;
     GLuint shaderSSAOGBuffer;
 
+    // noise
     std::vector<glm::vec3> ssaoKernel;
     std::vector<glm::vec3> ssaoNoise;
+    GLuint noiseTexture;
 
+    // init functions
     void InitializeGBuffer();
-    void InitializeDepthBuffer();
     void InitializeSSAOBuffer();
-
+    void InitializeSSAOShaders();
     void InitializeSampleAndNoise();
+
+    // noise helpers
     void GenerateSampleKernel(std::uniform_real_distribution<GLfloat>& randomFloats,
                               std::default_random_engine& generator);
     void GenerateNoiseTexture(std::uniform_real_distribution<GLfloat>& randomFloats,
                               std::default_random_engine& generator);
+
+    // rendering functions
+    void RenderGeometryPass(); // g buffer pass
+    void RenderSSAOTexture(); // SSAO texture pass
+    void RenderSSAOBlur(); // SSAO blur pass
 
 public slots:
     void tick(QTimerEvent* event);                      // Called once per tick of m_timer

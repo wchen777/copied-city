@@ -152,7 +152,6 @@ void CopiedCity::InitializeBuffers() {
  * initialize the uniform associated with the lights in the scene that are separate from each individual object
 */
 void CopiedCity::InitializeLightUniforms() {
-//    this->makeCurrent();
 
     // GLOBAL WEIGHTS
 
@@ -175,9 +174,6 @@ void CopiedCity::InitializeLightUniforms() {
                                        .penumbra = 0.f, .angle = 0.f, .width =0, .height = 0};
 
     CopiedCity::city.lights.emplace_back(camLight);
-
-    GLint samplerLoc = glGetUniformLocation(CopiedCity::shaderRender, "shadowMap");
-    glUniform1i(samplerLoc, 0);
 
     GLint lsm = glGetUniformLocation(CopiedCity::shaderRender, "lightSpaceMatrix");
     glUniformMatrix4fv(lsm, 1, GL_FALSE, &(CopiedCity::lightSpaceMatrix[0][0]));
@@ -227,20 +223,12 @@ void CopiedCity::InitializeLightUniforms() {
     // remove camera light
     CopiedCity::city.lights.pop_back();
 
-//    this->doneCurrent();
 }
 
 /*
  * initialize the uniform associated with the camera in the scene that are separate from each individual object
 */
 void CopiedCity::InitializeCameraUniforms() {
-//    this->makeCurrent();
-
-//     pass in VP matrix as a uniform (VP is already calculated in camera)
-//    std::cout << CopiedCity::sceneCamera->getViewProjMatrix()[0][0] << std::endl;
-
-//    GLint PV_mat_loc = glGetUniformLocation(CopiedCity::shaderRender, "PV_matrix");
-//    glUniformMatrix4fv(PV_mat_loc, 1, GL_FALSE, &CopiedCity::sceneCamera->getProjViewMatrix()[0][0]);
 
     GLint P_mat_loc = glGetUniformLocation(CopiedCity::shaderRender, "proj_matrix");
     glUniformMatrix4fv(P_mat_loc, 1, GL_FALSE, &CopiedCity::sceneCamera->getProjMatrix()[0][0]);
@@ -252,7 +240,6 @@ void CopiedCity::InitializeCameraUniforms() {
     GLint cam_pos_loc = glGetUniformLocation(CopiedCity::shaderRender, "cam_pos");
     glUniform3fv(cam_pos_loc, 1, &CopiedCity::sceneCamera->pos[0]);
 
-//    this->doneCurrent();
 }
 
 
@@ -281,13 +268,22 @@ void CopiedCity::DrawBuffers() {
     glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_2D, depthMap);
 
-//    // bind the block texture
-    glActiveTexture(GL_TEXTURE2);
+    // pass in shadow map sampler
+    glUniform1i(glGetUniformLocation(CopiedCity::shaderRender, "shadowMap"), 0);
+
+    // bind the block texture
+    glActiveTexture(GL_TEXTURE1);
     glBindTexture(GL_TEXTURE_2D, CopiedCity::blockTexture);
 
-    // pass in the texture sampler uniform
-    GLint samplerLoc = glGetUniformLocation(CopiedCity::shaderRender, "block_texture");
-    glUniform1i(samplerLoc, 2);
+    // pass in the texture sampler uniform for block
+    glUniform1i(glGetUniformLocation(CopiedCity::shaderRender, "block_texture"), 1);
+
+    // add extra SSAO texture to lighting pass
+    glActiveTexture(GL_TEXTURE2);
+    glBindTexture(GL_TEXTURE_2D, ssaoColorBufferBlur);
+
+    // pass in ambient occlusion map
+    glUniform1i(glGetUniformLocation(CopiedCity::shaderRender, "ambient_occ"), 2);
 
     // initialize uniforms, draw the object
     for (CityMeshObject* mesh : CopiedCity::city.cityData) {

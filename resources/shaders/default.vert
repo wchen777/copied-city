@@ -15,10 +15,11 @@ uniform mat4 lightSpaceMatrix;
 
 out vec3 vertex_pos_world; // vertex world position
 out vec3 vertex_norm_world; // vertex norm world position
-out vec4 fragPosLightSpace;
+out vec4 fragPosLightSpace; // for shadow mapping
 
 out vec2 uv_coord;
 
+out vec4 screen_pos_vert; // for ambient occ sampling
 
 void main() {
 
@@ -32,6 +33,8 @@ void main() {
 //    gl_Position = vec4(vertex_pos_obj, 1.0);
     // set position on screen to be the object space position transformed to clip space
     gl_Position = (proj_matrix * view_matrix * model_matrix) * vec4(vertex_pos_obj, 1.0);
+
+    screen_pos_vert = gl_Position; // for ambient occlusion
 
     // write uv coord to out
     uv_coord = uv;

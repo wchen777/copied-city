@@ -42,6 +42,10 @@ void CopiedCity::finish() {
     glDeleteProgram(CopiedCity::shaderRender);
     glDeleteProgram(CopiedCity::shaderSky);
     glDeleteProgram(CopiedCity::shaderDepth);
+    glDeleteProgram(CopiedCity::shaderSSAO);
+    glDeleteProgram(CopiedCity::shaderSSAOBlur);
+    glDeleteProgram(CopiedCity::shaderSSAOGBuffer);
+
 
     // delete fullscreen vao/vbo data
 //    glDeleteVertexArrays(1, &fullscreen_vao);
@@ -68,14 +72,21 @@ void CopiedCity::finish() {
 
     // TODO: delete everything else here
 
-    glDeleteFramebuffers(1, &(CopiedCity::depthMapFBO));
+    glDeleteFramebuffers(1, &depthMapFBO);
+    glDeleteFramebuffers(1, &ssaoFBO);
+    glDeleteFramebuffers(1,  &ssaoBlurFBO);
+    glDeleteFramebuffers(1,  &shaderSSAOGBuffer);
+
+    glDeleteTextures(1, &ssaoDepth);
+    glDeleteTextures(1, &gPosition);
+    glDeleteTextures(1, &gNormal);
+    glDeleteTextures(1, &ssaoColorBuffer);
+    glDeleteTextures(1, &ssaoColorBufferBlur);
 
     this->doneCurrent();
 }
 
 void CopiedCity::initializeGL() {
-
-//    std::cout << "initialize" << std::endl;
 
     m_devicePixelRatio = this->devicePixelRatio();
     m_timer = startTimer(1000/60);
@@ -102,8 +113,6 @@ void CopiedCity::initializeGL() {
     // Tells OpenGL how big the screen is
     glViewport(0, 0, CopiedCity::screenWidth, CopiedCity::screenHeight);
 
-    // Students: anything requiring OpenGL calls when the program starts should be done here
-
     // initialize the shader
     CopiedCity::shaderRender = ShaderLoader::createShaderProgram(":/resources/shaders/default.vert", ":/resources/shaders/default.frag");
     CopiedCity::shaderTexture = ShaderLoader::createShaderProgram(":/resources/shaders/texture.vert", ":/resources/shaders/texture.frag");
@@ -112,17 +121,12 @@ void CopiedCity::initializeGL() {
     CopiedCity::shaderSSAO = ShaderLoader::createShaderProgram(":/resources/shaders/ssao.vert", ":/resources/shaders/ssao.frag");
     CopiedCity::shaderSSAOBlur = ShaderLoader::createShaderProgram(":/resources/shaders/ssao_blur.vert", ":/resources/shaders/ssao_blur.frag");
     CopiedCity::shaderSSAOGBuffer = ShaderLoader::createShaderProgram(":/resources/shaders/ssao_gbuffer.vert", ":/resources/shaders/ssao_gbuffer.frag");
+    CopiedCity::shaderTest = ShaderLoader::createShaderProgram(":/resources/shaders/texture.vert", ":/resources/shaders/texture.frag");
 
     // initialize the default FBO
     // CopiedCity::defaultFBO = 0;
     CopiedCity::depthMapFBO = 0;
-//    CopiedCity::defaultFBO = 2; // UNCOMMENT TO CHANGE DEFAULT FBO VALUE
-
-    // setup the texture shader for post-processing effects
-    CopiedCity::SetupTextureShader();
-
-    // create FBO
-
+    CopiedCity::defaultFBO = 5; // UNCOMMENT TO CHANGE DEFAULT FBO VALUE
 
     // setup city
 
@@ -130,6 +134,7 @@ void CopiedCity::initializeGL() {
     CopiedCity::currentParam1 = 25;
     CopiedCity::currentParam2 = 25;
 
+    // initialize camera
     SceneCameraData camData = {.pos=glm::vec4(0,5.f, 30.f,1), .look=glm::vec4(0,0,-1,0), .up=glm::vec4(0,1,0,0), .heightAngle=0.863938, .aperture=0.008, .focalLength=3};
     Camera* cam = new Camera(camData, size().height(), size().width(), 400.0, 0.1f);
     CopiedCity::sceneCamera = cam;
@@ -145,31 +150,18 @@ void CopiedCity::initializeGL() {
     // initialize block texture
     CopiedCity::InitializeBlockTexture();
 
+    // initialize quad
+    CopiedCity::InitializeQuad();
+
+    // initialize SSAO stuff
+    CopiedCity::InitializeGBuffer();
+    CopiedCity::InitializeSSAOBuffer();
+    CopiedCity::InitializeSSAOShaders();
+    CopiedCity::InitializeSampleAndNoise();
+
 }
 
 void CopiedCity::paintGL() {
-
-    // Students: anything requiring OpenGL calls every frame should be done here
-
-//    if (!CopiedCity::isInitialized) {
-//        return;
-//    }
-
-//    // if we have freshly loaded in a scene, initailize the buffers only once
-//    if (CopiedCity::changedScene) {
-
-//        // initilize all VBO and VAO data into the mesh objects
-//        CopiedCity::InitializeBuffers();
-//        CopiedCity::changedScene = false;
-//    }
-
-    // otherwise, draw the CopiedCity objects into the render buffer
-
-    // set the current draw buffer to be render buffer
-//    CopiedCity::SetRenderFBO();
-//    glUseProgram(CopiedCity::shaderDepth);
-
-//    glUseProgram(0);
 
     std::cout << "look" << std::endl;
     std::cout << sceneCamera->look[0] << ", " << sceneCamera->look[1] << ", " << sceneCamera->look[2] << std::endl;
@@ -177,13 +169,38 @@ void CopiedCity::paintGL() {
     std::cout << "pos" << std::endl;
     std::cout << sceneCamera->pos[0] << ", " << sceneCamera->pos[1] << ", " << sceneCamera->pos[2] << std::endl;
 
+    // clear out first
+    glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+    // FBO light, for shadow mapping, binds and unbinds light depth FBO
     CopiedCity::RenderLightDepthFBO();
 
+    // set viewport, clear again
     glViewport(0, 0, CopiedCity::screenWidth, CopiedCity::screenHeight);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+
+    // SSAO geometry pass
+    CopiedCity::RenderGeometryPass();
+
+    // SSAO texture pass
+    CopiedCity::RenderSSAOTexture();
+
+    // SSAO blur pass
+    CopiedCity::RenderSSAOBlur();
+
+//    glUseProgram(CopiedCity::shaderTest);
+//    glUniform1i(glGetUniformLocation(CopiedCity::shaderTest, "texture_samp"), 0);
+//    glActiveTexture(GL_TEXTURE0);
+//    glBindTexture(GL_TEXTURE_2D, ssaoColorBufferBlur);
+//    CopiedCity::RenderQuad(); // TESTING
+//    glUseProgram(0);
 
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
-    // Bind the render shader
+    glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+
+    // Bind the render shader for the scene objects
     glUseProgram(CopiedCity::shaderRender);
 
     // initialize uniforms, not per object
@@ -191,26 +208,13 @@ void CopiedCity::paintGL() {
     CopiedCity::InitializeLightUniforms();
 
     // initilialize uniforms per object, draw object
-//     Shadow Map Texture
-
     CopiedCity::DrawBuffers();
+
+    // unbind render shader
     glUseProgram(0);
 
+    // render skybox
     CopiedCity::RenderSkyBox();
-
-//     unbind render shader
-//    glUseProgram(0);
-
-
-
-
-//    // draw the texture buffer (objects or ray tracer image) with post-processing effects, set uniforms as necessary
-//    CopiedCity::DrawTextureFBO();
-
-
-
-    // Unbind the texture shader
-//    glUseProgram(0);
 
 }
 
@@ -235,34 +239,9 @@ void CopiedCity::resizeGL(int w, int h) {
         CopiedCity::sceneCamera->updateAspectRatio(aspectRatio);
     }
 
-//    // destroy old FBO
-//    CopiedCity::DestroyFBO();
-
-//    // make new FBO
-//    CopiedCity::MakeFBO();
-
 }
 
 void CopiedCity::sceneChanged() {
-
-    // destroy old meshes
-    CopiedCity::DestroyMeshes();
-
-    // destroy old buffers
-    CopiedCity::DestroyBuffers(true);
-
-    // delete the camera and old FBOs if the scene is initialized
-    if (CopiedCity::isInitialized) {
-        delete CopiedCity::sceneCamera;
-    }
-
-    // build each primitive into a composite struct that contains the class for the trimesh, etc.
-    // apply it to the CopiedCity class
-//    CopiedCity::CompilePrimitiveMeshes();
-
-    CopiedCity::isInitialized = true;
-    CopiedCity::changedScene = true;
-
     update(); // asks for a PaintGL() call to occur
 }
 
@@ -278,29 +257,6 @@ void CopiedCity::settingsChanged() {
 
         CopiedCity::sceneCamera->updateViewPlanes(settings.farPlane, settings.nearPlane);
     }
-
-    // updates for tesselation params
-    if (settings.shapeParameter1 != CopiedCity::currentParam1 || settings.shapeParameter2 != CopiedCity::currentParam2) {
-
-        // set current params (for on startup)
-        CopiedCity::currentParam1 = settings.shapeParameter1;
-        CopiedCity::currentParam2 = settings.shapeParameter2;
-
-        // update tesselation parameters
-        CopiedCity::UpdateTesselations();
-        // destroy old buffers
-        CopiedCity::DestroyBuffers(false);
-
-        // create new buffers
-        CopiedCity::InitializeBuffers();
-
-    }
-
-    // set the current filters
-    CopiedCity::perPixelFilter = settings.perPixelFilter;
-    CopiedCity::kernelBasedFilter = settings.kernelBasedFilter;
-    CopiedCity::perPixelFilterExtra = settings.perPixelFilterExtra;
-    CopiedCity::kernelBasedFilterExtra = settings.kernelBasedFilterExtra;
 
     update(); // asks for a PaintGL() call to occur
 }

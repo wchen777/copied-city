@@ -23,7 +23,7 @@ void CopiedCity::InitializeShadow() {
     glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_TEXTURE_2D, depthMap, 0);
     glDrawBuffer(GL_NONE);
     glReadBuffer(GL_NONE);
-    glBindFramebuffer(GL_FRAMEBUFFER, 2);
+    glBindFramebuffer(GL_FRAMEBUFFER, CopiedCity::defaultFBO);
 }
 
 
@@ -84,7 +84,8 @@ void CopiedCity::RenderLightDepthFBO(){
         glBindVertexArray(0);
 
     }
-    glBindFramebuffer(GL_FRAMEBUFFER, 2);
+
+    glBindFramebuffer(GL_FRAMEBUFFER, CopiedCity::defaultFBO);
 //    glDepthFunc(GL_LESS);
     glUseProgram(0);
 }
