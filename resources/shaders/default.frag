@@ -52,7 +52,7 @@ uniform sampler2D block_texture;
 // fog attentuation
 float getFogFactor(float d)
 {
-    const float FogMax = 300.0;
+    const float FogMax = 360.0;
     const float FogMin = 20.0;
 
     if (d>=FogMax) return 1;

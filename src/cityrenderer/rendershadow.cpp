@@ -35,7 +35,7 @@ void CopiedCity::SetShadowFBO() {
 
 }
 
-void CopiedCity::renderDepthFBO(){
+void CopiedCity::RenderLightDepthFBO(){
 
     glEnable(GL_DEPTH_TEST);
     glUseProgram(CopiedCity::shaderDepth);
@@ -66,8 +66,8 @@ void CopiedCity::renderDepthFBO(){
     GLint lsm = glGetUniformLocation(CopiedCity::shaderDepth, "lightSpaceMatrix");
     glUniformMatrix4fv(lsm, 1, GL_FALSE, &(CopiedCity::lightSpaceMatrix[0][0]));
 
-//    glViewport(0, 0, SHADOW_WIDTH, SHADOW_HEIGHT);
-    glViewport(0, 0, CopiedCity::screenWidth, CopiedCity::screenHeight);
+    glViewport(0, 0, SHADOW_WIDTH, SHADOW_HEIGHT);
+//    glViewport(0, 0, CopiedCity::screenWidth, CopiedCity::screenHeight);
     glBindFramebuffer(GL_FRAMEBUFFER, (CopiedCity::depthMapFBO));
 
     glClear(GL_DEPTH_BUFFER_BIT);

@@ -44,6 +44,7 @@ add_executable(${PROJECT_NAME}
     src/cityrenderer/rendersky.cpp
     src/cityrenderer/rendershadow.cpp
     src/cityrenderer/blocktexture.cpp
+    src/cityrenderer/renderssao.cpp
 
     src/mainwindow.h
     src/realtime.h
@@ -100,6 +101,13 @@ qt6_add_resources(${PROJECT_NAME} "Resources"
         resources/shaders/sky.vert
         resources/shaders/depth.vert
         resources/shaders/depth.frag
+
+        resources/shaders/ssao.frag
+        resources/shaders/ssao.vert
+        resources/shaders/ssao_gbuffer.vert
+        resources/shaders/ssao_gbuffer.frag
+        resources/shaders/ssao_blur.vert
+        resources/shaders/ssao_blur.frag
 )
 
 # GLEW: this provides support for Windows (including 64-bit)

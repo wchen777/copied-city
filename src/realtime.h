@@ -18,6 +18,8 @@
 #include <QTime>
 #include <QTimer>
 
+#include <random>
+
 class CopiedCity : public QOpenGLWidget
 {
 public:
@@ -70,15 +72,6 @@ public:
     GLuint fullscreen_vbo;
     GLuint fullscreen_vao;
     void SetupTextureShader();
-    bool perPixelFilter = false;
-    bool kernelBasedFilter = false;
-    bool perPixelFilterExtra = false;
-    bool kernelBasedFilterExtra = false;
-
-    void MakeFBO();
-    void DestroyFBO();
-    void SetRenderFBO();
-    void DrawTextureFBO();
 
     // COPIED CITY STUFF
     GLuint cubeVBO;
@@ -96,13 +89,41 @@ public:
     // shadow
     void InitializeShadow();
     void SetShadowFBO();
-    void renderDepthFBO();
+    void RenderLightDepthFBO();
     GLuint depthMapFBO;
     GLuint depthMap;
     glm::mat4 lightSpaceMatrix;
+
     // block texture
     GLuint blockTexture;
     void InitializeBlockTexture();
+
+    // SSAO
+
+    // gBuffer
+    GLuint gBuffer;
+    GLuint gPosition, gNormal, gAlbedo;
+
+    GLuint ssaoDepth;
+    GLuint ssaoFBO, ssaoBlurFBO;
+    GLuint ssaoColorBuffer, ssaoColorBufferBlur;
+
+    GLuint shaderSSAO;
+    GLuint shaderSSAOBlur;
+    GLuint shaderSSAOGBuffer;
+
+    std::vector<glm::vec3> ssaoKernel;
+    std::vector<glm::vec3> ssaoNoise;
+
+    void InitializeGBuffer();
+    void InitializeDepthBuffer();
+    void InitializeSSAOBuffer();
+
+    void InitializeSampleAndNoise();
+    void GenerateSampleKernel(std::uniform_real_distribution<GLfloat>& randomFloats,
+                              std::default_random_engine& generator);
+    void GenerateNoiseTexture(std::uniform_real_distribution<GLfloat>& randomFloats,
+                              std::default_random_engine& generator);
 
 public slots:
     void tick(QTimerEvent* event);                      // Called once per tick of m_timer

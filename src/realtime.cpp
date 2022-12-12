@@ -44,8 +44,8 @@ void CopiedCity::finish() {
     glDeleteProgram(CopiedCity::shaderDepth);
 
     // delete fullscreen vao/vbo data
-    glDeleteVertexArrays(1, &fullscreen_vao);
-    glDeleteBuffers(1, &fullscreen_vbo);
+//    glDeleteVertexArrays(1, &fullscreen_vao);
+//    glDeleteBuffers(1, &fullscreen_vbo);
 
     glDeleteVertexArrays(1, &skyboxVAO);
     glDeleteBuffers(1, &skyboxVBO);
@@ -68,8 +68,7 @@ void CopiedCity::finish() {
 
     // TODO: delete everything else here
 
-    // destroy FBO
-//    CopiedCity::DestroyFBO();
+    glDeleteFramebuffers(1, &(CopiedCity::depthMapFBO));
 
     this->doneCurrent();
 }
@@ -110,6 +109,9 @@ void CopiedCity::initializeGL() {
     CopiedCity::shaderTexture = ShaderLoader::createShaderProgram(":/resources/shaders/texture.vert", ":/resources/shaders/texture.frag");
     CopiedCity::shaderSky = ShaderLoader::createShaderProgram(":/resources/shaders/sky.vert", ":/resources/shaders/sky.frag");
     CopiedCity::shaderDepth = ShaderLoader::createShaderProgram(":/resources/shaders/depth.vert", ":/resources/shaders/depth.frag");
+    CopiedCity::shaderSSAO = ShaderLoader::createShaderProgram(":/resources/shaders/ssao.vert", ":/resources/shaders/ssao.frag");
+    CopiedCity::shaderSSAOBlur = ShaderLoader::createShaderProgram(":/resources/shaders/ssao_blur.vert", ":/resources/shaders/ssao_blur.frag");
+    CopiedCity::shaderSSAOGBuffer = ShaderLoader::createShaderProgram(":/resources/shaders/ssao_gbuffer.vert", ":/resources/shaders/ssao_gbuffer.frag");
 
     // initialize the default FBO
     // CopiedCity::defaultFBO = 0;
@@ -175,7 +177,7 @@ void CopiedCity::paintGL() {
     std::cout << "pos" << std::endl;
     std::cout << sceneCamera->pos[0] << ", " << sceneCamera->pos[1] << ", " << sceneCamera->pos[2] << std::endl;
 
-    CopiedCity::renderDepthFBO();
+    CopiedCity::RenderLightDepthFBO();
 
     glViewport(0, 0, CopiedCity::screenWidth, CopiedCity::screenHeight);
 
