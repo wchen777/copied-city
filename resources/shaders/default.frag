@@ -44,6 +44,9 @@ uniform vec3 cSpecular;
 float near = 0.1;
 float far  = 400.0;
 
+// empirical shadow calues
+float shadowCutoff = 0.23f;
+
 float LinearizeDepth(float depth)
 {
     float z = depth * 2.0 - 1.0; // back to NDC
@@ -116,10 +119,13 @@ float ShadowCalculation(vec4 fragPosLightSpace)
 //    float currentDepth = fragPosLightSpace.z / far;
 //    float currentDepth = LinearizeDepth(projCoords.z) / far;
 
-    // check whether current frag pos is in shadow, hard coded depth lol.
-    float shadow = 0.23f > closestDepth  ? 1.0 : 0.0;
+    // check whether current frag pos is in shadow, hard coded current depth lol.
+    float shadow = shadowCutoff > closestDepth  ? 1.0 : 0.0;
 
 //    output_color = vec4(shadow, shadow, shadow, 0.f);
+
+//    float softShadowCutoff = 0.18f;
+//    shadow *= ((shadowCutoff -  softShadowCutoff) - (closestDepth - softShadowCutoff)) / (shadowCutoff - softShadowCutoff);
 
     return shadow;
 }
@@ -194,7 +200,7 @@ void Phong(){
 //        vec4 FragPosLightSpace = lightSpaceMatrix * vec4(vs_out.FragPos, 1.0);
         float shadow = ShadowCalculation(fragPosLightSpace);
 
-        float shadowFrac = max(1.f-shadow, 0.25);
+        float shadowFrac = max(1.f-shadow, 0.28);
 
         output_color[0] += shadowFrac*illumAcc[0];
         output_color[1] += shadowFrac*illumAcc[1];

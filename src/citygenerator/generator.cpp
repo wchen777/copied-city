@@ -65,15 +65,16 @@ void CopiedCityData::GenerateFacades() {
     // add to back
     CopiedCityData::backFacade.data.emplace_back(backF);
 
-
     CopiedCityData::leftFacade.InitShapeGrammar();
     CopiedCityData::leftFacade.SubdividePhaseZAxis();
+    CopiedCityData::leftFacade.DecorationPhase();
 //    CopiedCityData::leftFacade.PerturbationPhase();
     CopiedCityData::leftFacade.SubdividePhaseXAxis();
     CopiedCityData::leftFacade.ConvertShapeGrammar(LEFT);
 
     CopiedCityData::rightFacade.InitShapeGrammar();
     CopiedCityData::rightFacade.SubdividePhaseZAxis();
+    CopiedCityData::rightFacade.DecorationPhase();
 //    CopiedCityData::rightFacade.PerturbationPhase();
     CopiedCityData::rightFacade.SubdividePhaseXAxis();
     CopiedCityData::rightFacade.ConvertShapeGrammar(RIGHT);

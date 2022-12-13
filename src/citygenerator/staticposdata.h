@@ -32,8 +32,8 @@ struct ObjSceneData {
 //                                   .specular = glm::vec3(0.f),
 //                                   .shininess = 0.f};
 
-static ObjSceneData PLANE = {.translation = glm::vec3(0.f, -8.f, -120.f),
-                                   .scale = glm::vec3(100.f, 10.f, 300.f),
+static ObjSceneData PLANE = {.translation = glm::vec3(0.f, -8.f, -100.f),
+                                   .scale = glm::vec3(115.f, 10.f, 320.f),
                                    .diffuse = glm::vec3(0.5f, 0.5f, 0.5f),
 //                                   .diffuse = DIFFUSE_WHITE_1,
                                    .specular = glm::vec3(0.5f, 0.5f, 0.5f),
@@ -58,7 +58,14 @@ static ObjSceneData PLANE = {.translation = glm::vec3(0.f, -8.f, -120.f),
 
 
 static ObjSceneData BACKFACADE = {.translation = glm::vec3(0.f, -4.f, -200.f),
-                                   .scale = glm::vec3(1000.f, 100.f, 10.f),
+                                   .scale = glm::vec3(400.f, 100.f, 10.f),
+                                   .diffuse = glm::vec3(0.6f, 0.6f, 0.6f),
+                                   .specular = SPECULAR_WHITE_2,
+                                   .ambient = glm::vec3(0.6f, 0.6f, 0.6f),
+                                   .shininess = 0.f};
+
+static ObjSceneData BACKMODEL = {.translation = glm::vec3(0.f, -4.f, -200.f),
+                                   .scale = glm::vec3(400.f, 100.f, 10.f),
                                    .diffuse = glm::vec3(0.6f, 0.6f, 0.6f),
                                    .specular = SPECULAR_WHITE_2,
                                    .ambient = glm::vec3(0.6f, 0.6f, 0.6f),
