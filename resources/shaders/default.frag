@@ -54,7 +54,7 @@ float LinearizeDepth(float depth)
 // fog attentuation
 float getFogFactor(float d)
 {
-    const float FogMax = 360.0;
+    const float FogMax = 350.0;
     const float FogMin = 20.0;
 
     if (d>=FogMax) return 1;
@@ -105,15 +105,21 @@ float ShadowCalculation(vec4 fragPosLightSpace)
     projCoords = projCoords * 0.5 + 0.5;
 
     // get closest depth value from light's perspective (using [0,1] range fragPosLight as coords)
-    float closestDepth = texture(shadowMap, projCoords.xy).r;
+    float closestDepth = texture(shadowMap, projCoords.xy).x;
 
-    // get depth of current fragment from light's perspective
-    float currentDepth = LinearizeDepth(fragPosLightSpace.z) / far;
+    // not in light's vision, throw away shadow
+    if (closestDepth == 0.f) {
+        return 0.f;
+    }
 
-    // check whether current frag pos is in shadow
-    float shadow = currentDepth > closestDepth  ? 1.0 : 0.0;
+//    // get depth of current fragment from light's perspective
+//    float currentDepth = fragPosLightSpace.z / far;
+//    float currentDepth = LinearizeDepth(projCoords.z) / far;
 
-//    output_color = vec4(closestDepth, closestDepth, closestDepth, 0.f);
+    // check whether current frag pos is in shadow, hard coded depth lol.
+    float shadow = 0.23f > closestDepth  ? 1.0 : 0.0;
+
+//    output_color = vec4(shadow, shadow, shadow, 0.f);
 
     return shadow;
 }
@@ -188,7 +194,7 @@ void Phong(){
 //        vec4 FragPosLightSpace = lightSpaceMatrix * vec4(vs_out.FragPos, 1.0);
         float shadow = ShadowCalculation(fragPosLightSpace);
 
-        float shadowFrac = max(1-shadow, 0.4f);
+        float shadowFrac = max(1.f-shadow, 0.25);
 
         output_color[0] += shadowFrac*illumAcc[0];
         output_color[1] += shadowFrac*illumAcc[1];
@@ -216,7 +222,7 @@ void main() {
     // blend fog and color
     output_color = mix(output_color, fog_color, alphaFog);
 
-    // dim to stymie lighting effects
+//    // dim to stymie lighting effects
     output_color *= 0.83f;
 
 //    float fff = SampleAmbientOcclusion();

@@ -52,10 +52,14 @@ void CopiedCity::RenderLightDepthFBO(){
     // pos
     // 61.7784, 39.1123, 35.9149
 
-//    lightProjection = glm::ortho(-100.0f, 100.0f, -100.0f, 100.0f,  400.0f, 0.01f);
-    lightProjection = glm::perspective(50.f, CopiedCity::sceneCamera->aspectRatio, 0.1f, 400.f);
+//    lightProjection = glm::ortho(-static_cast<float>(CopiedCity::sceneCamera->aspectRatio),
+//                                 static_cast<float>(CopiedCity::sceneCamera->aspectRatio),
+//                                 -1.f, 1.f,  400.0f, 0.01f);
+    lightProjection = glm::perspective(45.f, CopiedCity::sceneCamera->aspectRatio, 0.1f, 400.f);
 //    lightView = glm::lookAt(glm::vec3(-0.7f,-1.f, 0.5f), lightPos, CopiedCity::sceneCamera->up); // this is wrong for now
-    lightView = glm::lookAt(glm::vec3(50.f,25.f,0.f), glm::vec3(50.f,25.f,0.f) + glm::vec3(-0.65f,-1.f, 0.5f), CopiedCity::sceneCamera->up); // this is wrong for now
+//    lightView = glm::lookAt(glm::vec3(50.f,25.f,0.f), glm::vec3(50.f,25.f,0.f) + glm::vec3(-0.65f,-1.f, 0.5f), CopiedCity::sceneCamera->up);
+
+    lightView = glm::lookAt(glm::vec3(87.125, 84.0243, -56.1313), glm::vec3(87.125, 84.0243, -56.1313) + glm::vec3(-0.723532, -0.535827, -0.435194), CopiedCity::sceneCamera->up);
 
     CopiedCity:lightSpaceMatrix = lightProjection * lightView;
 

@@ -118,7 +118,7 @@ void CopiedCityData::GenerateLights() {
 
 
     // right side point lights
-    SceneLightData point1 = {.id = 0, .type = LightType::LIGHT_POINT, .color = SceneColor(0.65f,0.65f, 0.65f,1.f),
+    SceneLightData point1 = {.id = 0, .type = LightType::LIGHT_POINT, .color = SceneColor(0.60f,0.60f, 0.60f,1.f),
                                        .function = glm::vec3(0.5f,0.1f,0.0f), .pos = glm::vec4(-3.334f, 27.02f, 3.13f, 1.f),
                                         .dir = glm::vec4(0.f),
                                        .penumbra = 0.f, .angle = 0.f, .width =0, .height = 0};
@@ -128,7 +128,7 @@ void CopiedCityData::GenerateLights() {
                                         .dir = glm::vec4(0.f),
                                        .penumbra = 0.f, .angle = 0.f, .width =0, .height = 0};
 
-    SceneLightData point3 = {.id = 0, .type = LightType::LIGHT_POINT, .color = SceneColor(0.7f,0.7f, 0.7f,1.f),
+    SceneLightData point3 = {.id = 0, .type = LightType::LIGHT_POINT, .color = SceneColor(0.6f,0.6f, 0.6f,1.f),
                                        .function = glm::vec3(0.5f,0.13f,0.0f), .pos = glm::vec4(10.4f, 30.02f, 0.13f, 1.f),
                                         .dir = glm::vec4(0.f),
                                        .penumbra = 0.f, .angle = 0.f, .width =0, .height = 0};
@@ -144,7 +144,7 @@ void CopiedCityData::GenerateLights() {
                                         .dir = glm::vec4(0.f),
                                        .penumbra = 0.f, .angle = 0.f, .width =0, .height = 0};
 
-    SceneLightData point6 = {.id = 0, .type = LightType::LIGHT_POINT, .color = SceneColor(0.6f,0.6f, 0.6f,1.f),
+    SceneLightData point6 = {.id = 0, .type = LightType::LIGHT_POINT, .color = SceneColor(0.55f,0.55f, 0.55f,1.f),
                                        .function = glm::vec3(0.4f,0.11f,0.0f), .pos = glm::vec4(-16.4f, 10.02f, -165.f, 1.f),
                                         .dir = glm::vec4(0.f),
                                        .penumbra = 0.f, .angle = 0.f, .width =0, .height = 0};
