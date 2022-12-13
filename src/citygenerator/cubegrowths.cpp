@@ -1,4 +1,8 @@
 #include "generator.h"
+#include "staticposdata.h"
+
+// PLANE STUFF
+
 
 const static std::vector<float> LEFT_INTERVALS = {0.f, 2.f, -6.f, -8.f, -14.f, -20.f, -27.f, -41.f, -73.f, -81.f,
                                                   -120.f, -146.f, -155.f, -198.f, -202.f, -232.f, -252.f, -260.f};
@@ -8,7 +12,10 @@ const static std::vector<float> RIGHT_INTERVALS = {0.f, 1.f, -4.f, -12.f, -18.f,
                                                   -102.f, -140.f, -166.f, -174.f, -182.f, -218.f, -224.f, -230.f};
 
 
-const static std::vector<float> MIDDLE_Z = {0.f, 2.f, 1.f, 1.f,-2.f, -3.f, -4.f, -4.f, -5.f, -6.f, -7.f,
+const static std::vector<float> MIDDLE_Z = {0.f, 2.f, 1.f, 1.f, 4.f, 5.f, 6.f,
+                                            6.5f, 8.f, 3.f, 4.5f, 3.5, 9.5f, 9.75f, 10.f,
+                                            13.f, 15.75f, 14.f, 18.f, 19.f, 18.f,
+                                            -2.f, -3.f, -4.f, -4.f, -5.f, -6.f, -7.f,
                                             -7.f, -8.f, -8.f, -10.f, -10.f,
                                             -12.f, -12.f, -14.f, -14.f,
                                              -12.f, -12.f, -14.f, -14.f
@@ -42,6 +49,15 @@ const static std::vector<float> MIDDLE_Z = {0.f, 2.f, 1.f, 1.f,-2.f, -3.f, -4.f,
 #define GROUNDSIZE1 0.9f
 #define GROUNDSIZE2 1.5f
 #define GROUNDSIZE3 1.9f
+
+#define SIDESIZE0 8.5f
+#define SIDESIZE1 10.5f
+#define SIDESIZE2 11.5f
+#define SIDESIZE3 12.5f
+#define SIDESIZE4 14.5f
+
+#define MAX_DEPTH 3
+
 
 void GenerateCubeGrowth(std::vector<CityMeshObject>& meshData, float x, float z, FacadeType side) {
     // random initial scale size
@@ -151,3 +167,73 @@ void CityPlane::GenerateGroundGrowths() {
     }
 
 }
+
+
+// FACADE STUFF
+void CityFacade::GenerateSideRecursiveCubeGrowth(float x, float y, float z, FacadeType side, int depth) {
+
+    // check max depth reached
+    if (depth > MAX_DEPTH) {
+        return;
+    }
+
+    // get a random size
+    int randVal = arc4random() % 5;
+
+    float scale = 0.f;
+
+    if (randVal == 0) {
+        scale = SIZE0;
+    } else if (randVal == 1) {
+        scale = SIZE1;
+    } else if (randVal == 2) {
+        scale = SIZE2;
+    } else if (randVal == 3) {
+        scale = SIZE3;
+    } else if (randVal == 4) {
+        scale = SIZE4;
+    }
+
+    // multiply the scale by the depth factor
+    float depthFactor = randRange(0.5f, 0.75f);
+    scale *= std::pow(depthFactor, depth);
+
+    // create new block
+    int randDiffuse = arc4random() % 3;
+    int randSpec = arc4random() % 2;
+
+    int recursiveSide = side == LEFT ? 1.f : -1.f;
+    float xOff = side == LEFT ? LEFT_FACADE_OFFSET+7.5f : RIGHT_FACADE_OFFSET+3.f;
+
+    ObjSceneData blockData = ObjSceneData{
+            .translation = glm::vec3(x + xOff + ((-recursiveSide*scale*1.2f)/2.f), -4.f + y, z - Z_SHIFT),
+            .scale = glm::vec3(scale, scale, scale),
+            // randomly choose shades of color
+            .diffuse = randDiffuse == 0 ? DIFFUSE_WHITE_1 : randDiffuse == 1 ? DIFFUSE_WHITE_2 : DIFFUSE_WHITE_3,
+            .specular = randSpec == 0 ? SPECULAR_WHITE_1 : SPECULAR_WHITE_2,
+            .ambient = AMBIENT_WHITE_1,
+            .shininess = 0.f
+    };
+
+    auto cubeObj = CityMeshObject{};
+
+    // initialize CTM and inv transpose CTM
+    InitializeSpaceConversions(&cubeObj, &blockData);
+    // initialize material
+    InitializeMaterial(&cubeObj, &blockData);
+
+    CityFacade::data.emplace_back(cubeObj); // add object to the data
+
+    if (arc4random()%2 == 0) {
+        // TODO: randomly geenrate these scales for y and z.
+
+        float scaleOff = 5.f * scale/8.f;
+        float newY = randRange(y-scaleOff, y+scaleOff);
+        float newZ = randRange(z-scaleOff, z+scaleOff);
+
+        CityFacade::GenerateSideRecursiveCubeGrowth(x + (recursiveSide * scale/2.f), newY, newZ, side, depth + 1);
+    }
+}
+
+
+

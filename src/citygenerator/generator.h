@@ -34,7 +34,10 @@ struct CityFacade {
     void SubdividePhaseZAxis(); // first subdivision phase
     void SubdividePhaseXAxis(); // second subdivision phase
     void PerturbationPhase(); // perturb along x-axis
-    void DecorationPhase(); // EXTRA: create cube protrusions from top of structures
+    void DecorationPhase(FacadeType facadeType); // EXTRA: create cube protrusions from top of structures
+
+    // generate directly to the mesh data, for cube growths
+    void GenerateSideRecursiveCubeGrowth(float x, float y, float z, FacadeType side, int depth);
 
     void VaryHeight(std::vector<Block>& blocks); // go through each block in the given list and modify the height within a certain range
 

@@ -56,7 +56,7 @@ struct Block {
 
         ObjSceneData blockData = ObjSceneData{
                 // translate using the center of the block, and the starting xOffset
-                .translation = glm::vec3(centerXYZ[0] + xOffset + xTranslate, -4.f + height/2.f, centerXYZ[2] + zOffset - 200.f),
+                .translation = glm::vec3(centerXYZ[0] + xOffset + xTranslate, -4.f + height/2.f, centerXYZ[2] + zOffset - Z_SHIFT),
                 // scale based off the size of the block, or its z and x length, and height
                 // MAY NEED TO MODIFY THIS
                 .scale = glm::vec3((Block::xEnd - Block::xStart)*xScale, height, Block::zEnd - Block::zStart),

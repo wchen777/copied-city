@@ -4,25 +4,9 @@
 #define FIRST_PHASE_SPLITS 14 // for equal splits
 #define SECOND_PHASE_MAX_SPLITS 2
 
-#define LEFT_FACADE_OFFSET -50.f
-#define RIGHT_FACADE_OFFSET 23.f
-#define BACK_FACADE_OFFSET 100.f
-
 #define SPLIT_FRAC_MIN 0.25f
 #define SPLIT_FRAC_MAX 0.75f
 
-
-// get a random float between min and max
-inline float randRange(float min, float max) {
-    // random number between 0.0 and 1.0
-    float fraction = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
-
-    // get difference between min and max
-    float diff = max - min;
-
-    // scale the difference by fraction, add it to min.
-    return min + (fraction * diff);
-}
 
 
 /*
@@ -214,9 +198,41 @@ void CityFacade::PerturbationPhase() {
 }
 
 
-// EXTRA, pin random blocks onto walls of the facade
-void CityFacade::DecorationPhase() {
+// pin random blocks onto walls of the facade. this should be called before we split along the x-axis.
+void CityFacade::DecorationPhase(FacadeType facadeType) {
+    // if the facade type is left, pin the blocks towards the greater x value
+   // if the facade type is right, pin the blocks towards the lesser x value
 
+    for (int i = 0; i < shapeGrammarData.size(); ++i) {
+
+        Block b = shapeGrammarData[i];
+
+        float xSideToPin = facadeType == LEFT ? b.xEnd : b.xStart;
+
+        // roll for number of blocks to generate
+        int roll = arc4random() % 10;
+        int numBlocks = 0;
+        if (roll >= 7) { // 0.1 for 3
+            numBlocks = 3;
+        } else if (roll >= 5) { // 0.3 for 2
+            numBlocks = 2;
+        } else if (roll >= 2) { // 0.3 for 1
+            numBlocks = 1;
+        }
+
+        // generate cube growths
+        for (int j = 0; j < numBlocks; ++j) {
+            // calculate y and z coordinate on the parent to generate the growth block
+
+            // roll for y coord
+            float yCoord = randRange(0.3f * b.height, 0.75 * b.height);
+            // roll for z coord
+            float zCoord = randRange(b.zStart, b.zEnd);
+
+            // generate directly to the meshData
+            CityFacade::GenerateSideRecursiveCubeGrowth(xSideToPin, yCoord, zCoord, facadeType, 0);
+        }
+    }
 }
 
 

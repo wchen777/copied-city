@@ -16,6 +16,12 @@
 #define SPECULAR_WHITE_1 glm::vec3(0.6f, 0.6f, 0.6f)
 #define SPECULAR_WHITE_2 glm::vec3(0.7f, 0.7f, 0.7f)
 
+#define LEFT_FACADE_OFFSET -50.f
+#define RIGHT_FACADE_OFFSET 23.f
+#define BACK_FACADE_OFFSET 100.f
+
+#define Z_SHIFT 200.f
+
 struct ObjSceneData {
     glm::vec3 translation;
     glm::vec3 scale;
@@ -24,6 +30,19 @@ struct ObjSceneData {
     glm::vec3 ambient;
     float shininess;
 };
+
+
+// get a random float between min and max
+inline float randRange(float min, float max) {
+    // random number between 0.0 and 1.0
+    float fraction = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
+
+    // get difference between min and max
+    float diff = max - min;
+
+    // scale the difference by fraction, add it to min.
+    return min + (fraction * diff);
+}
 
 
 //static ObjSceneData PLANE = {.translation = glm::vec3(0.f),
