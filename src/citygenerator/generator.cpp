@@ -151,6 +151,20 @@ void CopiedCityData::GenerateLights() {
                                        .penumbra = 0.f, .angle = 0.f, .width =0, .height = 0};
 
 
+    SceneLightData pointBack1 = {.id = 0, .type = LightType::LIGHT_POINT, .color = SceneColor(0.55f,0.55f, 0.55f,1.f),
+                                       .function = glm::vec3(0.4f,0.11f,0.0f), .pos = glm::vec4(-10.4f, 12.02f, -185.f, 1.f),
+                                        .dir = glm::vec4(0.f),
+                                       .penumbra = 0.f, .angle = 0.f, .width =0, .height = 0};
+
+    SceneLightData pointBack2 = {.id = 0, .type = LightType::LIGHT_POINT, .color = SceneColor(0.55f,0.55f, 0.55f,1.f),
+                                       .function = glm::vec3(0.4f,0.11f,0.0f), .pos = glm::vec4(-0.4f, 8.02f, -185.f, 1.f),
+                                        .dir = glm::vec4(0.f),
+                                       .penumbra = 0.f, .angle = 0.f, .width =0, .height = 0};
+
+    SceneLightData pointBack3 = {.id = 0, .type = LightType::LIGHT_POINT, .color = SceneColor(0.55f,0.55f, 0.55f,1.f),
+                                       .function = glm::vec3(0.4f,0.11f,0.0f), .pos = glm::vec4(4.f, 9.02f, -185.f, 1.f),
+                                        .dir = glm::vec4(0.f),
+                                       .penumbra = 0.f, .angle = 0.f, .width =0, .height = 0};
 
     CopiedCityData::lights.emplace_back(point1);
     CopiedCityData::lights.emplace_back(point2);
@@ -158,6 +172,10 @@ void CopiedCityData::GenerateLights() {
     CopiedCityData::lights.emplace_back(point4);
     CopiedCityData::lights.emplace_back(point5);
     CopiedCityData::lights.emplace_back(point6);
+
+    CopiedCityData::lights.emplace_back(pointBack1);
+    CopiedCityData::lights.emplace_back(pointBack2);
+    CopiedCityData::lights.emplace_back(pointBack3);
 }
 
 
