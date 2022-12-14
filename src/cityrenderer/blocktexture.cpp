@@ -1,7 +1,7 @@
 #include "realtime.h"
 
 
-#define BLOCK_TEXTURE_PATH ":/resources/textures/block1.png"
+#define BLOCK_TEXTURE_PATH ":/resources/textures/dirtyblock.png"
 
 void CopiedCity::InitializeBlockTexture() {
 

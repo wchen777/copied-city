@@ -7,14 +7,14 @@
 
 // define grayscale/white color constants here
 
-#define AMBIENT_WHITE_1 glm::vec3(0.77f, 0.77f, 0.77f)
+#define AMBIENT_WHITE_1 glm::vec3(0.77f, 0.77f, 0.80f)
 
-#define DIFFUSE_WHITE_1 glm::vec3(0.90f, 0.90f, 0.90f)
-#define DIFFUSE_WHITE_2 glm::vec3(0.92f, 0.925f, 0.91f)
-#define DIFFUSE_WHITE_3 glm::vec3(0.94f, 0.93f, 0.95f)
+#define DIFFUSE_WHITE_1 glm::vec3(0.90f, 0.90f, 0.93f)
+#define DIFFUSE_WHITE_2 glm::vec3(0.91f, 0.92f, 0.95f)
+#define DIFFUSE_WHITE_3 glm::vec3(0.92f, 0.92f, 0.98f)
 
-#define SPECULAR_WHITE_1 glm::vec3(0.6f, 0.6f, 0.6f)
-#define SPECULAR_WHITE_2 glm::vec3(0.7f, 0.7f, 0.7f)
+#define SPECULAR_WHITE_1 glm::vec3(0.6f, 0.6f, 0.62f)
+#define SPECULAR_WHITE_2 glm::vec3(0.7f, 0.7f, 0.72f)
 
 #define LEFT_FACADE_OFFSET -50.f
 #define RIGHT_FACADE_OFFSET 23.f
