@@ -1,3 +1,3 @@
-# Copied City Procedural Generation
+# Copied City - Procedural Generation
 
 ![reference image](references/copiedcity.jpeg)
