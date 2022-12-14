@@ -201,12 +201,11 @@ void Phong(){
 //        vec4 FragPosLightSpace = lightSpaceMatrix * vec4(vs_out.FragPos, 1.0);
         float shadow = ShadowCalculation(fragPosLightSpace);
 
-        float shadowFrac = max(1.f-shadow, 0.28);
+        float shadowFrac = max(1.f-shadow, 0.25);
 
         output_color[0] += shadowFrac*illumAcc[0];
         output_color[1] += shadowFrac*illumAcc[1];
         output_color[2] += shadowFrac*illumAcc[2];
-
 
 //        output_color[0] += illumAcc[0];
 //        output_color[1] += illumAcc[1];
@@ -218,7 +217,7 @@ void Phong(){
 
 
 void main() {
-    vec4 fog_color = vec4(0.9f, 0.9f, 0.9f, 0.6f);
+    vec4 fog_color = vec4(0.89f, 0.9f, 0.92f, 0.6f);
     output_color = vec4(0.f, 0.f, 0.f, 0.f);
 
     float pointD = distance(vertex_pos_world, cam_pos);

@@ -109,7 +109,7 @@ void Camera::ApplyTranslation(glm::vec3& translation) {
     setViewMatrices();
 }
 
-// apply a rotation vector to the camera's look vector
+// apply a rotatiodn vector to the camera's look vector
 void Camera::ApplyRotation(glm::mat3& rotation) {
 
     Camera::look = rotation * Camera::look;
@@ -121,7 +121,7 @@ void Camera::ApplyRotation(glm::mat3& rotation) {
 glm::vec3 Camera::WPressed() {
     // translate along direciton of look vector
 
-    return 0.45f * Camera::look;
+    return 0.35f * Camera::look;
 }
 
 

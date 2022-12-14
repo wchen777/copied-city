@@ -9,9 +9,9 @@
 
 #define AMBIENT_WHITE_1 glm::vec3(0.77f, 0.77f, 0.80f)
 
-#define DIFFUSE_WHITE_1 glm::vec3(0.90f, 0.90f, 0.93f)
-#define DIFFUSE_WHITE_2 glm::vec3(0.91f, 0.92f, 0.95f)
-#define DIFFUSE_WHITE_3 glm::vec3(0.92f, 0.92f, 0.98f)
+#define DIFFUSE_WHITE_1 glm::vec3(0.90f, 0.90f, 0.94f)
+#define DIFFUSE_WHITE_2 glm::vec3(0.91f, 0.92f, 0.96f)
+#define DIFFUSE_WHITE_3 glm::vec3(0.92f, 0.90f, 0.98f)
 
 #define SPECULAR_WHITE_1 glm::vec3(0.6f, 0.6f, 0.62f)
 #define SPECULAR_WHITE_2 glm::vec3(0.7f, 0.7f, 0.72f)

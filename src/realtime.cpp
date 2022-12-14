@@ -163,11 +163,11 @@ void CopiedCity::initializeGL() {
 
 void CopiedCity::paintGL() {
 
-    std::cout << "look" << std::endl;
-    std::cout << sceneCamera->look[0] << ", " << sceneCamera->look[1] << ", " << sceneCamera->look[2] << std::endl;
+//    std::cout << "look" << std::endl;
+//    std::cout << sceneCamera->look[0] << ", " << sceneCamera->look[1] << ", " << sceneCamera->look[2] << std::endl;
 
-    std::cout << "pos" << std::endl;
-    std::cout << sceneCamera->pos[0] << ", " << sceneCamera->pos[1] << ", " << sceneCamera->pos[2] << std::endl;
+//    std::cout << "pos" << std::endl;
+//    std::cout << sceneCamera->pos[0] << ", " << sceneCamera->pos[1] << ", " << sceneCamera->pos[2] << std::endl;
 
     // clear out first
     glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
