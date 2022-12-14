@@ -2,7 +2,7 @@
 
 Our goal was to replicate the style of Nier Automata's Copied City as a procedurally generated realtime environment using OpenGL.
 
-Here is a side-by-side of our results vs. a screenshot from the game:
+Here is a side-by-side of our results versus a screenshot from the game:
 
 ![image](results/sidebyside.png)
 
