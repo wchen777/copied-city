@@ -230,7 +230,7 @@ void main() {
     output_color = mix(output_color, fog_color, alphaFog);
 
     // dim to stymie lighting effects
-    output_color *= 0.875f;
+    output_color *= 0.87f;
 
 //    float fff = SampleAmbientOcclusion();
 //    output_color = vec4(fff, fff, fff, 1.f);
