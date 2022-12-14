@@ -6,16 +6,18 @@ Here is a side-by-side of our results versus a screenshot from the game:
 
 ![image](results/sidebyside.png)
 
-More results:
+## More results:
 
-Scene:
+### Scene:
 ![image1](results/total/1.png)
 
-Screen Space Ambient Occlusion Map:
+### Screen Space Ambient Occlusion Map:
+
 ![ssao](results/ssao/ssaomap.png)
 
-Light View Depth Buffer Map:
-![light](results/ssao/lightdepthmap3.png)
+### Light View Depth Buffer Map:
+
+![light](results/shadows/lightdepthmap3.png)
 
 ## Features
 
