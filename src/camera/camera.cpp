@@ -121,14 +121,14 @@ void Camera::ApplyRotation(glm::mat3& rotation) {
 glm::vec3 Camera::WPressed() {
     // translate along direciton of look vector
 
-    return 0.75f * Camera::look;
+    return 0.45f * Camera::look;
 }
 
 
 glm::vec3 Camera::SPressed() {
     // translate along opposite direciton of look vector
 
-    return -0.75f * Camera::look;
+    return -0.45f * Camera::look;
 }
 
 

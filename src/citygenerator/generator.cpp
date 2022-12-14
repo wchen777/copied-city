@@ -1,7 +1,6 @@
 #include "generator.h"
 #include "../realtime.h"
 
-// TODO: CHANGE THESE
 #define CITY_KA 0.5f
 #define CITY_KD 0.6f
 #define CITY_KS 0.5f
@@ -40,15 +39,12 @@ void CopiedCityData::GeneratePlane() {
     // initialize material
     InitializeMaterial(&CopiedCityData::plane.planeData, &PLANE);
 
-//    // initialize object tesselation DONT NEED BECAUSE USE SAME CUBE
-//    CopiedCityData::plane.planeData.trimesh = new Cube();
-//    CopiedCityData::plane.planeData.trimesh->UpdateParams(settings.shapeParameter1, settings.shapeParameter2);
-
+    // add plane data
     CopiedCityData::cityData.emplace_back(&CopiedCityData::plane.planeData);
 
+    // generate plane growths
     CopiedCityData::plane.GenerateGroundGrowths();
 }
-// more stuff goes here about potential details on the bottom of the plane
 
 
 

@@ -122,6 +122,7 @@ float ShadowCalculation(vec4 fragPosLightSpace)
     // check whether current frag pos is in shadow, hard coded current depth lol.
     float shadow = shadowCutoff > closestDepth  ? 1.0 : 0.0;
 
+//    output_color = vec4(closestDepth, closestDepth, closestDepth, 0.f);
 //    output_color = vec4(shadow, shadow, shadow, 0.f);
 
 //    float softShadowCutoff = 0.18f;
@@ -228,8 +229,8 @@ void main() {
     // blend fog and color
     output_color = mix(output_color, fog_color, alphaFog);
 
-//    // dim to stymie lighting effects
-    output_color *= 0.83f;
+    // dim to stymie lighting effects
+    output_color *= 0.875f;
 
 //    float fff = SampleAmbientOcclusion();
 //    output_color = vec4(fff, fff, fff, 1.f);
