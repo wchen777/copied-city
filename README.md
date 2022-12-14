@@ -4,7 +4,7 @@ Our goal was to replicate the style of Nier Automata's Copied City as a procedur
 
 Here is a side-by-side of our results vs. a screenshot from the game:
 
-![image](references/sidebyside.png)
+![image](results/sidebyside.png)
 
 
 ## Features
